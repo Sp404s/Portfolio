@@ -1,0 +1,190 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио — Город Монополия</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/project.css" />
+</head>
+<body data-page="projects">
+  <div class="cursor-3d" id="cursor-3d" aria-hidden="true"></div>
+  <div class="site-loader" id="site-loader" aria-live="polite">
+    <div class="site-loader__bar">
+      <span class="site-loader__fill" aria-hidden="true"></span>
+    </div>
+    <div class="site-loader__text">Загрузка<span class="site-loader__dots" aria-hidden="true"></span></div>
+  </div>
+  <header class="navbar">
+    <div class="nav-inner">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Меню</button>
+      <nav class="nav-panel" id="nav-panel" aria-label="Основная навигация">
+        <ul class="nav-links">
+          <li><a class="nav-link" data-page="home" href="index.html">Главная</a></li>
+          <li><a class="nav-link" data-page="about" href="about.html">Обо мне</a></li>
+          <li><a class="nav-link" data-page="projects" href="projects.html">Проекты</a></li>
+          <span class="nav-active" aria-hidden="true"></span>
+        </ul>
+        <div class="nav-socials" aria-label="Социальные сети">
+          <a class="nav-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+            <img src="assets/icons/VK_icon.svg" alt="VK" />
+          </a>
+          <a class="nav-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+            <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="project-hero">
+      <div class="container layout-grid">
+        <a class="project-back" href="projects.html" aria-label="Назад">
+          <img src="assets/icons/Button_Backscape .png" alt="Backspace" />
+        </a>
+        <div class="project-hero__frame">
+          <a class="project-nav project-nav--prev" href="project-sci-table.html">
+            <img class="project-nav__icon" src="assets/icons/Arrow.svg" alt="Назад" />
+            <span class="project-nav__label">Пред</span>
+          </a>
+          <div class="project-hero__content">
+            <div class="project-hero__media">
+              <img class="project-hero__image" src="assets/images/Город монополия/ренд1.png" alt="Город Монополия — рендер 1" />
+            </div>
+            <div class="project-meta">
+              <div class="project-tags">
+                <span class="project-tag">Анимация</span>
+                <span class="project-tag">Сцены</span>
+              </div>
+              <div class="project-tool">
+                <img src="assets/icons/Blender.svg" alt="Blender" />
+                <span>Blender</span>
+              </div>
+            </div>
+          </div>
+          <a class="project-nav project-nav--next" href="project.html">
+            <img class="project-nav__icon project-nav__icon--next" src="assets/icons/Arrow.svg" alt="Вперёд" />
+            <span class="project-nav__label">След</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--intro">
+      <div class="container layout-grid">
+        <h1 class="hero-title project-title">ГОРОД «МОНОПОЛИЯ»</h1>
+        <div class="project-text">
+          <h2 class="section-title">Описание модели</h2>
+          <p class="text">
+            Данный проект — это один из коммерческих заказов. Знакомый попросил создать абстрактную анимацию для сайта по
+            настольным играм. Он прислал референсы из Pinterest, и мы обговорили внешний вид сцены и то, что должно
+            происходить в ней.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Город монополия/реф1.png" alt="Город Монополия — референсы" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Концепция и подготовка</h2>
+          <p class="text">
+            Я подробно изучил референсы и остановился на блочной анимации, где есть блоки, которые двигаются. Хотелось
+            придать динамику роста и показать, как эти блоки превращаются в город с улицами.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--right">
+      <div class="container layout-grid">
+        <div class="project-text">
+          <h2 class="section-title">Моделирование</h2>
+          <p class="text">
+            Начал с блоков. Сделал модель одного блока и размножил её через Array. Затем выбрал несколько блоков,
+            которые хорошо смотрелись в композиции, и сделал в них отверстия, похожие на окна. После смоделировал
+            простенькую машинку, похожую на фишку в «Монополии».
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="assets/images/Город монополия/моделинг2.png" alt="Город Монополия — моделирование" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Город монополия/текстурирование3.png" alt="Город Монополия — материалы" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Материалы и текстуры</h2>
+          <p class="text">
+            После того как была сделана целиком геометрия, я перешёл к этапу текстурирования. В качестве основных
+            материалов я взял стекло, пластик и металл — то, из чего обычно делают фигурки в «Монополии».
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--right">
+      <div class="container layout-grid">
+        <div class="project-text">
+          <h2 class="section-title">Анимация и свет</h2>
+          <p class="text">
+            Во время анимации параллельно настраивался свет, чтобы видеть картинку, которая получается на камере, а также
+            анимировать освещение. Сначала я сделал динамическое освещение, а затем, во время роста города, — плавное
+            освещение, которое подчёркивает темп его развития. Движение блоков я реализовал через изменение их
+            расположения, а машинку анимировал с помощью кривой.
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="assets/images/Город монополия/свет4.png" alt="Город Монополия — свет" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-gallery">
+      <div class="container layout-grid">
+        <div class="project-thumb">
+          <img src="assets/images/Город монополия/ренд1.png" alt="Город Монополия — рендер 1" />
+        </div>
+        <div class="project-thumb">
+          <img src="assets/images/Город монополия/ренд2.png" alt="Город Монополия — рендер 2" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Контакты">
+    <div class="container layout-grid footer-grid">
+      <h2 class="footer-title">Контакты</h2>
+      <div class="footer-contacts footer-text">
+        <span>khatsker@gmail.com</span>
+        <span>t.me/JustFunnyDays</span>
+        <span>vk.com/3funnydays</span>
+      </div>
+      <div class="footer-signature">Хатскер</div>
+      <div class="footer-year">2024</div>
+      <div class="footer-socials">
+        <a class="footer-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+          <img src="assets/icons/VK_icon.svg" alt="VK" />
+        </a>
+        <a class="footer-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+          <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/project.js"></script>
+  <script type="module" src="js/three/project-viewer.js"></script>
+  <script type="module" src="js/three/cursor.js"></script>
+</body>
+</html>
+

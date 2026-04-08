@@ -1,0 +1,249 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио — Камера Sci-Fi</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/project.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body data-page="projects">
+  <div class="cursor-3d" id="cursor-3d" aria-hidden="true"></div>
+  <div class="site-loader" id="site-loader" aria-live="polite">
+    <div class="site-loader__bar">
+      <span class="site-loader__fill" aria-hidden="true"></span>
+    </div>
+    <div class="site-loader__text">Загрузка<span class="site-loader__dots" aria-hidden="true"></span></div>
+  </div>
+  <header class="navbar">
+    <div class="nav-inner">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Меню</button>
+      <nav class="nav-panel" id="nav-panel" aria-label="Основная навигация">
+        <ul class="nav-links">
+          <li><a class="nav-link" data-page="home" href="index.html">Главная</a></li>
+          <li><a class="nav-link" data-page="about" href="about.html">Обо мне</a></li>
+          <li><a class="nav-link" data-page="projects" href="projects.html">Проекты</a></li>
+          <span class="nav-active" aria-hidden="true"></span>
+        </ul>
+        <div class="nav-socials" aria-label="Социальные сети">
+          <a class="nav-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+            <img src="assets/icons/VK_icon.svg" alt="VK" />
+          </a>
+          <a class="nav-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+            <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="project-hero">
+      <div class="container layout-grid">
+        <a class="project-back" href="projects.html" aria-label="Назад">
+          <img src="assets/icons/Button_Backscape .png" alt="Backspace" />
+        </a>
+        <div class="project-hero__frame">
+          <a class="project-nav project-nav--prev" href="project-loft.html">
+            <img class="project-nav__icon" src="assets/icons/Arrow.svg" alt="Назад" />
+            <span class="project-nav__label">Пред</span>
+          </a>
+          <div class="project-hero__content">
+            <div class="project-hero__media">
+              <img class="project-hero__image" src="assets/images/Камера sci-fi/ren1.png" alt="Камера Sci-Fi — рендер 1" />
+            </div>
+            <div class="project-meta">
+              <div class="project-tags">
+                <span class="project-tag">Техника</span>
+              </div>
+              <div class="project-tool">
+                <img src="assets/icons/Blender.svg" alt="Blender" />
+                <span>Blender • Substance 3D Painter</span>
+              </div>
+            </div>
+          </div>
+          <a class="project-nav project-nav--next" href="project-sci-table.html">
+            <img class="project-nav__icon project-nav__icon--next" src="assets/icons/Arrow.svg" alt="Вперёд" />
+            <span class="project-nav__label">След</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--intro">
+      <div class="container layout-grid">
+        <h1 class="hero-title project-title">КАМЕРА SCI-FI</h1>
+        <div class="project-text">
+          <h2 class="section-title">Описание модели</h2>
+          <p class="text">
+            Модель камеры была создана в рамках практической работы в университете. Целью проекта являлась разработка
+            3D-объектов для игрового движка с единым визуальным стилем и продуманным сеттингом. В работе использовался
+            Blender для создания high poly и low poly моделей, а запекание и текстурирование выполнялось в Adobe
+            Substance 3D Painter. Камера разрабатывалась как элемент системы безопасности научной станции и должна была
+            выглядеть технологично и функционально.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Камера sci-fi/сеттинг1.jpg" alt="Камера Sci-Fi — сеттинг" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Сеттинг проекта</h2>
+          <p class="text">
+            События происходят в 2048 году в альтернативной версии Земли. В ходе исследований на больших глубинах была
+            обнаружена аномальная активность, что привело к созданию подводной станции «Атлант-9». Камера является
+            частью системы безопасности станции и используется для контроля доступа и наблюдения.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--right">
+      <div class="container layout-grid">
+        <div class="project-text">
+          <h2 class="section-title">Подбор референсов</h2>
+          <p class="text">
+            На этапе подготовки были изучены различные варианты камер видеонаблюдения и sci-fi устройств. В качестве
+            ориентира выбраны формы с выраженной геометрией и технологичным внешним видом.
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="assets/images/Камера sci-fi/реф2.jpg" alt="Камера Sci-Fi — референсы" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Камера sci-fi/драфт3.png" alt="Камера Sci-Fi — драфт" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Драфт (блокинг)</h2>
+          <p class="text">
+            Создание модели началось с базовой формы. Основное внимание уделялось построению корпуса и проработке
+            наклонных поверхностей. Пропорции уточнялись в процессе работы.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--right">
+      <div class="container layout-grid">
+        <div class="project-text">
+          <h2 class="section-title">Скульптинг и детализация</h2>
+          <p class="text">
+            После формирования основы была выполнена детализация. Добавлены элементы конструкции и небольшие дефекты
+            поверхности, повышающие реалистичность модели.
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="assets/images/Камера sci-fi/High poly4.png" alt="Камера Sci-Fi — high poly" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Камера sci-fi/low poly5.png" alt="Камера Sci-Fi — low poly" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Low poly модель</h2>
+          <p class="text">
+            Создана оптимизированная версия модели, пригодная для использования в игровом движке. Геометрия была
+            упрощена без потери основных форм.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--right">
+      <div class="container layout-grid">
+        <div class="project-text">
+          <h2 class="section-title">Запекание и текстурирование</h2>
+          <p class="text">
+            Процесс запекания карт и текстурирования выполнялся в Adobe Substance 3D Painter. Были настроены материалы,
+            отражающие свойства поверхности и общий стиль объекта.
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="assets/images/Камера sci-fi/текстурирование6.png" alt="Камера Sci-Fi — текстурирование" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Камера sci-fi/ren1.png" alt="Камера Sci-Fi — рендер 1" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Рендер</h2>
+          <p class="text">
+            На финальном этапе выполнена визуализация модели с разных ракурсов. Рендеры демонстрируют объект как часть
+            единой sci-fi среды.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-gallery">
+      <div class="container layout-grid">
+        <div class="project-thumb">
+          <img src="assets/images/Камера sci-fi/ren1.png" alt="Камера Sci-Fi — рендер 1" />
+        </div>
+        <div class="project-thumb">
+          <img src="assets/images/Камера sci-fi/ren2.png" alt="Камера Sci-Fi — рендер 2" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Контакты">
+    <div class="container layout-grid footer-grid">
+      <h2 class="footer-title">Контакты</h2>
+      <div class="footer-contacts footer-text">
+        <p>тел. +7 981 808-16-22</p>
+        <p>почта: agusev2004@yandex.ru</p>
+      </div>
+      <div class="footer-socials" aria-label="Социальные сети">
+        <a class="footer-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+          <img src="assets/icons/VK_icon.svg" alt="VK" />
+        </a>
+        <a class="footer-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+          <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+        </a>
+      </div>
+      <div class="footer-signature footer-text">Гусев Александр ©</div>
+      <div class="footer-year footer-text">2026</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/project.js"></script>
+  <script type="module" src="js/three/project-viewer.js"></script>
+  <script type="module" src="js/three/cursor.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

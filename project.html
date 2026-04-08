@@ -1,0 +1,266 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио — Страница проекта</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/project.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body data-page="projects">
+  <div class="cursor-3d" id="cursor-3d" aria-hidden="true"></div>
+  <div class="site-loader" id="site-loader" aria-live="polite">
+    <div class="site-loader__bar">
+      <span class="site-loader__fill" aria-hidden="true"></span>
+    </div>
+    <div class="site-loader__text">Загрузка<span class="site-loader__dots" aria-hidden="true"></span></div>
+  </div>
+  <header class="navbar">
+    <div class="nav-inner">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Меню</button>
+      <nav class="nav-panel" id="nav-panel" aria-label="Основная навигация">
+        <ul class="nav-links">
+          <li><a class="nav-link" data-page="home" href="index.html">Главная</a></li>
+          <li><a class="nav-link" data-page="about" href="about.html">Обо мне</a></li>
+          <li><a class="nav-link" data-page="projects" href="projects.html">Проекты</a></li>
+          <span class="nav-active" aria-hidden="true"></span>
+        </ul>
+        <div class="nav-socials" aria-label="Социальные сети">
+          <a class="nav-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+            <img src="assets/icons/VK_icon.svg" alt="VK" />
+          </a>
+          <a class="nav-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+            <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="project-hero">
+      <div class="container layout-grid">
+        <a class="project-back" href="projects.html" aria-label="Назад">
+          <img src="assets/icons/Button_Backscape .png" alt="Backspace" />
+        </a>
+        <div class="project-hero__frame">
+          <a class="project-nav project-nav--prev" href="project-monopoly.html">
+            <img class="project-nav__icon" src="assets/icons/Arrow.svg" alt="Назад" />
+            <span class="project-nav__label">Пред</span>
+          </a>
+        <div class="project-hero__content">
+          <div class="project-hero__media">
+            <div class="project-viewer" id="project-viewer" data-model="assets/models/FujFilm(highpoly).glb" data-model-name="Fujifilm X-S10"></div>
+            <div class="project-viewer__loader" id="project-viewer-loader" aria-live="polite">
+              <div class="project-viewer__spinner" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="project-meta">
+            <div class="project-tags">
+              <span class="project-tag">Техника</span>
+              <span class="project-tag">Анимация</span>
+              </div>
+              <div class="project-tool">
+                <img src="assets/icons/Blender.svg" alt="Blender" />
+                <span>Blender</span>
+              </div>
+            </div>
+          </div>
+          <a class="project-nav project-nav--next" href="project-loft.html">
+            <img class="project-nav__icon project-nav__icon--next" src="assets/icons/Arrow.svg" alt="Вперёд" />
+            <span class="project-nav__label">След</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--intro">
+      <div class="container layout-grid">
+        <h1 class="hero-title project-title">ФОТОАППАРАТ FUJIFILM X-S10</h1>
+        <div class="project-text">
+          <h2 class="section-title">Описание модели</h2>
+          <p class="text">
+            Модель фотоаппарата Fujifilm X-S10 была создана для последующей анимации. Основной задачей проекта было
+            воссоздание сложного объекта с высокой степенью детализации и проверка навыков моделирования. В процессе
+            работы появилась идея использовать модель в учебном проекте по дисциплине «3D моделирование и анимация»,
+            где планируется создать анимацию сборки устройства из отдельных деталей. Моделирование выполнялось сразу
+            в high poly формате с расчётом на дальнейшую анимацию и разбор модели на составные элементы.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Фотоаппарат Fujifilm/moodboard1.jpg" alt="Moodboard" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Концепция и подготовка</h2>
+          <p class="text">
+            На начальном этапе был собран мудборд для определения стилистики и уровня реализма. Были подобраны
+            изображения фотоаппарата со всех сторон, что позволило точно воспроизвести форму и конструкцию устройства.
+            Особое внимание уделялось разбиению модели на отдельные части, чтобы в дальнейшем можно было реализовать
+            анимацию сборки.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--right">
+      <div class="container layout-grid">
+        <div class="project-text">
+          <h2 class="section-title">Моделирование</h2>
+          <p class="text">
+            Модель создавалась сразу в high poly с постепенным уточнением геометрии. В процессе увеличивалось количество
+            полигонов для достижения плавных форм и высокой детализации. Основная сложность заключалась в создании
+            корпуса фотоаппарата, так как он имеет эргономичную форму с изгибами, адаптированными под руку пользователя.
+            Все элементы прорабатывались отдельно для последующей анимации.
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="assets/images/Фотоаппарат Fujifilm/Моделирование.png" alt="Моделирование" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Фотоаппарат Fujifilm/Материалы.png" alt="Материалы" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Материалы и текстуры</h2>
+          <p class="text">
+            После завершения моделирования была выполнена настройка материалов. Основными типами материалов стали
+            металл, стекло для линз, пластик и вставки с имитацией кожи. Отдельное внимание уделялось корректной
+            передаче отражений и свойств поверхностей для достижения реалистичного внешнего вида.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--right">
+      <div class="container layout-grid">
+        <div class="project-text">
+          <h2 class="section-title">Детализация</h2>
+          <p class="text">
+            На финальном этапе текстурирования были добавлены дополнительные элементы: надписи на кнопках, маркировка
+            на объективе и другие графические детали. Это позволило сделать модель более живой и приблизить её
+            к реальному прототипу.
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="assets/images/Фотоаппарат Fujifilm/Детализация.png" alt="Детализация" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--middle">
+      <div class="container layout-grid">
+        <div class="project-image">
+          <img src="assets/images/Фотоаппарат Fujifilm/Рендер.png" alt="Рендер" />
+        </div>
+        <div class="project-text">
+          <h2 class="section-title">Визуализация</h2>
+          <p class="text">
+            После настройки материалов было выполнено освещение сцены и создан первый рендер. Освещение подбиралось
+            таким образом, чтобы подчеркнуть форму объекта и материалы.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--right">
+      <div class="container layout-grid">
+        <div class="project-text">
+          <h2 class="section-title">Анимация</h2>
+          <p class="text">
+            Заключительный этап включал создание анимации. Для этого была разработана раскадровка, продумано движение
+            элементов и общее окружение сцены. Анимация сборки реализована с использованием движения по кривым и
+            ключевых кадров. Дополнительно была создана и анимирована нодовая генерация растений на столе, что
+            позволило сделать сцену более живой и детализированной.
+          </p>
+        </div>
+        <div class="project-image">
+          <img src="assets/images/Фотоаппарат Fujifilm/Ракадровка.png" alt="Раскадровка" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--video">
+      <div class="container layout-grid">
+        <div class="project-video" data-video-player>
+          <div class="project-video__frame">
+            <video
+              class="project-video__media"
+              src="assets/video/Фотик.mp4"
+              preload="metadata"
+              playsinline
+            ></video>
+            <div class="project-viewer__loader project-video__loader" data-video-loader aria-live="polite">
+              <div class="project-viewer__spinner" aria-hidden="true"></div>
+            </div>
+            <button class="project-video__overlay" type="button" data-video-overlay aria-label="Воспроизвести видео">
+              <span class="project-video__overlay-icon" aria-hidden="true"></span>
+            </button>
+            <div class="project-video__controls">
+              <button class="project-video__icon" type="button" data-video-play aria-label="Воспроизвести">
+                <span class="project-video__icon-play" aria-hidden="true"></span>
+                <span class="project-video__icon-stop" aria-hidden="true"></span>
+              </button>
+              <input class="project-video__range" type="range" min="0" max="100" value="0" step="0.01" data-video-timeline />
+              <button class="project-video__icon" type="button" data-video-fullscreen aria-label="Во весь экран">
+                <span class="project-video__icon-full" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="project-video__volume">
+              <input class="project-video__range project-video__range--volume" type="range" min="0" max="1" step="0.01" value="1" data-video-volume />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+  </main>
+
+  <footer class="footer" aria-label="Контакты">
+    <div class="container layout-grid footer-grid">
+      <h2 class="footer-title">Контакты</h2>
+      <div class="footer-contacts footer-text">
+        <p>тел. +7 981 808-16-22</p>
+        <p>почта: agusev2004@yandex.ru</p>
+      </div>
+      <div class="footer-socials" aria-label="Социальные сети">
+        <a class="footer-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+          <img src="assets/icons/VK_icon.svg" alt="VK" />
+        </a>
+        <a class="footer-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+          <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+        </a>
+      </div>
+      <div class="footer-signature footer-text">Гусев Александр ©</div>
+      <div class="footer-year footer-text">2026</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/project.js"></script>
+  <script type="module" src="js/three/project-viewer.js"></script>
+  <script type="module" src="js/three/cursor.js"></script>
+</body>
+</html>
+
+
+
+
+

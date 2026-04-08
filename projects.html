@@ -1,0 +1,145 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио — Проекты</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body data-page="projects">
+  <div class="cursor-3d" id="cursor-3d" aria-hidden="true"></div>
+  <div class="site-loader" id="site-loader" aria-live="polite">
+    <div class="site-loader__bar">
+      <span class="site-loader__fill" aria-hidden="true"></span>
+    </div>
+    <div class="site-loader__text">Загрузка<span class="site-loader__dots" aria-hidden="true"></span></div>
+  </div>
+  <header class="navbar">
+    <div class="nav-inner">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Меню</button>
+      <nav class="nav-panel" id="nav-panel" aria-label="Основная навигация">
+        <ul class="nav-links">
+          <li><a class="nav-link" data-page="home" href="index.html">Главная</a></li>
+          <li><a class="nav-link" data-page="about" href="about.html">Обо мне</a></li>
+          <li><a class="nav-link" data-page="projects" href="projects.html">Проекты</a></li>
+          <span class="nav-active" aria-hidden="true"></span>
+        </ul>
+        <div class="nav-socials" aria-label="Социальные сети">
+          <a class="nav-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+            <img src="assets/icons/VK_icon.svg" alt="VK" />
+          </a>
+          <a class="nav-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+            <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="projects-hero">
+      <div class="container layout-grid">
+        <div class="projects-controls">
+          <div class="projects-search">
+            <input class="projects-search__input" type="text" placeholder="" aria-label="Поиск по проектам" />
+            <button class="projects-search__btn" type="button" aria-label="Найти">
+              <span class="projects-search__icon"></span>
+            </button>
+          </div>
+          <div class="filters">
+            <button class="filter-btn" type="button">Растение</button>
+            <button class="filter-btn" type="button">Мебель</button>
+            <button class="filter-btn" type="button">Игровая модель</button>
+            <button class="filter-btn" type="button">Сцены</button>
+            <button class="filter-btn" type="button">Техника</button>
+            <button class="filter-btn" type="button">Анимация</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-showcase">
+      <div class="container layout-grid">
+        <a class="project-preview project-link" href="project.html" data-tags="техника, анимация">
+          <div class="project-preview__media">
+            <img src="assets/images/Фотоаппарат Fujifilm/Рендер.png" alt="Рендер Fujifilm X-S10" />
+          </div>
+          <p class="project-preview__title">Фотоаппарат Fujifilm X-S10</p>
+        </a>
+        <a class="project-preview project-link" href="project-loft.html" data-tags="мебель">
+          <div class="project-preview__media">
+            <img src="assets/images/table-loft/render-1.jpg" alt="Рендер Стол Loft" />
+          </div>
+          <p class="project-preview__title">Стол Loft K#1</p>
+        </a>
+        <a class="project-preview project-link" href="project-sci-fi.html" data-tags="техника">
+          <div class="project-preview__media">
+            <img src="assets/images/Камера sci-fi/ren1.png" alt="Рендер Камера Sci-Fi" />
+          </div>
+          <p class="project-preview__title">Камера Sci-Fi</p>
+        </a>
+        <a class="project-preview project-link" href="project-sci-table.html" data-tags="техника">
+          <div class="project-preview__media">
+            <img src="assets/images/Стол sci-fi/ren1.png" alt="Рендер Стол Sci-Fi" />
+          </div>
+          <p class="project-preview__title">Стол Sci-Fi</p>
+        </a>
+        <div class="projects-hidden">
+          <a class="project-preview project-link" href="project-monopoly.html" data-tags="анимация, сцены">
+            <div class="project-preview__media">
+              <img src="assets/images/Город монополия/ренд1.png" alt="Город Монополия — рендер 1" />
+            </div>
+            <p class="project-preview__title">Город Монополия</p>
+          </a>
+        </div>
+        <div class="projects-more-wrap">
+          <button class="projects-more" type="button" aria-label="Показать еще">
+            <img src="assets/icons/Button_more.png" alt="Показать еще" />
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Контакты">
+    <div class="container layout-grid footer-grid">
+      <h2 class="footer-title">Контакты</h2>
+      <div class="footer-contacts footer-text">
+        <p>тел. +7 981 808-16-22</p>
+        <p>почта: agusev2004@yandex.ru</p>
+      </div>
+      <div class="footer-socials" aria-label="Социальные сети">
+        <a class="footer-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+          <img src="assets/icons/VK_icon.svg" alt="VK" />
+        </a>
+        <a class="footer-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+          <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+        </a>
+      </div>
+      <div class="footer-signature footer-text">Гусев Александр ©</div>
+      <div class="footer-year footer-text">2026</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/projects.js"></script>
+  <script type="module" src="js/three/cursor.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

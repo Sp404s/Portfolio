@@ -1,0 +1,168 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио — Обо мне</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body data-page="about">
+  <div class="cursor-3d" id="cursor-3d" aria-hidden="true"></div>
+  <div class="site-loader" id="site-loader" aria-live="polite">
+    <div class="site-loader__bar">
+      <span class="site-loader__fill" aria-hidden="true"></span>
+    </div>
+    <div class="site-loader__text">Загрузка<span class="site-loader__dots" aria-hidden="true"></span></div>
+  </div>
+  <header class="navbar">
+    <div class="nav-inner">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Меню</button>
+      <nav class="nav-panel" id="nav-panel" aria-label="Основная навигация">
+        <ul class="nav-links">
+          <li><a class="nav-link" data-page="home" href="index.html">Главная</a></li>
+          <li><a class="nav-link" data-page="about" href="about.html">Обо мне</a></li>
+          <li><a class="nav-link" data-page="projects" href="projects.html">Проекты</a></li>
+          <span class="nav-active" aria-hidden="true"></span>
+        </ul>
+        <div class="nav-socials" aria-label="Социальные сети">
+          <a class="nav-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+            <img src="assets/icons/VK_icon.svg" alt="VK" />
+          </a>
+          <a class="nav-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+            <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section about-section">
+      <div class="container layout-grid">
+        <h1 class="hero-title about-title">Обо<br />мне</h1>
+        <div class="about-photo media-box">
+          <img src="assets/images/My_portret.png" alt="Портрет" />
+        </div>
+        <div class="about-text">
+          <p class="text">
+            <strong>Привет! Меня зовут Гусев Александр.</strong><br />
+            <strong>Я дизайнер и 3D художник.</strong><br /><br />
+            Для меня дизайн — это процесс формирования утилитарной среды с опорой на эстетические
+            и культурно-исторические принципы человечества.<br />
+            В свободное время я увлекаюсь фотографией, написанием песен, 3D‑моделированием и видеомонтажом.
+            Мне нравится изучать новое и экспериментировать, ведь из каждой области можно почерпнуть
+            что-то ценное и применить это в работе.
+          </p>
+        </div>
+        
+      </div>
+    </section>
+
+    <section class="section skills-section">
+      <div class="container layout-grid">
+        <div class="skills-title">
+          <h2 class="hero-title skills-title__text">Навыки</h2>
+        </div>
+        <div class="skills-hard">
+          <h2 class="skills-subtitle">Hard Skills</h2>
+          <div class="skills-cards">
+            <article class="skill-card">
+              <h3 class="skill-card__title">Adobe Photoshop</h3>
+              <img class="skill-card__icon" src="assets/icons/PS.svg" alt="Photoshop" />
+              <div class="skill-card__percent" data-percent="75">0%</div>
+              <div class="skill-card__caption">Уровень владения</div>
+            </article>
+            <article class="skill-card">
+              <h3 class="skill-card__title">Adobe Illustrator</h3>
+              <img class="skill-card__icon" src="assets/icons/Ai.svg" alt="Illustrator" />
+              <div class="skill-card__percent" data-percent="70">0%</div>
+              <div class="skill-card__caption">Уровень владения</div>
+            </article>
+            <article class="skill-card">
+              <h3 class="skill-card__title">Adobe Premiere Pro</h3>
+              <img class="skill-card__icon" src="assets/icons/Pr.svg" alt="Premiere Pro" />
+              <div class="skill-card__percent" data-percent="65">0%</div>
+              <div class="skill-card__caption">Уровень владения</div>
+            </article>
+            <article class="skill-card">
+              <h3 class="skill-card__title">Adobe After Effects</h3>
+              <img class="skill-card__icon" src="assets/icons/Ae.svg" alt="After Effects" />
+              <div class="skill-card__percent" data-percent="60">0%</div>
+              <div class="skill-card__caption">Уровень владения</div>
+            </article>
+            <article class="skill-card">
+              <h3 class="skill-card__title">Blender</h3>
+              <img class="skill-card__icon" src="assets/icons/Blender.svg" alt="Blender" />
+              <div class="skill-card__percent" data-percent="85">0%</div>
+              <div class="skill-card__caption">Уровень владения</div>
+            </article>
+            <article class="skill-card">
+              <h3 class="skill-card__title">Figma</h3>
+              <img class="skill-card__icon" src="assets/icons/Figma.svg" alt="Figma" />
+              <div class="skill-card__percent" data-percent="70">0%</div>
+              <div class="skill-card__caption">Уровень владения</div>
+            </article>
+            <article class="skill-card">
+              <h3 class="skill-card__title">3Ds Max</h3>
+              <img class="skill-card__icon" src="assets/icons/3dsmax.svg" alt="3Ds Max" />
+              <div class="skill-card__percent" data-percent="60">0%</div>
+              <div class="skill-card__caption">Уровень владения</div>
+            </article>
+          </div>
+        </div>
+        <div class="skills-soft">
+          <h2 class="skills-subtitle">Soft Skills</h2>
+          <div class="skill-card skill-card--soft">
+            <ul class="skills-soft__list">
+              <li>Ответственность</li>
+              <li>Коммуникабельность</li>
+              <li>Лидерские качества</li>
+              <li>Терпение</li>
+              <li>Адаптивность</li>
+              <li>Эмоциональный интеллект</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Контакты">
+    <div class="container layout-grid footer-grid">
+      <h2 class="footer-title">Контакты</h2>
+      <div class="footer-contacts footer-text">
+        <p>тел. +7 981 808-16-22</p>
+        <p>почта: agusev2004@yandex.ru</p>
+      </div>
+      <div class="footer-socials" aria-label="Социальные сети">
+        <a class="footer-social" href="https://vk.com/3funnydays" aria-label="ВКонтакте">
+          <img src="assets/icons/VK_icon.svg" alt="VK" />
+        </a>
+        <a class="footer-social" href="https://t.me/JustFunnyDays" aria-label="Telegram">
+          <img src="assets/icons/TG_icon.svg" alt="Telegram" />
+        </a>
+      </div>
+      <div class="footer-signature footer-text">Гусев Александр ©</div>
+      <div class="footer-year footer-text">2026</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/about.js"></script>
+  <script type="module" src="js/three/cursor.js"></script>
+</body>
+</html>
+
+
+
+
+
