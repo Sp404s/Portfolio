@@ -1,0 +1,142 @@
+/* City Monopoly project page. */
+.project-cover--city-monopoly img {
+  object-position: center 42%;
+}
+
+.city-video {
+  padding: 140px var(--side-padding) 0;
+}
+
+.city-video__player {
+  position: relative;
+  display: block;
+  grid-column: 2 / 12;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.city-video__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.city-video__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50%;
+  color: var(--white);
+  background: rgba(23, 23, 23, 0.42);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.city-video__play span {
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 24px solid currentColor;
+}
+
+.city-video__player.is-playing .city-video__play {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.92);
+}
+
+.city-video__player:hover .city-video__play,
+.city-video__play:focus-visible {
+  background: rgba(23, 23, 23, 0.68);
+}
+
+.city-video__controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 44px 28px 22px;
+  color: var(--white);
+  background: linear-gradient(180deg, rgba(23, 23, 23, 0), rgba(23, 23, 23, 0.82));
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.city-video__hover-zone {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  height: 34%;
+}
+
+.city-video__player:focus-within .city-video__controls,
+.city-video__hover-zone:hover ~ .city-video__controls,
+.city-video__controls:hover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.city-video__control-button {
+  border: 0;
+  color: var(--white);
+  background: transparent;
+  font-family: var(--font-involve);
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.city-video__progress {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .city-video {
+    padding: 72px var(--side-padding) 0;
+  }
+
+  .city-video__play {
+    width: 64px;
+    height: 64px;
+  }
+
+  .city-video__play span {
+    border-top-width: 11px;
+    border-bottom-width: 11px;
+    border-left-width: 18px;
+  }
+
+  .city-video__controls {
+    gap: 12px;
+    padding: 34px 16px 16px;
+  }
+
+  .city-video__control-button {
+    font-size: 14px;
+  }
+}

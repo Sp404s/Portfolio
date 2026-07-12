@@ -1,0 +1,43 @@
+/* SCI-FI table project page. */
+.project-cover--stol-sci-fi img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.project-image--stol-left {
+  grid-column: 1 / 5;
+  height: 500px;
+}
+
+.project-image--stol-right {
+  grid-column: 9 / 13;
+  height: 500px;
+}
+
+.project-image--stol-left img,
+.project-image--stol-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.project-image--stol-texturing {
+  background: #171717;
+}
+
+.project-image--stol-texturing img {
+  object-fit: contain;
+}
+
+.project-slider__item img {
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 900px) {
+  .project-image--stol-left,
+  .project-image--stol-right {
+    grid-column: 1 / -1;
+  }
+}

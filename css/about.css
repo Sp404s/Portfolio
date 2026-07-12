@@ -1,0 +1,284 @@
+/* About page: grid, biography, software cards and contacts. */
+.about-layout {
+  position: relative;
+  padding: calc(var(--header-height) + 80px) var(--side-padding) 80px;
+  background: var(--page-bg);
+}
+
+.about-hero {
+  min-height: 620px;
+  align-items: start;
+}
+
+.about-intro {
+  grid-column: 1 / span 4;
+  padding-top: 8px;
+}
+
+.about-intro h1,
+.software-section h2,
+.contacts-section h2 {
+  color: var(--accent);
+  font-family: var(--font-involve);
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.about-intro p,
+.about-text p,
+.contacts-section p {
+  color: var(--white);
+  font-family: var(--font-involve);
+  font-size: 24px;
+  line-height: 1.28;
+  font-weight: 400;
+}
+
+.about-intro p {
+  margin-top: 28px;
+}
+
+.about-photo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 12;
+  width: calc(var(--side-padding) + (((100vw - (var(--side-padding) * 2) - (var(--grid-gap) * 11)) / 12) * 3) + (var(--grid-gap) * 2));
+  height: 100%;
+  background: var(--card-bg);
+  pointer-events: none;
+}
+
+.about-text {
+  margin-top: 40px;
+}
+
+.about-text p {
+  grid-column: 1 / span 4;
+}
+
+.software-section {
+  margin-top: 180px;
+}
+
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--software-card-width));
+  gap: 20px;
+  width: max-content;
+  margin-top: 28px;
+}
+
+.software-card {
+  width: var(--software-card-width);
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 34px 20px 0;
+  color: var(--black);
+  background: var(--card-bg);
+}
+
+.software-card h3 {
+  min-height: 0;
+  font-family: var(--font-involve);
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 400;
+  text-align: center;
+}
+
+.software-icon {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin-top: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.software-icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  width: 54px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.24);
+  filter: blur(8px);
+  transform: translateX(-50%);
+  opacity: 0.75;
+}
+
+.software-icon img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  animation: icon-float 2.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.software-card:nth-child(2n) .software-icon img {
+  animation-delay: 0.18s;
+}
+
+.software-card:nth-child(3n) .software-icon img {
+  animation-delay: 0.32s;
+}
+
+.software-card strong {
+  margin-top: 60px;
+  font-family: var(--font-involve);
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.software-card p {
+  margin-top: 10px;
+  font-family: var(--font-involve);
+  font-size: 20px;
+  line-height: 1.15;
+  font-weight: 400;
+  text-align: center;
+}
+
+.contacts-section {
+  margin-top: 180px;
+  padding-bottom: 80px;
+}
+
+.contacts-section h2 {
+  margin-bottom: 28px;
+}
+
+.contacts-section__content {
+  display: grid;
+  grid-template-columns: repeat(4, var(--software-card-width));
+  column-gap: var(--grid-gap);
+  align-items: start;
+  width: calc((var(--software-card-width) * 4) + (var(--grid-gap) * 3));
+}
+
+.contacts-section__text {
+  grid-column: 1;
+}
+
+.contacts-section a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contacts-qr {
+  display: grid;
+  grid-column: 3 / span 2;
+  grid-template-columns: repeat(2, var(--software-card-width));
+  column-gap: var(--grid-gap);
+  align-items: start;
+  justify-items: end;
+  width: auto;
+}
+
+.contacts-qr img {
+  display: block;
+  width: auto;
+  height: var(--contacts-qr-height);
+  object-fit: contain;
+}
+
+@keyframes icon-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-6px) scale(1.04);
+  }
+}
+
+@media (max-width: 1200px) {
+  .about-intro,
+  .about-text p {
+    grid-column: 1 / span 5;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-layout {
+    padding: calc(96px + 48px) var(--side-padding) 48px;
+  }
+
+  .about-hero {
+    min-height: 0;
+  }
+
+  .about-intro,
+  .about-text p {
+    max-width: none;
+  }
+
+  .about-intro h1,
+  .software-section h2,
+  .contacts-section h2 {
+    font-size: 32px;
+  }
+
+  .about-intro p,
+  .about-text p,
+  .contacts-section p {
+    font-size: 18px;
+  }
+
+  .about-photo {
+    position: static;
+    width: 100%;
+    height: 360px;
+    margin: 48px 0 0;
+  }
+
+  .about-text {
+    margin-top: 56px;
+  }
+
+  .software-section,
+  .contacts-section {
+    margin-top: 96px;
+  }
+
+  .software-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .software-card {
+    width: 100%;
+    height: 350px;
+  }
+
+  .contacts-section__content {
+    display: block;
+    width: 100%;
+  }
+
+  .contacts-qr {
+    margin-top: 32px;
+    width: 100%;
+    grid-template-columns: repeat(2, 110px);
+    gap: 24px;
+    justify-content: start;
+  }
+
+  .contacts-qr img {
+    width: 110px;
+    height: 110px;
+  }
+}

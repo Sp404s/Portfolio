@@ -1,0 +1,9 @@
+/* Fujifilm project page. Keep the first cover render unscaled. */
+.project-cover--fujifilm {
+  background: var(--black);
+}
+
+.project-cover--no-scale img {
+  object-fit: contain;
+  object-position: center;
+}

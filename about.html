@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Обо мне — Александр Гусев</title>
+  <link href="https://fonts.cdnfonts.com/css/gravity" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/adaptive.css">
+  <script type="module" src="js/about-icons.js" defer></script>
+</head>
+<body class="about-page">
+  <header class="header header--page">
+    <a class="logo" href="index.html" aria-label="Главная">
+      <span class="logo__mark" aria-hidden="true"></span>
+      <span class="logo__text">ALEX_G</span>
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="index.html">Главная</a>
+      <a href="about.html">Обо мне</a>
+      <a href="index.html#projects">Проекты</a>
+      <a href="blog.html">Блог</a>
+    </nav>
+
+    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main class="about-layout">
+    <section class="about-hero grid-12">
+      <div class="about-intro">
+        <h1>Обо мне</h1>
+        <p>
+          Привет! Что такое дизайн лично для меня? Дизайн — это процесс формирования
+          утилитарной среды с опорой на эстетические и культурно-исторические принципы
+          человечества.
+        </p>
+      </div>
+
+      <div class="about-photo" aria-label="Место для фотографии"></div>
+    </section>
+
+    <section class="about-text grid-12">
+      <p>
+        В свободное время я увлекаюсь фотографией, написанием песен, 3D-моделированием
+        и видеомонтажом. Мне нравится изучать новое и экспериментировать, ведь из каждой
+        области можно почерпнуть что-то ценное и применить это в работе. Например, при
+        разработке плакатов с фотоматериалами помогают навыки фотографии: можно думать
+        не только о композиции, но и о технических параметрах — фокусе и ISO для создания
+        художественной зернистости.
+      </p>
+    </section>
+
+    <section class="software-section">
+      <h2>Программное обеспечение</h2>
+
+      <div class="software-grid">
+        <article class="software-card">
+          <h3>Adobe Photoshop</h3>
+          <div class="software-icon">
+            <img src="img/icons/Ps.svg" alt="Adobe Photoshop">
+          </div>
+          <strong data-percent="85">0%</strong>
+          <p>Уровень владения</p>
+        </article>
+
+        <article class="software-card">
+          <h3>Adobe Illustrator</h3>
+          <div class="software-icon">
+            <img src="img/icons/Ai.svg" alt="Adobe Illustrator">
+          </div>
+          <strong data-percent="87">0%</strong>
+          <p>Уровень владения</p>
+        </article>
+
+        <article class="software-card">
+          <h3>Adobe Premier Pro</h3>
+          <div class="software-icon">
+            <img src="img/icons/Pr.svg" alt="Adobe Premier Pro">
+          </div>
+          <strong data-percent="85">0%</strong>
+          <p>Уровень владения</p>
+        </article>
+
+        <article class="software-card">
+          <h3>Adobe After Effects</h3>
+          <div class="software-icon">
+            <img src="img/icons/Ae.svg" alt="Adobe After Effects">
+          </div>
+          <strong data-percent="70">0%</strong>
+          <p>Уровень владения</p>
+        </article>
+
+        <article class="software-card">
+          <h3>Figma</h3>
+          <div class="software-icon">
+            <img src="img/icons/Figma.svg" alt="Figma">
+          </div>
+          <strong data-percent="80">0%</strong>
+          <p>Уровень владения</p>
+        </article>
+
+        <article class="software-card">
+          <h3>Blender</h3>
+          <div class="software-icon">
+            <img src="img/icons/Blender.svg" alt="Blender">
+          </div>
+          <strong data-percent="87">0%</strong>
+          <p>Уровень владения</p>
+        </article>
+
+        <article class="software-card">
+          <h3>3Ds Max</h3>
+          <div class="software-icon">
+            <img src="img/icons/3Ds Max.svg" alt="3Ds Max">
+          </div>
+          <strong data-percent="60">0%</strong>
+          <p>Уровень владения</p>
+        </article>
+
+        <article class="software-card">
+          <h3>AutoCAD</h3>
+          <div class="software-icon">
+            <img src="img/icons/AutoCAD.svg" alt="AutoCAD">
+          </div>
+          <strong data-percent="40">0%</strong>
+          <p>Уровень владения</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contacts-section" id="contacts">
+      <div class="contacts-section__content">
+        <div class="contacts-section__text">
+          <h2>Контакты</h2>
+          <p>почта: <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a></p>
+          <p>ТГ: <a href="https://t.me/JustFunnyDays">@JustFunnyDays</a></p>
+          <p>ВК: <a href="https://vk.com/3funnydays">@3funnydays</a></p>
+        </div>
+
+        <div class="contacts-qr" aria-label="QR-коды социальных сетей">
+          <img src="img/icons/VK.svg" alt="QR-код ВК">
+          <img src="img/icons/TG.svg" alt="QR-код Telegram">
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="js/menu.js" defer></script>
+</body>
+</html>
