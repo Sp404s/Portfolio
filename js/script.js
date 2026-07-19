@@ -1,5 +1,6 @@
 const homeTrack = document.querySelector('[data-home-track]');
 const homePage = document.querySelector('.home-page');
+const projectCards = Array.from(document.querySelectorAll('.home-project-card'));
 const shouldOpenProjects = window.location.hash === '#projects';
 
 if (shouldOpenProjects && homePage) {
@@ -54,6 +55,42 @@ const isHomeHorizontal = () => (
   && !homePage?.classList.contains('is-intro')
 );
 
+const setProjectCardVisible = (card, isVisible) => {
+  card.classList.toggle('is-visible', isVisible);
+};
+
+const updateProjectCardsVisibility = () => {
+  if (!projectCards.length || !isHomeHorizontal()) return;
+
+  projectCards.forEach((card) => {
+    const rect = card.getBoundingClientRect();
+    const inRevealZone = rect.left < window.innerWidth * 0.9 && rect.right > window.innerWidth * 0.08;
+
+    setProjectCardVisible(card, inRevealZone);
+  });
+};
+
+const initProjectCardsReveal = () => {
+  if (!projectCards.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    projectCards.forEach((card) => setProjectCardVisible(card, true));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      setProjectCardVisible(entry.target, entry.isIntersecting);
+    });
+  }, {
+    root: null,
+    threshold: 0.18,
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  projectCards.forEach((card) => observer.observe(card));
+};
+
 const updateHomeLimits = () => {
   if (!homeTrack || !isHomeHorizontal()) {
     currentX = 0;
@@ -91,6 +128,7 @@ const animateHomeTrack = () => {
     }
 
     homeTrack.style.transform = `translateX(${-currentX}px)`;
+    updateProjectCardsVisibility();
   }
 
   requestAnimationFrame(animateHomeTrack);
@@ -98,6 +136,7 @@ const animateHomeTrack = () => {
 
 window.addEventListener('load', () => {
   initBlurHeroText();
+  initProjectCardsReveal();
 
   if (shouldOpenProjects) {
     resetNativeScroll();
@@ -107,6 +146,7 @@ window.addEventListener('load', () => {
     homePage?.classList.remove('is-intro');
     homePage?.classList.add('is-ready');
     updateHomeLimits();
+    updateProjectCardsVisibility();
 
     if (shouldOpenProjects) {
       resetNativeScroll();

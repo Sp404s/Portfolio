@@ -1,111 +1,130 @@
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 const container = document.querySelector('.hero__background');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (container && !prefersReducedMotion) {
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  const dinosaurImage = new Image();
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
+  const loader = new GLTFLoader();
+  const clock = new THREE.Clock();
   const bodies = [];
-  const pointer = { x: 0, y: 0, active: false };
 
-  let width = 1;
-  let height = 1;
-  let dpr = 1;
-  let lastTime = performance.now();
-  let imageReady = false;
+  let modelTemplate = null;
+  let worldWidth = 1;
+  let worldHeight = 1;
+  let floorY = 0;
+  let leftX = 0;
+  let rightX = 0;
 
-  dinosaurImage.src = 'img/icons/Dinosaur.svg';
-  dinosaurImage.onload = () => {
-    imageReady = true;
-  };
+  const count = 9;
+  const baseRotationX = Math.PI / 2;
 
-  const outlinePixels = [
-    [433, 67], [433, 100], [400, 100], [400, 300], [367, 300],
-    [367, 333], [300, 333], [300, 367], [267, 367], [267, 400],
-    [233, 400], [233, 433], [167, 433], [167, 400], [133, 400],
-    [133, 367], [100, 367], [100, 300], [67, 300], [67, 500],
-    [100, 500], [100, 533], [133, 533], [133, 567], [167, 567],
-    [167, 600], [200, 600], [200, 733], [267, 733], [267, 700],
-    [233, 700], [233, 667], [267, 667], [267, 633], [300, 633],
-    [300, 600], [333, 600], [333, 633], [367, 633], [367, 733],
-    [433, 733], [433, 700], [400, 700], [400, 567], [433, 567],
-    [433, 533], [467, 533], [467, 500], [500, 500], [500, 400],
-    [533, 400], [533, 433], [567, 433], [567, 367], [500, 367],
-    [500, 300], [667, 300], [667, 267], [567, 267], [567, 233],
-    [733, 233], [733, 100], [700, 100], [700, 67],
-  ];
+  renderer.setClearColor(0x000000, 0);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.domElement.className = 'hero__dinosaurs';
+  renderer.domElement.setAttribute('aria-hidden', 'true');
+  container.append(renderer.domElement);
 
-  const shape = outlinePixels.map(([x, y]) => ({
-    x: (x - 400) / 800,
-    y: (y - 400) / 800,
-  }));
+  camera.position.set(0, 0, 12);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 2.5));
+
+  const keyLight = new THREE.DirectionalLight(0xffffff, 5.8);
+  keyLight.position.set(-5, 7, 9);
+  scene.add(keyLight);
+
+  const fillLight = new THREE.DirectionalLight(0xffddd6, 3.2);
+  fillLight.position.set(5, -1, 7);
+  scene.add(fillLight);
+
+  const rimLight = new THREE.DirectionalLight(0x8fd5ff, 2.4);
+  rimLight.position.set(2, 4, -6);
+  scene.add(rimLight);
+
+  const frontLight = new THREE.PointLight(0xffffff, 100, 18);
+  frontLight.position.set(0, 0, 7);
+  scene.add(frontLight);
 
   const random = (min, max) => min + Math.random() * (max - min);
-  const cross = (origin, a, b) => ((a.x - origin.x) * (b.y - origin.y)) - ((a.y - origin.y) * (b.x - origin.x));
 
-  const buildConvexHull = (points) => {
-    const sorted = [...points].sort((a, b) => (a.x === b.x ? a.y - b.y : a.x - b.x));
-    const lower = [];
-    const upper = [];
+  const normalizeModel = (model) => {
+    const box = new THREE.Box3().setFromObject(model);
+    const size = new THREE.Vector3();
+    const center = new THREE.Vector3();
 
-    sorted.forEach((point) => {
-      while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], point) <= 0) {
-        lower.pop();
-      }
+    box.getSize(size);
+    box.getCenter(center);
+    model.position.sub(center);
+    model.scale.setScalar(1 / Math.max(size.x, size.y, size.z, 1));
 
-      lower.push(point);
+    model.traverse((child) => {
+      if (!child.isMesh) return;
+
+      child.material = child.material.clone();
+      child.material.roughness = Math.min(child.material.roughness ?? 0.5, 0.64);
+      child.material.metalness = Math.min(child.material.metalness ?? 0.08, 0.16);
     });
-
-    [...sorted].reverse().forEach((point) => {
-      while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], point) <= 0) {
-        upper.pop();
-      }
-
-      upper.push(point);
-    });
-
-    return lower.slice(0, -1).concat(upper.slice(0, -1));
   };
 
-  const hull = buildConvexHull(shape);
-
-  canvas.className = 'hero__dinosaurs';
-  canvas.setAttribute('aria-hidden', 'true');
-  container.append(canvas);
-
-  const resize = () => {
-    const rect = container.getBoundingClientRect();
-
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = Math.max(1, Math.round(rect.width));
-    height = Math.max(1, Math.round(rect.height));
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    bodies.forEach(keepInsideWorld);
+  const syncBody = (body) => {
+    body.mesh.position.set(body.x, body.y, body.z);
+    body.mesh.rotation.set(baseRotationX, body.yaw, body.angle);
   };
 
-  const getVertices = (body, points = hull) => {
+  const createBody = (index) => {
+    const scale = Math.min(worldWidth, worldHeight) * random(0.28, 0.42);
+    const mesh = modelTemplate.clone(true);
+    const body = {
+      mesh,
+      scale,
+      halfWidth: scale * 0.42,
+      halfHeight: scale * 0.24,
+      x: random(worldWidth * 0.05, worldWidth * 0.44),
+      y: worldHeight / 2 + scale * 0.8 + index * random(0.55, 0.95),
+      z: random(-0.25, 0.25),
+      vx: random(-0.8, 0.8),
+      vy: random(-1.5, -0.4),
+      angle: random(-0.7, 0.7),
+      yaw: random(-0.45, 0.45),
+      angularVelocity: random(-1.2, 1.2),
+      bounce: random(0.05, 0.12),
+      mass: scale * scale,
+    };
+
+    mesh.scale.setScalar(scale);
+    scene.add(mesh);
+    syncBody(body);
+    return body;
+  };
+
+  const getColliderVertices = (body) => {
     const cos = Math.cos(body.angle);
     const sin = Math.sin(body.angle);
+    const points = [
+      { x: -body.halfWidth, y: -body.halfHeight },
+      { x: body.halfWidth, y: -body.halfHeight },
+      { x: body.halfWidth, y: body.halfHeight },
+      { x: -body.halfWidth, y: body.halfHeight },
+    ];
 
     return points.map((point) => ({
-      x: body.x + (point.x * cos - point.y * sin) * body.size,
-      y: body.y + (point.x * sin + point.y * cos) * body.size,
-      localX: point.x * body.size,
-      localY: point.y * body.size,
+      x: body.x + point.x * cos - point.y * sin,
+      y: body.y + point.x * sin + point.y * cos,
+      localX: point.x,
+      localY: point.y,
     }));
   };
 
-  const project = (vertices, axis) => {
+  const projectVertices = (vertices, axis) => {
     let min = Infinity;
     let max = -Infinity;
 
     vertices.forEach((vertex) => {
       const value = vertex.x * axis.x + vertex.y * axis.y;
+
       min = Math.min(min, value);
       max = Math.max(max, value);
     });
@@ -130,148 +149,124 @@ if (container && !prefersReducedMotion) {
   };
 
   const findCollision = (first, second) => {
-    const firstVertices = getVertices(first);
-    const secondVertices = getVertices(second);
+    const firstVertices = getColliderVertices(first);
+    const secondVertices = getColliderVertices(second);
     const axes = [...getAxes(firstVertices), ...getAxes(secondVertices)];
-    let smallestOverlap = Infinity;
+    let minOverlap = Infinity;
     let bestAxis = null;
 
     for (const axis of axes) {
-      const firstProjection = project(firstVertices, axis);
-      const secondProjection = project(secondVertices, axis);
+      const firstProjection = projectVertices(firstVertices, axis);
+      const secondProjection = projectVertices(secondVertices, axis);
       const overlap = Math.min(firstProjection.max, secondProjection.max) - Math.max(firstProjection.min, secondProjection.min);
 
       if (overlap <= 0) return null;
 
-      if (overlap < smallestOverlap) {
-        smallestOverlap = overlap;
+      if (overlap < minOverlap) {
+        minOverlap = overlap;
         bestAxis = axis;
       }
     }
 
-    const centerDx = second.x - first.x;
-    const centerDy = second.y - first.y;
+    const centerX = second.x - first.x;
+    const centerY = second.y - first.y;
 
-    if (centerDx * bestAxis.x + centerDy * bestAxis.y < 0) {
+    if (centerX * bestAxis.x + centerY * bestAxis.y < 0) {
       bestAxis = { x: -bestAxis.x, y: -bestAxis.y };
     }
 
-    return { axis: bestAxis, overlap: smallestOverlap };
+    return { axis: bestAxis, overlap: minOverlap };
   };
 
-  const createBody = (index) => {
-    const size = random(110, 180);
+  const resetBodies = () => {
+    bodies.splice(0).forEach((body) => scene.remove(body.mesh));
 
-    return {
-      size,
-      x: random(width * 0.18, width * 0.82),
-      y: -index * random(54, 88) - size,
-      vx: random(-90, 90),
-      vy: random(70, 190),
-      angle: random(-0.75, 0.75),
-      angleVelocity: random(-1.8, 1.8),
-      mass: size * size,
-      resting: false,
-      hasContact: false,
-      floorContact: false,
-      sleepFrames: 0,
-    };
-  };
+    if (!modelTemplate || window.innerWidth < 720) return;
 
-  const createBodies = () => {
-    bodies.length = 0;
-
-    for (let index = 0; index < 42; index += 1) {
+    for (let index = 0; index < count; index += 1) {
       bodies.push(createBody(index));
     }
   };
 
+  const resize = () => {
+    const rect = container.getBoundingClientRect();
+    const width = Math.max(1, rect.width);
+    const height = Math.max(1, rect.height);
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height, false);
+
+    worldHeight = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z;
+    worldWidth = worldHeight * camera.aspect;
+    floorY = -worldHeight / 2;
+    leftX = -worldWidth / 2;
+    rightX = worldWidth / 2;
+
+    resetBodies();
+  };
+
   const keepInsideWorld = (body) => {
-    const vertices = getVertices(body);
+    const vertices = getColliderVertices(body);
     const minX = Math.min(...vertices.map((vertex) => vertex.x));
     const maxX = Math.max(...vertices.map((vertex) => vertex.x));
     const minY = Math.min(...vertices.map((vertex) => vertex.y));
-    const maxY = Math.max(...vertices.map((vertex) => vertex.y));
 
-    if (maxY > height) {
-      body.y -= maxY - height;
-      body.vy = 0;
-      body.vx *= 0.82;
-      body.angleVelocity *= 0.78;
-      body.floorContact = true;
+    if (minY < floorY) {
+      const penetration = floorY - minY;
+
+      body.y += penetration;
+      body.vy *= -body.bounce;
+      body.vx *= 0.72;
+      body.angularVelocity *= 0.68;
+
+      if (Math.abs(body.vy) < 0.06) body.vy = 0;
+      if (Math.abs(body.vx) < 0.02) body.vx = 0;
+      if (Math.abs(body.angularVelocity) < 0.025) body.angularVelocity = 0;
     }
 
-    if (minX < 0) {
-      body.x -= minX;
-      body.vx = Math.abs(body.vx) * 0.22;
-      body.angleVelocity *= 0.72;
+    if (minX < leftX) {
+      body.x += leftX - minX;
+      body.vx = Math.abs(body.vx) * 0.25;
+      body.angularVelocity *= 0.7;
     }
 
-    if (maxX > width) {
-      body.x -= maxX - width;
-      body.vx = -Math.abs(body.vx) * 0.22;
-      body.angleVelocity *= 0.72;
+    if (maxX > rightX) {
+      body.x -= maxX - rightX;
+      body.vx = -Math.abs(body.vx) * 0.25;
+      body.angularVelocity *= 0.7;
     }
-
-    if (minY < -height * 0.35 && body.vy < 0) {
-      body.vy = 0;
-    }
-  };
-
-  const pushByPointer = (body, delta) => {
-    if (!pointer.active) return;
-
-    const dx = body.x - pointer.x;
-    const dy = body.y - pointer.y;
-    const distance = Math.hypot(dx, dy) || 1;
-    const influence = body.size * 1.45;
-
-    if (distance > influence) return;
-
-    const force = (1 - distance / influence) * 6200;
-
-    body.vx += (dx / distance) * force * delta;
-    body.vy += (dy / distance) * force * delta;
-    body.angleVelocity += (dx / distance) * force * delta * 0.012;
-    body.resting = false;
   };
 
   const solveCollisions = () => {
-    bodies.forEach((body) => {
-      body.hasContact = false;
-      body.floorContact = false;
-    });
-
     for (let pass = 0; pass < 6; pass += 1) {
       for (let firstIndex = 0; firstIndex < bodies.length; firstIndex += 1) {
+        const first = bodies[firstIndex];
+
         for (let secondIndex = firstIndex + 1; secondIndex < bodies.length; secondIndex += 1) {
-          const first = bodies[firstIndex];
           const second = bodies[secondIndex];
           const collision = findCollision(first, second);
 
           if (!collision) continue;
 
           const { axis, overlap } = collision;
-          const correction = overlap * 0.52;
           const firstShare = second.mass / (first.mass + second.mass);
           const secondShare = first.mass / (first.mass + second.mass);
 
-          first.x -= axis.x * correction * firstShare;
-          first.y -= axis.y * correction * firstShare;
-          second.x += axis.x * correction * secondShare;
-          second.y += axis.y * correction * secondShare;
-          first.hasContact = true;
-          second.hasContact = true;
+          first.x -= axis.x * overlap * firstShare;
+          first.y -= axis.y * overlap * firstShare;
+          second.x += axis.x * overlap * secondShare;
+          second.y += axis.y * overlap * secondShare;
 
           const relativeVx = second.vx - first.vx;
           const relativeVy = second.vy - first.vy;
           const velocityAlongNormal = relativeVx * axis.x + relativeVy * axis.y;
 
-          first.angleVelocity -= axis.x * overlap * 0.004;
-          second.angleVelocity += axis.x * overlap * 0.004;
+          first.angularVelocity -= axis.x * overlap * 0.16;
+          second.angularVelocity += axis.x * overlap * 0.16;
 
           if (velocityAlongNormal < 0) {
-            const impulse = -velocityAlongNormal * 0.18;
+            const impulse = -velocityAlongNormal * 0.28;
 
             first.vx -= axis.x * impulse * firstShare;
             first.vy -= axis.y * impulse * firstShare;
@@ -285,106 +280,38 @@ if (container && !prefersReducedMotion) {
     }
   };
 
-  const updateSleepState = () => {
-    bodies.forEach((body) => {
-      const speed = Math.hypot(body.vx, body.vy);
-      const canSleep = (body.floorContact || body.hasContact)
-        && speed < 18
-        && Math.abs(body.angleVelocity) < 0.18;
-
-      if (canSleep) {
-        body.sleepFrames += 1;
-      } else {
-        body.sleepFrames = 0;
-      }
-
-      if (body.sleepFrames > 18) {
-        body.vx = 0;
-        body.vy = 0;
-        body.angleVelocity = 0;
-        body.resting = true;
-      }
-    });
-  };
-
-  const drawDinosaur = (body) => {
-    ctx.save();
-    ctx.translate(body.x, body.y);
-    ctx.rotate(body.angle);
-    ctx.scale(body.size, body.size);
-
-    if (imageReady) {
-      ctx.drawImage(dinosaurImage, -0.5, -0.5, 1, 1);
-    } else {
-      ctx.fillStyle = '#ffffff';
-      ctx.beginPath();
-      shape.forEach((point, index) => {
-        if (index === 0) {
-          ctx.moveTo(point.x, point.y);
-        } else {
-          ctx.lineTo(point.x, point.y);
-        }
-      });
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    ctx.restore();
-  };
-
-  const updatePointer = (clientX, clientY) => {
-    const rect = container.getBoundingClientRect();
-
-    pointer.x = clientX - rect.left;
-    pointer.y = clientY - rect.top;
-    pointer.active = true;
-  };
-
   const updateBody = (body, delta) => {
-    if (!body.resting) {
-      body.vy += 1900 * delta;
-      body.vx *= 0.992;
-      body.vy *= 0.995;
-      body.angleVelocity *= 0.992;
-    } else {
-      body.vx *= 0.84;
-      body.angleVelocity *= 0.78;
-    }
-
-    pushByPointer(body, delta);
+    body.vy -= 16 * delta;
+    body.vx *= 0.992;
+    body.vy *= 0.995;
+    body.angularVelocity *= 0.987;
 
     body.x += body.vx * delta;
     body.y += body.vy * delta;
-    body.angle += body.angleVelocity * delta;
+    body.angle += body.angularVelocity * delta;
 
     keepInsideWorld(body);
   };
 
-  const animate = (time) => {
-    const delta = Math.min((time - lastTime) / 1000, 0.024);
-
-    lastTime = time;
-    ctx.clearRect(0, 0, width, height);
+  const animate = () => {
+    const delta = Math.min(clock.getDelta(), 0.033);
 
     bodies.forEach((body) => updateBody(body, delta));
     solveCollisions();
-    updateSleepState();
-    bodies.forEach(drawDinosaur);
+    bodies.forEach(syncBody);
 
+    renderer.render(scene, camera);
     requestAnimationFrame(animate);
   };
 
-  resize();
-  createBodies();
   window.addEventListener('resize', resize);
-  window.addEventListener('mousemove', (event) => updatePointer(event.clientX, event.clientY));
-  window.addEventListener('touchmove', (event) => {
-    const touch = event.touches[0];
 
-    if (touch) updatePointer(touch.clientX, touch.clientY);
-  }, { passive: true });
-  window.addEventListener('mouseleave', () => {
-    pointer.active = false;
+  loader.load('img/icons/Dinosaur.glb', (gltf) => {
+    modelTemplate = gltf.scene;
+    normalizeModel(modelTemplate);
+    resize();
   });
-  requestAnimationFrame(animate);
+
+  resize();
+  animate();
 }

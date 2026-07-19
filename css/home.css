@@ -180,6 +180,9 @@
 }
 
 .home-project-card {
+  --card-reveal-y: 34px;
+  --card-reveal-scale: 0.9;
+  --card-hover-scale: 1;
   position: relative;
   flex: 0 0 512px;
   width: 512px;
@@ -187,8 +190,18 @@
   overflow: hidden;
   color: var(--white);
   background: var(--card-bg);
-  transform: scale(1);
-  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0.34;
+  transform: translateY(var(--card-reveal-y)) scale(calc(var(--card-reveal-scale) * var(--card-hover-scale)));
+  transition:
+    opacity 0.7s ease,
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.home-project-card.is-visible {
+  --card-reveal-y: 0px;
+  --card-reveal-scale: 1;
+  opacity: 1;
 }
 
 .home-project-card::after {
@@ -266,8 +279,8 @@
 
 .home-project-card:hover,
 .home-project-card:focus-visible {
+  --card-hover-scale: 1.035;
   outline: none;
-  transform: scale(1.035);
 }
 
 .home-project-card:hover::after,
@@ -279,6 +292,16 @@
 .home-project-card:focus-visible img {
   filter: contrast(1.04);
   transform: scale(1.055);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-project-card,
+  .home-project-card.is-visible {
+    --card-reveal-y: 0px;
+    --card-reveal-scale: 1;
+    opacity: 1;
+    transition: none;
+  }
 }
 
 @media (max-width: 768px) {
