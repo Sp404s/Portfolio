@@ -5,34 +5,6 @@
   transition: opacity 1s ease, visibility 1s ease;
 }
 
-.home-page {
-  position: relative;
-  background: var(--page-bg);
-}
-
-.home-page::before {
-  content: "";
-  position: fixed;
-  inset: -18vh -16vw;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(125deg, rgba(216, 78, 52, 0.28), transparent 34%),
-    radial-gradient(circle at 72% 24%, rgba(53, 186, 171, 0.24), transparent 36%),
-    radial-gradient(circle at 32% 76%, rgba(230, 174, 88, 0.18), transparent 38%),
-    linear-gradient(315deg, rgba(92, 91, 154, 0.18), transparent 42%);
-  filter: blur(76px);
-  opacity: 0.78;
-  transform: translate3d(-2%, -1%, 0) scale(1);
-  animation: home-gradient-drift 28s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-.home-page .site {
-  position: relative;
-  z-index: 1;
-}
-
 .home-page.is-intro .header,
 .home-page.is-intro .bottom-bar,
 .home-page.is-intro .home-projects {
@@ -76,7 +48,7 @@
   align-items: center;
   padding: var(--header-height) 20px;
   overflow: hidden;
-  background: transparent;
+  background: var(--page-bg);
 }
 
 .hero__background {
@@ -177,10 +149,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-page::before {
-    animation: none;
-  }
-
   .blur-text__word,
   .blur-text.is-visible .blur-text__word {
     opacity: 1;
@@ -208,21 +176,7 @@
   padding-right: var(--side-padding);
   width: max-content;
   min-width: 100vw;
-  background: transparent;
-}
-
-@keyframes home-gradient-drift {
-  0% {
-    transform: translate3d(-2%, -1%, 0) scale(1);
-  }
-
-  45% {
-    transform: translate3d(3%, -4%, 0) scale(1.08);
-  }
-
-  100% {
-    transform: translate3d(-4%, 4%, 0) scale(1.12);
-  }
+  background: var(--page-bg);
 }
 
 .home-project-card {
