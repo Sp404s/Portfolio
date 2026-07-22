@@ -361,6 +361,7 @@
     align-items: stretch;
     gap: 18px;
     padding: 56px var(--side-padding) 64px;
+    background: var(--page-bg);
   }
 
   .home-project-card {

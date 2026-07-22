@@ -47,6 +47,7 @@
   z-index: 12;
   width: calc(var(--side-padding) + (((100vw - (var(--side-padding) * 2) - (var(--grid-gap) * 11)) / 12) * 3) + (var(--grid-gap) * 2));
   height: 100%;
+  border-radius: 10px;
   background: var(--card-bg);
   pointer-events: none;
 }
@@ -79,6 +80,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 34px 20px 0;
+  border-radius: 10px;
   color: var(--black);
   background: var(--card-bg);
 }
@@ -191,6 +193,7 @@
   display: block;
   width: auto;
   height: var(--contacts-qr-height);
+  border-radius: 10px;
   object-fit: contain;
 }
 

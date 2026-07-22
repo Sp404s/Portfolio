@@ -404,7 +404,20 @@
   }
 
   .hero__background {
-    inset: 96px 0 var(--header-height);
+    inset: 0;
+  }
+
+  .hero {
+    align-items: start;
+  }
+
+  .hero__content {
+    align-self: start;
+    padding-top: calc(var(--header-height) + 28px);
+  }
+
+  .hero__video {
+    transform: translateY(10vh) scale(1.08);
   }
 
   .hero__label {

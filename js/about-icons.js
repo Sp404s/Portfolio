@@ -5,7 +5,6 @@ document.querySelectorAll('img').forEach((image) => {
 });
 
 const icons = document.querySelectorAll('.software-icon img');
-const softwareSection = document.querySelector('.software-section');
 const percentItems = document.querySelectorAll('[data-percent]');
 
 if (icons.length) {
@@ -42,8 +41,11 @@ if (icons.length) {
   }, 5000);
 }
 
-if (softwareSection && percentItems.length) {
+if (percentItems.length) {
   const animatePercent = (item) => {
+    if (item.dataset.percentAnimated === 'true') return;
+
+    item.dataset.percentAnimated = 'true';
     const target = Number(item.dataset.percent);
     const duration = 1400;
     const start = performance.now();
@@ -67,12 +69,13 @@ if (softwareSection && percentItems.length) {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
-      percentItems.forEach(animatePercent);
-      observer.disconnect();
+      animatePercent(entry.target);
+      observer.unobserve(entry.target);
     });
   }, {
-    threshold: 0.3,
+    threshold: 0.25,
+    rootMargin: '0px 0px -8% 0px',
   });
 
-  observer.observe(softwareSection);
+  percentItems.forEach((item) => observer.observe(item));
 }
