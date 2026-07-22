@@ -2,15 +2,25 @@
 .home-page .header,
 .home-page .bottom-bar,
 .home-page .home-projects {
-  transition: opacity 1s ease, visibility 1s ease;
+  transition: opacity 1s ease, visibility 1s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .home-page.is-intro .header,
-.home-page.is-intro .bottom-bar,
 .home-page.is-intro .home-projects {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.home-page.is-intro .header {
+  transform: translateY(-100%);
+}
+
+.home-page.is-intro .bottom-bar {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(100%);
 }
 
 .home-page.is-ready .header,
@@ -18,6 +28,7 @@
 .home-page.is-ready .home-projects {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
 }
 
 .home-horizontal {
@@ -48,14 +59,38 @@
   align-items: center;
   padding: var(--header-height) 20px;
   overflow: hidden;
-  background: var(--page-bg);
+  background: transparent;
 }
 
 .hero__background {
   position: absolute;
   inset: var(--header-height) 0 var(--header-height);
   overflow: hidden;
-  background: transparent;
+  background: var(--accent);
+  z-index: 0;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: none;
+}
+
+.hero__video--loop {
+  opacity: 0;
+}
+
+.hero__video--loop.is-active {
+  opacity: 1;
+}
+
+.hero__video--intro.is-faded {
+  opacity: 0;
 }
 
 .hero__dinosaurs {
@@ -176,7 +211,7 @@
   padding-right: var(--side-padding);
   width: max-content;
   min-width: 100vw;
-  background: var(--page-bg);
+  background: transparent;
 }
 
 .home-project-card {

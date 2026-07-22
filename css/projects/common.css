@@ -1,7 +1,7 @@
 /* Common project pages: cover, content grid, image windows and render slider. */
 .project-template {
   padding-bottom: 80px;
-  background: var(--page-bg);
+  background: transparent;
 }
 
 .project-cover {
@@ -133,6 +133,50 @@
   width: var(--slider-item-width);
   height: 500px;
   background: var(--card-bg);
+}
+
+.project-reveal-item {
+  opacity: 0;
+  transition: opacity 520ms ease, transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.project-reveal-item.from-left {
+  transform: translateX(-72px);
+}
+
+.project-reveal-item.from-right {
+  transform: translateX(72px);
+}
+
+.project-reveal-item.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.project-reveal-item.is-past {
+  opacity: 0;
+  transform: translateX(-42px);
+}
+
+.project-reveal-item.from-right.is-past {
+  transform: translateX(42px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-reveal-item,
+  .project-reveal-item.is-past {
+    opacity: 1;
+    transform: translateX(0);
+    transition: none;
+  }
+}
+
+@media (max-width: 768px) {
+  body::before {
+    filter: blur(58px) saturate(105%);
+    opacity: 0.78;
+  }
 }
 
 @media (max-width: 768px) {

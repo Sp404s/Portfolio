@@ -8,9 +8,12 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/projects/common.css">
   <link rel="stylesheet" href="css/projects/fujifilm.css">
+  <link rel="stylesheet" href="css/projects/city-monopoly.css">
   <link rel="stylesheet" href="css/adaptive.css">
   <script src="js/menu.js" defer></script>
   <script src="js/project-slider.js" defer></script>
+  <script src="js/project-video.js" defer></script>
+  <script src="js/project-reveal.js" defer></script>
 </head>
 <body class="project-page">
   <header class="header header--page">
@@ -34,6 +37,26 @@
   <main class="project-template">
     <section class="project-cover project-cover--fujifilm project-cover--no-scale" aria-label="Фотоаппарат Fujifilm X-S10">
       <img src="img/projects/Фотоаппарат Fujifilm/cover-render.png" alt="Фотоаппарат Fujifilm X-S10">
+    </section>
+
+    <section class="city-video grid-12" aria-label="Видео проекта фотоаппарата">
+      <div class="city-video__player" data-project-video>
+        <video class="city-video__media" preload="metadata" playsinline>
+          <source src="img/projects/Камера sci-fi/Фотик.mp4" type="video/mp4">
+        </video>
+
+        <button class="city-video__play" type="button" aria-label="Воспроизвести видео" data-video-play>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <div class="city-video__hover-zone" aria-hidden="true"></div>
+
+        <div class="city-video__controls" data-video-controls>
+          <button class="city-video__control-button" type="button" aria-label="Воспроизвести видео" data-video-toggle>Play</button>
+          <input class="city-video__progress" type="range" min="0" max="1000" value="0" aria-label="Прогресс видео" data-video-progress>
+          <button class="city-video__control-button" type="button" aria-label="Выключить звук" data-video-mute>Sound</button>
+        </div>
+      </div>
     </section>
 
     <section class="project-section project-section--first grid-12">

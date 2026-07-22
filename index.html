@@ -17,6 +17,7 @@
     }
   </script>
   <script src="js/script.js" defer></script>
+  <script src="js/home-video.js" defer></script>
 </head>
 <body class="home-page is-intro">
   <div class="site" data-site>
@@ -42,7 +43,14 @@
     <main class="home-horizontal" data-home-horizontal>
       <div class="home-track" data-home-track>
         <section class="hero home-panel">
-          <div class="hero__background" aria-hidden="true"></div>
+          <div class="hero__background" aria-hidden="true">
+            <video class="hero__video hero__video--intro" autoplay muted playsinline preload="auto" data-intro-video>
+              <source src="img/decor/Заставка1.webm" type="video/webm">
+            </video>
+            <video class="hero__video hero__video--loop" muted loop playsinline preload="auto" data-loop-video>
+              <source src="img/decor/Заставка2.webm" type="video/webm">
+            </video>
+          </div>
 
           <div class="hero__content">
             <p class="hero__label" data-blur-text>Портфолио</p>

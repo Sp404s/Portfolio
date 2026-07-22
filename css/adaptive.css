@@ -672,3 +672,32 @@
     height: 230px;
   }
 }
+
+@media (max-width: 768px) {
+  .project-cover {
+    height: auto;
+  }
+
+  .project-cover img {
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+
+  .project-image--wide {
+    height: auto;
+    aspect-ratio: 5 / 3;
+  }
+
+  .project-image--square,
+  .project-image--stol-left,
+  .project-image--stol-right {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .project-slider__item {
+    height: auto;
+    aspect-ratio: 760 / 500;
+  }
+}

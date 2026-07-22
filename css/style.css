@@ -42,19 +42,70 @@ body {
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   font-family: var(--font-involve);
   color: var(--white);
   background: var(--page-bg);
 }
 
+body::before {
+  position: fixed;
+  inset: -18%;
+  pointer-events: none;
+  content: "";
+}
+
+body::before {
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 10% 18%, rgba(216, 78, 52, 0.32) 0, rgba(216, 78, 52, 0.25) 15%, rgba(216, 78, 52, 0.13) 36%, rgba(216, 78, 52, 0.05) 59%, rgba(216, 78, 52, 0) 86%),
+    radial-gradient(ellipse at 86% 14%, rgba(216, 78, 52, 0.28) 0, rgba(216, 78, 52, 0.21) 17%, rgba(216, 78, 52, 0.11) 40%, rgba(216, 78, 52, 0.04) 63%, rgba(216, 78, 52, 0) 88%),
+    radial-gradient(ellipse at 78% 84%, rgba(216, 78, 52, 0.25) 0, rgba(216, 78, 52, 0.18) 16%, rgba(216, 78, 52, 0.09) 39%, rgba(216, 78, 52, 0.03) 62%, rgba(216, 78, 52, 0) 87%),
+    radial-gradient(ellipse at 18% 80%, rgba(216, 78, 52, 0.27) 0, rgba(216, 78, 52, 0.19) 15%, rgba(216, 78, 52, 0.1) 38%, rgba(216, 78, 52, 0.03) 61%, rgba(216, 78, 52, 0) 89%),
+    radial-gradient(ellipse at 52% 48%, rgba(242, 188, 48, 0.13) 0, rgba(242, 188, 48, 0.08) 19%, rgba(242, 188, 48, 0.03) 42%, rgba(242, 188, 48, 0) 74%);
+  background-size: 145% 145%;
+  filter: blur(112px) saturate(105%);
+  opacity: 0.92;
+  animation: ambient-color-flow 42s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-color-flow {
+  0% {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+    background-position: 0% 0%;
+  }
+
+  50% {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+    background-position: 9% 13%;
+  }
+
+  100% {
+    transform: translate3d(-1%, 4%, 0) scale(1.04);
+    background-position: 17% 5%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
+
 .home-page {
   overflow: hidden;
+  background: var(--accent);
+}
+
+.home-page::before {
+  display: none;
 }
 
 .about-page {
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--page-bg);
+  background: transparent;
 }
 
 .project-page {
@@ -63,9 +114,13 @@ body {
   background: var(--page-bg);
 }
 
+.project-page::before {
+  display: none;
+}
+
 .blog-page {
   overflow: hidden;
-  background: var(--page-bg);
+  background: transparent;
 }
 
 a {

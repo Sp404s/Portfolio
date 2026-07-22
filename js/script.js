@@ -111,10 +111,18 @@ const scrollHomeTo = (nextX) => {
   targetX = Math.max(0, Math.min(nextX, maxX));
 };
 
-const scrollHomeToProjects = () => {
+const scrollHomeToProjects = (isInitialLoad = false) => {
   const projectsSection = document.querySelector('#projects');
 
   if (!projectsSection) return;
+
+  if (isInitialLoad && homeTrack && isHomeHorizontal()) {
+    updateHomeLimits();
+    currentX = projectsSection.offsetLeft;
+    targetX = currentX;
+    homeTrack.style.transform = `translateX(${-currentX}px)`;
+    return;
+  }
 
   scrollHomeTo(projectsSection.offsetLeft);
 };
@@ -140,6 +148,10 @@ window.addEventListener('load', () => {
 
   if (shouldOpenProjects) {
     resetNativeScroll();
+    homePage?.classList.remove('is-intro');
+    homePage?.classList.add('is-ready');
+    updateHomeLimits();
+    scrollHomeToProjects(true);
   }
 
   window.setTimeout(() => {
@@ -148,10 +160,6 @@ window.addEventListener('load', () => {
     updateHomeLimits();
     updateProjectCardsVisibility();
 
-    if (shouldOpenProjects) {
-      resetNativeScroll();
-      scrollHomeToProjects();
-    }
   }, 500);
 
   updateHomeLimits();

@@ -1,4 +1,10 @@
 const videoPlayers = document.querySelectorAll('[data-project-video]');
+const projectVideoSection = document.querySelector('.city-video');
+const projectSlider = document.querySelector('[data-project-slider]');
+
+if (projectVideoSection && projectSlider) {
+  projectSlider.before(projectVideoSection);
+}
 
 videoPlayers.forEach((player) => {
   const video = player.querySelector('video');
