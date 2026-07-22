@@ -5,6 +5,14 @@
   transition: opacity 1s ease, visibility 1s ease, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.home-page .header {
+  background: transparent;
+}
+
+.home-page .bottom-bar {
+  display: none;
+}
+
 .home-page.is-intro .header,
 .home-page.is-intro .home-projects {
   opacity: 0;
@@ -64,7 +72,7 @@
 
 .hero__background {
   position: absolute;
-  inset: var(--header-height) 0 var(--header-height);
+  inset: 0;
   overflow: hidden;
   background: var(--accent);
   z-index: 0;
@@ -79,6 +87,10 @@
   object-fit: cover;
   pointer-events: none;
   transition: none;
+}
+
+.hero__video--intro {
+  transition: opacity 800ms ease;
 }
 
 .hero__video--loop {
@@ -223,6 +235,7 @@
   width: 512px;
   height: 650px;
   overflow: hidden;
+  border-radius: 10px;
   color: var(--white);
   background: var(--card-bg);
   opacity: 0.34;

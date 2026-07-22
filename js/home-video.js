@@ -8,6 +8,7 @@ if (introVideo && loopVideo) {
     if (transitionStarted) return;
 
     transitionStarted = true;
+
     loopVideo.currentTime = 0;
 
     const revealLoopVideo = () => {
@@ -26,6 +27,12 @@ if (introVideo && loopVideo) {
       transitionStarted = false;
     });
   };
+
+  introVideo.addEventListener('timeupdate', () => {
+    if (introVideo.duration - introVideo.currentTime <= 0.1) {
+      startLoopVideo();
+    }
+  });
 
   introVideo.addEventListener('ended', startLoopVideo);
 }

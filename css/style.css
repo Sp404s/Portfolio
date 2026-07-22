@@ -183,7 +183,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   gap: 56px;
+  width: max-content;
+  padding: 11px 18px;
+  color: var(--card-bg);
   font-family: var(--font-involve);
   font-size: var(--nav-size);
   line-height: 1;
@@ -192,7 +196,16 @@ img {
 }
 
 .nav a {
+  color: var(--card-bg);
   white-space: nowrap;
+  -webkit-text-stroke: 0 currentColor;
+  transition: text-shadow 700ms ease, -webkit-text-stroke-width 700ms ease;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  text-shadow: 0 0 0.8px currentColor;
+  -webkit-text-stroke-width: 0.34px;
 }
 
 .menu-toggle {
