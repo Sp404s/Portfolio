@@ -97,7 +97,14 @@ const scrollHomeTo = (nextX) => {
 
 const enterProjects = (immediate = false) => {
   const projectsSection = document.querySelector('#projects');
-  if (!projectsSection || !isHomeHorizontal()) return;
+  if (!projectsSection) return;
+
+  if (!isHomeHorizontal()) {
+    projectsStarted = true;
+    setActiveProject(0);
+    projectsSection.scrollIntoView({ behavior: immediate ? 'auto' : 'smooth', block: 'start' });
+    return;
+  }
 
   projectsStarted = true;
   setActiveProject(0);
@@ -184,8 +191,10 @@ const updateMobileActiveProject = () => {
 
   const projectsSection = document.querySelector('#projects');
   if (projectsSection && homePage) {
-    const sectionTop = projectsSection.getBoundingClientRect().top;
-    homePage.classList.toggle('has-projects-timeline', sectionTop <= window.innerHeight * 0.8);
+    const sectionRect = projectsSection.getBoundingClientRect();
+    const isProjectsOnScreen = sectionRect.top <= window.innerHeight
+      && sectionRect.bottom > 0;
+    homePage.classList.toggle('has-projects-timeline', isProjectsOnScreen);
   }
 
   let nearestIndex = activeProjectIndex;
@@ -219,6 +228,7 @@ window.addEventListener('load', () => {
     homePage?.classList.remove('is-intro');
     homePage?.classList.add('is-ready');
     updateHomeLimits();
+    updateMobileActiveProject();
   }, 500);
 });
 
@@ -262,6 +272,15 @@ window.addEventListener('wheel', (event) => {
 
 document.querySelectorAll('[data-home-scroll="projects"]').forEach((link) => {
   link.addEventListener('click', (event) => {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      event.preventDefault();
+      resetNativeScroll();
+      homePage?.classList.remove('is-intro');
+      homePage?.classList.add('is-ready');
+      enterProjects(true);
+      return;
+    }
+
     if (!isHomeHorizontal()) return;
 
     event.preventDefault();

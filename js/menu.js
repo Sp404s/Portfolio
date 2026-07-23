@@ -16,7 +16,15 @@ if (menuToggle && siteHeader) {
   });
 
   siteHeader.querySelectorAll('.nav a').forEach((link) => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', (event) => {
+      if (link.getAttribute('href')?.includes('#projects')
+        && window.matchMedia('(max-width: 768px)').matches) {
+        closeMenu();
+        return;
+      }
+
+      closeMenu();
+    });
   });
 
   window.addEventListener('resize', () => {

@@ -85,16 +85,40 @@ body::after {
   background: var(--page-bg);
   opacity: 1;
   visibility: visible;
+  animation: loader-dots 1.2s steps(1, end) infinite;
   transition: opacity 0.45s ease, visibility 0.45s ease;
 }
 
 body.is-loaded::after {
   opacity: 0;
   visibility: hidden;
+  animation: none;
 }
 
 body.is-loading {
   overflow: hidden;
+}
+
+@keyframes loader-dots {
+  0%,
+  24% {
+    content: "ALEX_G";
+  }
+
+  25%,
+  49% {
+    content: "ALEX_G.";
+  }
+
+  50%,
+  74% {
+    content: "ALEX_G..";
+  }
+
+  75%,
+  100% {
+    content: "ALEX_G...";
+  }
 }
 
 @keyframes ambient-color-flow {
