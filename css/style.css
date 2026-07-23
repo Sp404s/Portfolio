@@ -38,7 +38,27 @@ html,
 body {
   width: 100%;
   min-height: 100%;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: auto;
+  scrollbar-color: #3a3a3a var(--page-bg);
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px;
+  background: var(--page-bg);
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: var(--page-bg);
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border: 2px solid var(--page-bg);
+  border-radius: 8px;
 }
 
 body {
@@ -68,6 +88,10 @@ body::before {
   filter: blur(112px) saturate(105%);
   opacity: 0.92;
   animation: ambient-color-flow 42s ease-in-out infinite alternate;
+}
+
+body::before {
+  display: none;
 }
 
 body::after {

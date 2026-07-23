@@ -1,14 +1,19 @@
+let loadingFinished = false;
+
 const finishPageLoading = () => {
+  if (loadingFinished) return;
+  loadingFinished = true;
+
   window.setTimeout(() => {
     document.body.classList.remove('is-loading');
     document.body.classList.add('is-loaded');
-  }, 450);
+  }, 220);
 };
 
 document.body.classList.add('is-loading');
 
-if (document.readyState === 'complete') {
-  finishPageLoading();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', finishPageLoading, { once: true });
 } else {
-  window.addEventListener('load', finishPageLoading, { once: true });
+  finishPageLoading();
 }
