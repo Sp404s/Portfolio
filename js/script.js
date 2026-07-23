@@ -1,6 +1,7 @@
 const homeTrack = document.querySelector('[data-home-track]');
 const homePage = document.querySelector('.home-page');
 const projectCards = Array.from(document.querySelectorAll('.home-project-card'));
+const timelineThumb = document.querySelector('[data-timeline-thumb]');
 const shouldOpenProjects = window.location.hash === '#projects';
 
 if (shouldOpenProjects && homePage) {
@@ -16,13 +17,11 @@ const initBlurHeroText = () => {
 
   elements.forEach((element, elementIndex) => {
     const words = (element.textContent || '').trim().split(/\s+/);
-
     element.textContent = '';
     element.classList.add('blur-text');
 
     words.forEach((word, wordIndex) => {
       const span = document.createElement('span');
-
       span.className = 'blur-text__word';
       span.textContent = word;
       span.style.setProperty('--blur-delay', `${elementIndex * 220 + wordIndex * 160}ms`);
@@ -42,6 +41,18 @@ const initBlurHeroText = () => {
 let currentX = 0;
 let targetX = 0;
 let maxX = 0;
+let activeProjectIndex = -1;
+let wheelLocked = false;
+let projectsStarted = false;
+let wheelGestureTimer = null;
+
+const lockWheelGesture = () => {
+  wheelLocked = true;
+  window.clearTimeout(wheelGestureTimer);
+  wheelGestureTimer = window.setTimeout(() => {
+    wheelLocked = false;
+  }, 180);
+};
 
 const resetNativeScroll = () => {
   window.scrollTo(0, 0);
@@ -55,49 +66,24 @@ const isHomeHorizontal = () => (
   && !homePage?.classList.contains('is-intro')
 );
 
-const setProjectCardVisible = (card, isVisible) => {
-  card.classList.toggle('is-visible', isVisible);
-};
+const setActiveProject = (index) => {
+  if (!projectCards[index] || activeProjectIndex === index) return;
 
-const updateProjectCardsVisibility = () => {
-  if (!projectCards.length || !isHomeHorizontal()) return;
-
-  projectCards.forEach((card) => {
-    const rect = card.getBoundingClientRect();
-    const inRevealZone = rect.left < window.innerWidth * 0.9 && rect.right > window.innerWidth * 0.08;
-
-    setProjectCardVisible(card, inRevealZone);
+  activeProjectIndex = index;
+  projectCards.forEach((card, cardIndex) => {
+    card.classList.toggle('is-active', cardIndex === index);
   });
-};
 
-const initProjectCardsReveal = () => {
-  if (!projectCards.length) return;
-
-  if (!('IntersectionObserver' in window)) {
-    projectCards.forEach((card) => setProjectCardVisible(card, true));
-    return;
+  if (timelineThumb) {
+    const progress = projectCards.length > 1 ? index / (projectCards.length - 1) : 0;
+    timelineThumb.textContent = projectCards[index].dataset.projectYear || '';
+    timelineThumb.style.left = `${progress * 100}%`;
+    timelineThumb.classList.add('is-visible');
   }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      setProjectCardVisible(entry.target, entry.isIntersecting);
-    });
-  }, {
-    root: null,
-    threshold: 0.18,
-    rootMargin: '0px 0px -8% 0px'
-  });
-
-  projectCards.forEach((card) => observer.observe(card));
 };
 
 const updateHomeLimits = () => {
-  if (!homeTrack || !isHomeHorizontal()) {
-    currentX = 0;
-    targetX = 0;
-    if (homeTrack) homeTrack.style.transform = 'translateX(0)';
-    return;
-  }
+  if (!homeTrack || !isHomeHorizontal()) return;
 
   maxX = Math.max(0, homeTrack.scrollWidth - window.innerWidth);
   currentX = Math.min(currentX, maxX);
@@ -105,74 +91,173 @@ const updateHomeLimits = () => {
 };
 
 const scrollHomeTo = (nextX) => {
-  if (!homeTrack || !isHomeHorizontal()) return;
-
   updateHomeLimits();
   targetX = Math.max(0, Math.min(nextX, maxX));
 };
 
-const scrollHomeToProjects = (isInitialLoad = false) => {
+const enterProjects = (immediate = false) => {
   const projectsSection = document.querySelector('#projects');
+  if (!projectsSection || !isHomeHorizontal()) return;
 
-  if (!projectsSection) return;
+  projectsStarted = true;
+  setActiveProject(0);
 
-  if (isInitialLoad && homeTrack && isHomeHorizontal()) {
+  window.requestAnimationFrame(() => {
     updateHomeLimits();
-    currentX = projectsSection.offsetLeft;
-    targetX = currentX;
-    homeTrack.style.transform = `translateX(${-currentX}px)`;
-    return;
-  }
+    const nextPosition = Math.max(0, Math.min(projectsSection.offsetLeft, maxX));
 
-  scrollHomeTo(projectsSection.offsetLeft);
+    if (immediate) {
+      currentX = nextPosition;
+      targetX = nextPosition;
+      homeTrack.style.transform = `translateX(${-currentX}px)`;
+      document.documentElement.classList.remove('open-projects');
+      return;
+    }
+
+    scrollHomeTo(nextPosition);
+  });
+};
+
+const getCardFocusPosition = (card) => {
+  const rect = card.getBoundingClientRect();
+  return currentX + rect.left + rect.width / 2 - window.innerWidth / 2;
+};
+
+const focusProject = (index, immediate = false) => {
+  const card = projectCards[index];
+  if (!card || !isHomeHorizontal()) return;
+
+  projectsStarted = true;
+  setActiveProject(index);
+  window.requestAnimationFrame(() => {
+    updateHomeLimits();
+    const nextPosition = Math.max(0, Math.min(getCardFocusPosition(card), maxX));
+
+    if (immediate) {
+      currentX = nextPosition;
+      targetX = nextPosition;
+      homeTrack.style.transform = `translateX(${-currentX}px)`;
+      return;
+    }
+
+    scrollHomeTo(nextPosition);
+  });
+};
+
+const updateHorizontalActiveProject = () => {
+  if (!isHomeHorizontal() || !projectCards.length) return;
+
+  let nearestIndex = activeProjectIndex;
+  let nearestDistance = Number.POSITIVE_INFINITY;
+
+  projectCards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect();
+    const distance = Math.abs(rect.left + rect.width / 2 - window.innerWidth / 2);
+
+    if (rect.right > 0 && rect.left < window.innerWidth && distance < nearestDistance) {
+      nearestIndex = index;
+      nearestDistance = distance;
+    }
+  });
+
+  if (nearestDistance < window.innerWidth * 0.36) setActiveProject(nearestIndex);
+};
+
+const scrollHomeToProjects = (isInitialLoad = false) => {
+  enterProjects(isInitialLoad);
 };
 
 const animateHomeTrack = () => {
   if (homeTrack && isHomeHorizontal()) {
+    updateHomeLimits();
     currentX += (targetX - currentX) * 0.12;
 
-    if (Math.abs(targetX - currentX) < 0.1) {
-      currentX = targetX;
-    }
-
+    if (Math.abs(targetX - currentX) < 0.1) currentX = targetX;
     homeTrack.style.transform = `translateX(${-currentX}px)`;
-    updateProjectCardsVisibility();
   }
 
   requestAnimationFrame(animateHomeTrack);
 };
 
+const updateMobileActiveProject = () => {
+  if (isHomeHorizontal() || !projectCards.length) return;
+
+  const projectsSection = document.querySelector('#projects');
+  if (projectsSection && homePage) {
+    const sectionTop = projectsSection.getBoundingClientRect().top;
+    homePage.classList.toggle('has-projects-timeline', sectionTop <= window.innerHeight * 0.8);
+  }
+
+  let nearestIndex = activeProjectIndex;
+  let nearestDistance = Number.POSITIVE_INFINITY;
+
+  projectCards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect();
+    const distance = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
+
+    if (rect.bottom > 0 && rect.top < window.innerHeight && distance < nearestDistance) {
+      nearestIndex = index;
+      nearestDistance = distance;
+    }
+  });
+
+  if (nearestDistance < window.innerHeight * 0.32) setActiveProject(nearestIndex);
+};
+
 window.addEventListener('load', () => {
   initBlurHeroText();
-  initProjectCardsReveal();
+  setActiveProject(0);
 
   if (shouldOpenProjects) {
     resetNativeScroll();
     homePage?.classList.remove('is-intro');
     homePage?.classList.add('is-ready');
-    updateHomeLimits();
-    scrollHomeToProjects(true);
+    window.setTimeout(() => scrollHomeToProjects(true), 80);
   }
 
   window.setTimeout(() => {
     homePage?.classList.remove('is-intro');
     homePage?.classList.add('is-ready');
     updateHomeLimits();
-    updateProjectCardsVisibility();
-
   }, 500);
-
-  updateHomeLimits();
 });
 
-window.addEventListener('resize', updateHomeLimits);
+window.addEventListener('resize', () => {
+  updateHomeLimits();
+  if (isHomeHorizontal() && projectsStarted) focusProject(activeProjectIndex, true);
+});
+
+window.addEventListener('scroll', updateMobileActiveProject, { passive: true });
 
 window.addEventListener('wheel', (event) => {
   if (!isHomeHorizontal()) return;
 
   event.preventDefault();
-  targetX += event.deltaY;
-  targetX = Math.max(0, Math.min(targetX, maxX));
+  if (wheelLocked) {
+    lockWheelGesture();
+    return;
+  }
+
+  const direction = event.deltaY > 0 ? 1 : -1;
+  if (direction < 0 && projectsStarted && activeProjectIndex === 0) {
+    projectsStarted = false;
+    targetX = 0;
+    lockWheelGesture();
+    return;
+  }
+
+  if (direction > 0 && !projectsStarted) {
+    lockWheelGesture();
+    enterProjects();
+    return;
+  }
+
+  const nextIndex = Math.max(0, Math.min(projectCards.length - 1, activeProjectIndex + direction));
+
+  if (nextIndex === activeProjectIndex) return;
+
+  lockWheelGesture();
+  focusProject(nextIndex);
 }, { passive: false });
 
 document.querySelectorAll('[data-home-scroll="projects"]').forEach((link) => {
@@ -181,10 +266,11 @@ document.querySelectorAll('[data-home-scroll="projects"]').forEach((link) => {
 
     event.preventDefault();
     resetNativeScroll();
-    scrollHomeToProjects();
+    homePage?.classList.remove('is-intro');
+    homePage?.classList.add('is-ready');
+    scrollHomeToProjects(true);
     window.history.replaceState(null, '', '#projects');
   });
 });
 
-updateHomeLimits();
 animateHomeTrack();

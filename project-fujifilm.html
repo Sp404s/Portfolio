@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/projects/fujifilm.css">
   <link rel="stylesheet" href="css/projects/city-monopoly.css">
   <link rel="stylesheet" href="css/adaptive.css">
+  <script src="js/page-loader.js" defer></script>
   <script src="js/menu.js" defer></script>
   <script src="js/project-slider.js" defer></script>
   <script src="js/project-video.js" defer></script>
@@ -46,15 +47,18 @@
         </video>
 
         <button class="city-video__play" type="button" aria-label="Воспроизвести видео" data-video-play>
-          <span aria-hidden="true"></span>
+          <img class="video-icon video-icon--center" src="img/icons/Play.svg" alt="" aria-hidden="true" data-video-center-icon>
         </button>
 
         <div class="city-video__hover-zone" aria-hidden="true"></div>
 
         <div class="city-video__controls" data-video-controls>
-          <button class="city-video__control-button" type="button" aria-label="Воспроизвести видео" data-video-toggle>Play</button>
+          <button class="city-video__control-button" type="button" aria-label="Назад на 5 секунд" title="Назад на 5 секунд" data-video-back><img class="video-icon video-icon--skip-back" src="img/icons/Skip_right.svg" alt="" aria-hidden="true"></button>
+          <button class="city-video__control-button" type="button" aria-label="Воспроизвести видео" title="Воспроизвести видео" data-video-toggle><img class="video-icon" src="img/icons/Play.svg" alt="" aria-hidden="true" data-video-toggle-icon></button>
+          <button class="city-video__control-button" type="button" aria-label="Вперед на 5 секунд" title="Вперед на 5 секунд" data-video-forward><img class="video-icon" src="img/icons/Skip_right.svg" alt="" aria-hidden="true"></button>
           <input class="city-video__progress" type="range" min="0" max="1000" value="0" aria-label="Прогресс видео" data-video-progress>
-          <button class="city-video__control-button" type="button" aria-label="Выключить звук" data-video-mute>Sound</button>
+          <button class="city-video__control-button" type="button" aria-label="Выключить звук" title="Выключить звук" data-video-mute><img class="video-icon" src="img/icons/volume.svg" alt="" aria-hidden="true" data-video-mute-icon></button>
+          <input class="city-video__volume" type="range" min="0" max="1" step="0.05" value="0.8" aria-label="Громкость видео" title="Громкость видео" data-video-volume>
         </div>
       </div>
     </section>

@@ -1,0 +1,21 @@
+.project-cover--cat-455 img {
+  object-position: center 34%;
+}
+
+.project-image--concept {
+  height: 360px;
+  background: var(--card-bg);
+}
+
+.project-image--concept img {
+  object-fit: contain;
+}
+
+.project-image--document {
+  background: var(--white);
+}
+
+.project-image--document img {
+  object-fit: contain;
+  padding: 18px;
+}

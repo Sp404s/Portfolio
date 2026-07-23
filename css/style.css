@@ -70,6 +70,33 @@ body::before {
   animation: ambient-color-flow 42s ease-in-out infinite alternate;
 }
 
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  content: "ALEX_G";
+  color: var(--gray, #b8b8b8);
+  font-family: var(--font-involve);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  background: var(--page-bg);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+body.is-loaded::after {
+  opacity: 0;
+  visibility: hidden;
+}
+
+body.is-loading {
+  overflow: hidden;
+}
+
 @keyframes ambient-color-flow {
   0% {
     transform: translate3d(-3%, -2%, 0) scale(1);
