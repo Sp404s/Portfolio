@@ -1,0 +1,81 @@
+/* Monopoly page: first project on the new eight/six-column grid. */
+html body.monopoly-page .project-section,
+html body.monopoly-page .city-video {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  column-gap: 20px;
+}
+
+html body.monopoly-page .project-section {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+html body.monopoly-page .project-copy--left {
+  grid-column: 1 / span 3;
+}
+
+html body.monopoly-page .project-copy--middle {
+  grid-column: 6 / span 3;
+}
+
+html body.monopoly-page .project-image--wide {
+  grid-column: 5 / span 4;
+}
+
+html body.monopoly-page .project-image--square {
+  grid-column: 1 / span 4;
+}
+
+html body.monopoly-page .project-image {
+  border-radius: 20px;
+}
+
+html body.monopoly-page .city-video {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+html body.monopoly-page .city-video__player {
+  grid-column: 2 / span 6;
+}
+
+html body.monopoly-page .project-slider {
+  padding-left: 100px;
+}
+
+@media (max-width: 768px) {
+  html body.monopoly-page .project-section,
+  html body.monopoly-page .city-video {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  html body.monopoly-page .project-copy--left,
+  html body.monopoly-page .project-copy--middle,
+  html body.monopoly-page .project-image--wide,
+  html body.monopoly-page .project-image--square,
+  html body.monopoly-page .city-video__player {
+    grid-column: 1 / -1;
+  }
+
+  html body.monopoly-page .project-image {
+    border-radius: 10px;
+  }
+
+  html body.monopoly-page .project-image--wide,
+  html body.monopoly-page .project-image--square {
+    height: auto;
+    aspect-ratio: 5 / 3;
+  }
+
+  html body.monopoly-page .project-section--second .project-image {
+    aspect-ratio: 1 / 1;
+  }
+
+  html body.monopoly-page .project-slider {
+    padding-left: 20px;
+  }
+}

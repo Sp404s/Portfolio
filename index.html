@@ -3,41 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    if (window.location.hash === '#projects') {
-      document.documentElement.classList.add('open-projects');
-    }
-  </script>
+  <link rel="icon" href="img/icons/Logo.svg" type="image/svg+xml">
   <title>Портфолио Гусева Александра</title>
   <link href="https://fonts.cdnfonts.com/css/gravity" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/adaptive.css">
-  <script src="js/page-loader.js" defer></script>
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-      }
-    }
-  </script>
-  <script src="js/script.js" defer></script>
-  <script src="js/home-video.js" defer></script>
+  <link rel="stylesheet" href="css/mobile-home.css">
+  <link rel="stylesheet" href="css/home-workspace.css">
 </head>
-<body class="home-page is-intro">
+<body class="home-page is-ready">
+  <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
+    <img src="img/decor/загрузка1.png" alt="">
+    <p data-loader-text data-text="...кря?" aria-hidden="true"></p>
+  </div>
   <div class="site" data-site>
-    <header class="header">
-      <a class="logo" href="index.html" aria-label="Главная">
-        <span class="logo__mark" aria-hidden="true"></span>
-        <span class="logo__text">ALEX_G</span>
-      </a>
-
+    <header class="header header--page">
       <nav class="nav" aria-label="Основная навигация">
         <a href="index.html">Главная</a>
         <a href="about.html">Обо мне</a>
-        <a href="index.html#projects" data-home-scroll="projects">Проекты</a>
+        <a href="index.html?section=projects" data-home-scroll="projects">Проекты</a>
         <a href="blog.html">Блог</a>
+      </nav>
+      <a class="logo mobile-logo" href="index.html" aria-label="Главная"></a>
+      <nav class="nav-static" aria-label="Navigation">
+        <a class="logo" href="index.html" aria-label="Главная">
+          <span class="logo__mark" aria-hidden="true"></span>
+          <span class="logo__text">ALEX_G</span>
+        </a>
+        <a href="index.html">&#1043;&#1051;&#1040;&#1042;&#1053;&#1040;&#1071;</a>
+        <a href="blog.html">&#1053;&#1054;&#1042;&#1054;&#1057;&#1058;&#1048;</a>
+        <a href="about.html">&#1054;&#1041;&#1054; &#1052;&#1053;&#1045;</a>
+        <a href="index.html?section=projects">&#1056;&#1040;&#1041;&#1054;&#1058;&#1067;</a>
+        <a href="index.html#contacts">&#1050;&#1054;&#1053;&#1058;&#1040;&#1050;&#1058;&#1067;</a>
+      </nav>
+
+      <nav class="home-nav-redesign" aria-label="Навигация">
+        <a href="index.html">ГЛАВНАЯ</a>
+        <a href="index.html?section=projects" data-home-scroll="projects">РАБОТЫ</a>
+        <a href="about.html">ОБО МНЕ</a>
+        <a href="#contacts">КОНТАКТЫ</a>
       </nav>
 
       <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
@@ -50,15 +55,27 @@
       <div class="home-track" data-home-track>
         <section class="hero home-panel">
           <div class="hero__background" aria-hidden="true">
-            <video class="hero__video hero__video--intro" autoplay muted playsinline preload="auto" data-intro-video>
+            <video class="hero__video hero__video--intro" muted playsinline preload="none" data-intro-video>
               <source src="img/decor/Заставка1.webm" type="video/webm">
             </video>
-            <video class="hero__video hero__video--loop" muted loop playsinline preload="metadata" data-loop-video>
+            <video class="hero__video hero__video--loop" muted playsinline preload="none" data-loop-video>
               <source src="img/decor/Заставка2.webm" type="video/webm">
             </video>
           </div>
 
-          <div class="hero__content">
+          <div class="hero-decor" aria-hidden="true">
+            <img class="hero-decor__circle" src="img/decor/Окружность.svg" alt="">
+            <img class="hero-decor__clock" src="img/decor/Часы.svg" alt="">
+          </div>
+
+          <div class="hero__content hero__content--redesign">
+            <p class="hero__label">ПОРТФОЛИО</p>
+            <h1>Гусева Александра</h1>
+            <p class="hero__text">3D-ГРАФИКА /<br>2D-ГРАФИКА /<br>ФИРМЕННЫЙ СТИЛЬ /<br>АЙДЕНТИКА /</p>
+            <a class="hero__action" href="price-list.html">МОИ УСЛУГИ</a>
+          </div>
+
+          <div class="hero__content hero__content--legacy">
             <p class="hero__label" data-blur-text>Портфолио</p>
             <h1 data-blur-text>Александр Гусев</h1>
             <p class="hero__text" data-blur-text>3D-графика / Фирменный стиль / Дизайн</p>
@@ -66,6 +83,31 @@
         </section>
 
         <section class="home-projects home-panel" id="projects" aria-label="Проекты">
+          <h2 class="home-projects__title">&#1052;&#1054;&#1048; &#1056;&#1040;&#1041;&#1054;&#1058;&#1067;</h2>
+          <a class="home-project-card" href="project-wallpaper.html" data-project-year="2026">
+            <img src="img/projects/Обои для телефона/маяк рендер 1.png" alt="Обои для телефона с маяком">
+            <div class="home-project-card__top">
+              <h2>Обои для телефона</h2>
+              <p>3D-графика</p>
+            </div>
+            <div class="home-project-card__bottom">
+              <span>01</span>
+              <span>2026</span>
+            </div>
+          </a>
+
+          <a class="home-project-card home-project-card--contain home-project-card--keycap" href="project-keycap.html" data-project-year="2026">
+            <img src="img/projects/Keycap подставка/Пнг подставка.png" alt="Keycap подставка">
+            <div class="home-project-card__top">
+              <h2>Keycap подставка</h2>
+              <p>3D-печать</p>
+            </div>
+            <div class="home-project-card__bottom">
+              <span>02</span>
+              <span>2026</span>
+            </div>
+          </a>
+
           <a class="home-project-card" href="project.html" data-project-year="2026">
             <img src="img/projects/Город монополия/из1.png" alt="Город Монополия">
             <div class="home-project-card__top">
@@ -73,7 +115,7 @@
               <p>анимация</p>
             </div>
             <div class="home-project-card__bottom">
-              <span>01</span>
+              <span>03</span>
               <span>2026</span>
             </div>
           </a>
@@ -85,7 +127,7 @@
               <p>3D-модель</p>
             </div>
             <div class="home-project-card__bottom">
-              <span>02</span>
+              <span>04</span>
               <span>2026</span>
             </div>
           </a>
@@ -97,7 +139,7 @@
               <p>мебель</p>
             </div>
             <div class="home-project-card__bottom">
-              <span>03</span>
+              <span>05</span>
               <span>2026</span>
             </div>
           </a>
@@ -109,7 +151,7 @@
               <p>3D-визуализация</p>
             </div>
             <div class="home-project-card__bottom">
-              <span>04</span>
+              <span>06</span>
               <span>2026</span>
             </div>
           </a>
@@ -121,7 +163,7 @@
               <p>3D-модель</p>
             </div>
             <div class="home-project-card__bottom">
-              <span>05</span>
+              <span>07</span>
               <span>2025</span>
             </div>
           </a>
@@ -133,20 +175,21 @@
               <p>3D-модель</p>
             </div>
             <div class="home-project-card__bottom">
-              <span>06</span>
+              <span>08</span>
               <span>2025</span>
             </div>
           </a>
 
           <div class="projects-timeline" aria-label="Хронология проектов" data-home-timeline>
             <span class="projects-timeline__thumb" data-timeline-thumb>2026</span>
+            <span class="projects-timeline__year" data-timeline-year>2026</span>
           </div>
 
         </section>
       </div>
     </main>
 
-    <section class="home-mobile-contacts" aria-label="Контакты">
+    <section class="home-mobile-contacts" id="contacts" aria-label="Контакты">
       <h2>Контакты</h2>
       <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a>
       <a href="https://t.me/JustFunnyDays">@JustFunnyDays</a>
@@ -155,6 +198,8 @@
 
     <div class="bottom-bar" aria-hidden="true"></div>
   </div>
-  <script src="js/menu.js" defer></script>
+  <script src="js/mobile-menu.js"></script>
+  <script src="js/home-workspace.js"></script>
+  <script src="js/page-loader.js"></script>
 </body>
 </html>

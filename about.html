@@ -3,171 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Обо мне — Александр Гусев</title>
-  <link href="https://fonts.cdnfonts.com/css/gravity" rel="stylesheet">
+  <link rel="icon" href="img/icons/Logo.svg" type="image/svg+xml">
+  <title>Обо мне</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/adaptive.css">
-  <script src="js/page-loader.js" defer></script>
-  <script src="js/about-gallery.js" defer></script>
-  <script type="module" src="js/about-icons.js" defer></script>
+  <link rel="stylesheet" href="css/about-template.css">
 </head>
 <body class="about-page">
+  <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
+    <img src="img/decor/загрузка1.png" alt="">
+    <p data-loader-text data-text="...кря?" aria-hidden="true"></p>
+  </div>
   <header class="header header--page">
-    <a class="logo" href="index.html" aria-label="Главная">
-      <span class="logo__mark" aria-hidden="true"></span>
-      <span class="logo__text">ALEX_G</span>
-    </a>
-
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="index.html">Главная</a>
-      <a href="about.html">Обо мне</a>
-      <a href="index.html#projects">Проекты</a>
-      <a href="blog.html">Блог</a>
+    <a class="logo mobile-logo" href="index.html" aria-label="Главная"></a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="index.html?section=projects">Works</a>
+      <a href="blog.html">News</a>
     </nav>
-
+    <nav class="nav-static" aria-label="Основная навигация">
+      <a class="logo" href="index.html" aria-label="Главная">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">ALEX_G</span>
+      </a>
+      <a href="index.html">ГЛАВНАЯ</a>
+      <a href="blog.html">НОВОСТИ</a>
+      <a href="about.html">ОБО МНЕ</a>
+      <a href="index.html?section=projects">РАБОТЫ</a>
+      <a href="index.html#contacts">КОНТАКТЫ</a>
+    </nav>
     <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
-      <span></span>
-      <span></span>
+      <span></span><span></span>
     </button>
   </header>
 
   <main class="about-layout">
-    <section class="about-hero grid-12">
-      <div class="about-intro">
-        <h1>Обо мне</h1>
-        <p>
-          Привет! Что такое дизайн лично для меня? Дизайн — это процесс формирования
-          утилитарной среды с опорой на эстетические и культурно-исторические принципы
-          человечества.
-        </p>
-      </div>
-
-      <div class="about-photo" aria-label="Фотографии Александра" data-about-gallery>
-        <img src="img/about%20me/IMG_20260723_152742.jpg" alt="" loading="eager" class="is-active">
-        <img src="img/about%20me/IMG_20260723_153204.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_153807.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_154340.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_155144.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_155401.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_160124.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_160903.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_162045.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_162757.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_162938.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_164529.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_164836.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_165035.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_165105.jpg" alt="" loading="lazy">
-        <img src="img/about%20me/IMG_20260723_165633.jpg" alt="" loading="lazy">
+    <section class="about-hero">
+      <h1>ОБО МНЕ</h1>
+      <div class="about-hero__content">
+        <p class="about-hero__lead">Привет! Меня зовут Гусев Александр.<br>Я 3D-художник и графический дизайнер. Занимаюсь брендингом и разработкой рекламы</p>
+        <p class="about-hero__secondary">В свободное время я увлекаюсь фотографией, 3D-моделированием и видеомонтажом. Мне нравится изучать новое и экспериментировать, ведь из каждой области можно почерпнуть что-то ценное и применить это в работе.</p>
+        <a class="about-download" href="img/decor/Резюме Гусева Александра.pdf" download>
+          <span>Скачать резюме</span>
+        </a>
+        <figure class="about-hero__image">
+          <img src="img/decor/Резюме обо мне.svg" alt="Резюме обо мне">
+        </figure>
       </div>
     </section>
 
-    <section class="about-text grid-12">
-      <p>
-        В свободное время я увлекаюсь фотографией, написанием песен, 3D-моделированием
-        и видеомонтажом. Мне нравится изучать новое и экспериментировать, ведь из каждой
-        области можно почерпнуть что-то ценное и применить это в работе. Например, при
-        разработке плакатов с фотоматериалами помогают навыки фотографии: можно думать
-        не только о композиции, но и о технических параметрах — фокусе и ISO для создания
-        художественной зернистости.
-      </p>
-    </section>
-
-    <section class="software-section">
-      <h2>Программное обеспечение</h2>
-
+    <section class="about-section about-software">
+      <h2>ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ</h2>
       <div class="software-grid">
         <article class="software-card">
+          <img src="img/icons/Ps.svg" alt="">
           <h3>Adobe Photoshop</h3>
-          <div class="software-icon">
-            <img src="img/icons/Ps.svg" alt="Adobe Photoshop">
-          </div>
-          <strong data-percent="85">0%</strong>
-          <p>Уровень владения</p>
+          <strong>85%</strong>
+          <span>Уровень владения</span>
         </article>
-
         <article class="software-card">
+          <img src="img/icons/Ai.svg" alt="">
           <h3>Adobe Illustrator</h3>
-          <div class="software-icon">
-            <img src="img/icons/Ai.svg" alt="Adobe Illustrator">
-          </div>
-          <strong data-percent="87">0%</strong>
-          <p>Уровень владения</p>
+          <strong>87%</strong>
+          <span>Уровень владения</span>
         </article>
-
         <article class="software-card">
-          <h3>Adobe Premier Pro</h3>
-          <div class="software-icon">
-            <img src="img/icons/Pr.svg" alt="Adobe Premier Pro">
-          </div>
-          <strong data-percent="85">0%</strong>
-          <p>Уровень владения</p>
+          <img src="img/icons/Pr.svg" alt="">
+          <h3>Adobe Premiere Pro</h3>
+          <strong>85%</strong>
+          <span>Уровень владения</span>
         </article>
-
         <article class="software-card">
+          <img src="img/icons/Ae.svg" alt="">
           <h3>Adobe After Effects</h3>
-          <div class="software-icon">
-            <img src="img/icons/Ae.svg" alt="Adobe After Effects">
-          </div>
-          <strong data-percent="70">0%</strong>
-          <p>Уровень владения</p>
+          <strong>70%</strong>
+          <span>Уровень владения</span>
         </article>
-
         <article class="software-card">
+          <img src="img/icons/Figma.svg" alt="">
           <h3>Figma</h3>
-          <div class="software-icon">
-            <img src="img/icons/Figma.svg" alt="Figma">
-          </div>
-          <strong data-percent="80">0%</strong>
-          <p>Уровень владения</p>
+          <strong>80%</strong>
+          <span>Уровень владения</span>
         </article>
-
         <article class="software-card">
+          <img src="img/icons/Blender.svg" alt="">
           <h3>Blender</h3>
-          <div class="software-icon">
-            <img src="img/icons/Blender.svg" alt="Blender">
-          </div>
-          <strong data-percent="87">0%</strong>
-          <p>Уровень владения</p>
+          <strong>87%</strong>
+          <span>Уровень владения</span>
         </article>
-
         <article class="software-card">
+          <img src="img/icons/3Ds Max.svg" alt="">
           <h3>3Ds Max</h3>
-          <div class="software-icon">
-            <img src="img/icons/3Ds Max.svg" alt="3Ds Max">
-          </div>
-          <strong data-percent="60">0%</strong>
-          <p>Уровень владения</p>
+          <strong>60%</strong>
+          <span>Уровень владения</span>
         </article>
-
         <article class="software-card">
+          <img src="img/icons/AutoCAD.svg" alt="">
           <h3>AutoCAD</h3>
-          <div class="software-icon">
-            <img src="img/icons/AutoCAD.svg" alt="AutoCAD">
-          </div>
-          <strong data-percent="40">0%</strong>
-          <p>Уровень владения</p>
+          <strong>40%</strong>
+          <span>Уровень владения</span>
         </article>
       </div>
     </section>
 
-    <section class="contacts-section" id="contacts">
-      <div class="contacts-section__content">
-        <div class="contacts-section__text">
-          <h2>Контакты</h2>
-          <p>почта: <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a></p>
-          <p>ТГ: <a href="https://t.me/JustFunnyDays">@JustFunnyDays</a></p>
-          <p>ВК: <a href="https://vk.com/3funnydays">@3funnydays</a></p>
+    <section class="about-contacts" id="contacts">
+      <h2>КОНТАКТЫ</h2>
+      <div class="about-contacts__content">
+        <div class="about-contacts__info">
+          <p>почта: <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a><br>ТГ: @JustFunnyDays<br>ВК: @3funnydays</p>
+          <a class="about-agreement" href="#">Пользовательское соглашение</a>
         </div>
-
-        <div class="contacts-qr" aria-label="QR-коды социальных сетей">
-          <img src="img/icons/VK.svg" alt="QR-код ВК">
-          <img src="img/icons/TG.svg" alt="QR-код Telegram">
-        </div>
+        <img class="about-qr about-qr--one" src="img/decor/contact-qr.svg" alt="QR-код VK">
+        <img class="about-qr about-qr--two" src="img/decor/contact-qr.svg" alt="QR-код Telegram">
       </div>
     </section>
   </main>
-  <script src="js/menu.js" defer></script>
+  <script src="js/mobile-menu.js"></script>
+  <script src="js/about-slider.js"></script>
+  <script src="js/page-loader.js"></script>
 </body>
 </html>

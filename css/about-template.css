@@ -1,0 +1,277 @@
+/* Responsive layout for the Figma "About me" composition. */
+.about-page {
+  overflow-x: hidden;
+  background: #242323;
+}
+
+.about-layout {
+  background: #242323;
+}
+
+.software-grid {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+}
+
+.software-track {
+  display: flex;
+  width: max-content;
+  animation: software-marquee-right 28s linear infinite !important;
+  will-change: transform;
+}
+
+.software-set {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 20px;
+  padding-right: 20px;
+}
+
+.software-card {
+  flex: 0 0 calc((100vw - 140px) / 8);
+  box-sizing: border-box;
+}
+
+@keyframes software-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (min-width: 901px) {
+  .about-layout {
+    min-height: 100vh;
+    padding: 190px 100px 100px;
+  }
+
+  .about-hero {
+    min-height: 700px;
+  }
+
+  .about-software {
+    margin-top: 100px;
+  }
+
+  .software-grid {
+    height: 300px;
+    width: 100vw;
+    margin-top: 80px;
+    margin-left: -100px;
+  }
+
+  .software-card {
+    width: calc((100vw - 140px) / 8);
+    height: 300px;
+  }
+}
+
+@media (max-width: 900px) {
+  html body.about-page .header {
+    position: fixed !important;
+    inset: 0 0 auto !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 0 !important;
+    background: #242323 !important;
+  }
+
+  html body.about-page .header .logo {
+    position: absolute !important;
+    top: 22px !important;
+    left: 20px !important;
+    z-index: 60 !important;
+    width: 58px !important;
+    height: 16px !important;
+    margin: 0 !important;
+  }
+
+  html body.about-page .header .nav-static {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 90 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 30px !important;
+    width: 100% !important;
+    height: 100dvh !important;
+    padding: 72px 20px 40px !important;
+    box-sizing: border-box !important;
+    background: #242323 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  html body.about-page .header.is-menu-open .nav-static {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  html body.about-page .header .nav-static .logo {
+    display: none !important;
+  }
+
+  html body.about-page .header .nav-static a {
+    display: block !important;
+    height: auto !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+  }
+
+  html body.about-page .header .menu-toggle {
+    position: absolute !important;
+    top: 24px !important;
+    right: 20px !important;
+    z-index: 60 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 9px !important;
+    width: 52px !important;
+    height: 13px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body.about-page .header .menu-toggle span {
+    width: 52px !important;
+    height: 1px !important;
+  }
+
+  .about-layout {
+    min-height: 1432px;
+    padding: 86px 20px 80px !important;
+  }
+
+  .about-hero {
+    height: 615px;
+    min-height: 0;
+  }
+
+  .about-hero h1,
+  .about-section h2 {
+    font-size: 30px !important;
+    line-height: 1.2 !important;
+  }
+
+  .about-hero__content {
+    height: 539px;
+    min-height: 0;
+    margin-top: 20px;
+  }
+
+  .about-hero__lead,
+  .about-hero__secondary {
+    position: absolute;
+    left: 0;
+    width: 238px;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .about-hero__lead {
+    top: 0;
+  }
+
+  .about-hero__secondary {
+    top: 293px;
+  }
+
+  .about-hero__image {
+    position: absolute;
+    top: 52px;
+    right: auto;
+    left: calc(100% - 154px);
+    width: 234px;
+    height: 257px;
+    margin: 0;
+    overflow: visible;
+  }
+
+  .about-download {
+    top: 424px;
+    left: 0;
+    width: 238px;
+    height: 44px;
+    margin: 0;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .about-section,
+  .about-software {
+    margin-top: 0;
+  }
+
+  .software-grid {
+    height: 171px;
+    width: 100vw;
+    margin-top: 58px;
+    margin-left: -20px;
+  }
+
+  .software-set {
+    gap: 6px;
+    padding-right: 6px;
+  }
+
+  .software-card {
+    flex-basis: 113px;
+    width: 113px;
+    height: 171px;
+    gap: 0;
+    padding: 11px 0;
+    border-radius: 10px;
+  }
+
+  .software-card h3 {
+    width: 100px;
+    font-size: 12px;
+    line-height: 1.15;
+  }
+
+  .software-card img {
+    width: 46px;
+    height: 46px;
+    margin: 16px 0 12px;
+  }
+
+  .software-card strong {
+    margin: 0 0 5px;
+    font-size: 24px;
+  }
+
+  .software-card span {
+    font-size: 9px;
+    line-height: 1.1;
+  }
+
+  .about-contacts {
+    margin-top: 157px;
+  }
+
+  .about-contacts h2 {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .about-contacts__content {
+    margin-top: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .software-track {
+    animation-duration: 60s !important;
+  }
+}

@@ -12,11 +12,11 @@
 :root {
   --white: #ffffff;
   --black: #000000;
-  --bar: rgba(23, 23, 23, 1);
+  --bar: #242323;
   --video-placeholder: transparent;
-  --accent: rgba(216, 78, 52, 1);
-  --page-bg: rgba(23, 23, 23, 1);
-  --card-bg: #d9d9d9;
+  --accent: #f2542d;
+  --page-bg: #242323;
+  --card-bg: #ffffff;
   --header-height: 80px;
   --side-padding: 80px;
   --grid-gap: 20px;
@@ -26,6 +26,11 @@
   --nav-size: 24px;
   --font-involve: "Involve", Arial, Helvetica, sans-serif;
   --font-gravity: "Gravity", "Gravity Bold", "Gravity-Regular", Arial, Helvetica, sans-serif;
+  --cream: #eddcce;
+  --teal: #0f9596;
+  --teal-dark: #12676a;
+  --orange: #f2542d;
+  --brown: #562c2d;
 }
 
 * {
@@ -38,9 +43,16 @@ html,
 body {
   width: 100%;
   min-height: 100%;
-  scrollbar-gutter: auto;
+  scrollbar-gutter: stable;
   scrollbar-color: #3a3a3a var(--page-bg);
   scrollbar-width: thin;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body * {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 html::-webkit-scrollbar,
@@ -69,6 +81,59 @@ body {
   background: var(--page-bg);
 }
 
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #242323;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  isolation: isolate;
+  overflow: hidden;
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 700ms;
+}
+
+.site-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-loader:not(.is-hidden) {
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s;
+}
+
+.site-loader img {
+  display: block;
+  width: 416px;
+  height: 416px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 150px);
+  object-fit: contain;
+  animation: site-loader-spin 900ms linear infinite;
+}
+
+.site-loader p {
+  min-width: 72px;
+  margin-top: 18px;
+  color: #ffffff;
+  font-family: var(--font-involve);
+  font-size: 20px;
+  line-height: 1;
+  text-align: center;
+}
+
+@keyframes site-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 body::before {
   position: fixed;
   inset: -18%;
@@ -92,6 +157,23 @@ body::before {
 
 body::before {
   display: none;
+}
+
+/* Static presentation mode: keep the layout and controls, remove motion effects. */
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+body::after {
+  display: none !important;
+}
+
+body.is-loading {
+  overflow: auto;
 }
 
 body::after {
@@ -205,7 +287,12 @@ a {
 
 img {
   -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
   user-select: none;
+  -webkit-user-select: none;
 }
 
 .site {
@@ -291,4 +378,355 @@ img {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--grid-gap);
+}
+
+/* Shared brand header. */
+.header {
+  background: var(--bar);
+}
+
+.header .logo {
+  width: 160px;
+  height: 41px;
+  background: url("../img/icons/Logo.svg") center / contain no-repeat;
+  filter: brightness(0) invert(1);
+}
+
+.header .logo__mark,
+.header .logo__text {
+  display: none;
+}
+
+.header .nav {
+  padding: 0;
+  color: var(--white);
+}
+
+.header .nav a {
+  color: var(--white);
+}
+
+@media (min-width: 901px) {
+  html:not(.nav-ready) .header .nav {
+    visibility: hidden;
+  }
+
+  .header {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .header .logo {
+    grid-column: 1 / span 2;
+  }
+
+  .header .nav {
+    grid-column: 4 / span 5;
+    justify-self: stretch;
+    justify-content: space-between;
+    gap: 20px;
+    width: auto;
+  }
+
+  .header .nav a {
+    flex: 1 1 0;
+    text-align: center;
+  }
+}
+
+@media (min-width: 901px) {
+  html body:not(.home-page) .header {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  html body:not(.home-page) .header .nav {
+    position: relative;
+    display: grid;
+    grid-column: 4 / span 5;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: 20px;
+    justify-self: stretch;
+    width: auto;
+    height: 43px;
+    padding: 0;
+  }
+
+  html body:not(.home-page) .header .nav a {
+    position: static;
+    width: auto;
+    height: 43px;
+    font-size: 30px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  html body:not(.home-page) .header .nav a:nth-child(1) { grid-column: 2; grid-row: 1; }
+  html body:not(.home-page) .header .nav a:nth-child(2) { grid-column: 1; grid-row: 1; }
+  html body:not(.home-page) .header .nav a:nth-child(3) { grid-column: 4; grid-row: 1; }
+  html body:not(.home-page) .header .nav a:nth-child(4) { grid-column: 3; grid-row: 1; }
+  html body:not(.home-page) .header .nav a:nth-child(5) { grid-column: 5; grid-row: 1; }
+}
+
+/* Canonical desktop navbar shared by every page. */
+@media (min-width: 901px) {
+  html body .header {
+    position: sticky !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+    column-gap: 20px !important;
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+    height: 97px !important;
+    min-height: 97px !important;
+    margin: 0 !important;
+    padding-top: 34px !important;
+    background: #242323 !important;
+  }
+
+  html body .header .nav {
+    position: relative !important;
+    display: grid !important;
+    grid-column: 4 / span 5 !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    column-gap: 20px !important;
+    justify-self: stretch !important;
+    width: auto !important;
+    height: 43px !important;
+    padding: 0 !important;
+  }
+
+  html body .header .nav a {
+    position: static !important;
+    width: auto !important;
+    height: 43px !important;
+    flex: none !important;
+    font-size: 30px !important;
+    line-height: 1 !important;
+    text-align: center !important;
+  }
+
+  html body .header .nav a:nth-child(1) { grid-column: 2; grid-row: 1; }
+  html body .header .nav a:nth-child(2) { grid-column: 1; grid-row: 1; }
+  html body .header .nav a:nth-child(3) { grid-column: 4; grid-row: 1; }
+  html body .header .nav a:nth-child(4) { grid-column: 3; grid-row: 1; }
+  html body .header .nav a:nth-child(5) { grid-column: 5; grid-row: 1; }
+}
+
+/* Static site mode: one HTML navbar, no runtime menu normalization or motion. */
+html body .header > .nav,
+html body .home-nav-redesign,
+html body .menu-toggle {
+  display: none !important;
+}
+
+html body .nav-static {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  column-gap: 20px;
+  justify-self: stretch;
+  width: auto;
+  height: 43px;
+  padding: 0;
+  font-family: var(--font-involve);
+  font-weight: 400;
+  letter-spacing: 0;
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+html body .nav-static a {
+  display: block;
+  height: 43px;
+  color: var(--white);
+  text-align: center;
+  white-space: nowrap;
+}
+
+html body .nav-static a:nth-child(2) { grid-column: 5; grid-row: 1; }
+html body .nav-static a:nth-child(3) { grid-column: 4; grid-row: 1; }
+html body .nav-static a:nth-child(4) { grid-column: 7; grid-row: 1; }
+html body .nav-static a:nth-child(5) { grid-column: 6; grid-row: 1; }
+html body .nav-static a:nth-child(6) { grid-column: 8; grid-row: 1; }
+
+html body .header .logo {
+  width: 128px !important;
+  height: 34px !important;
+  grid-column: 1 !important;
+  justify-self: start !important;
+  margin: 0 !important;
+  align-self: center !important;
+  background: url("../img/icons/Logo.svg") center / contain no-repeat !important;
+  filter: brightness(0) invert(1) !important;
+}
+
+/* The mobile logo is a separate control and must stay hidden on desktop. */
+html body .header > .mobile-logo {
+  display: none !important;
+}
+
+html body .header .nav-static {
+  align-self: center !important;
+}
+
+*, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+body::before,
+body::after {
+  display: none !important;
+}
+
+.site-loader {
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 700ms !important;
+}
+
+.site-loader img {
+  animation: site-loader-spin 900ms linear infinite !important;
+}
+
+@media (max-width: 900px) {
+  html body .header {
+    position: fixed !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 20px !important;
+  }
+
+  html body .header .logo {
+    grid-column: 1;
+    margin-bottom: 24px;
+  }
+
+  html body .nav-static {
+    display: flex !important;
+    grid-column: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+    height: auto;
+    font-size: 20px;
+  }
+
+  html body .nav-static a {
+    height: auto;
+    text-align: left;
+  }
+}
+
+/* Shared mobile navbar: every internal page uses the same logo and burger as home. */
+@media (max-width: 900px) {
+  html body:not(.home-page) .header {
+    position: fixed !important;
+    inset: 0 0 auto !important;
+    z-index: 50 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 0 !important;
+    background: #242323 !important;
+    box-shadow: none !important;
+  }
+
+  html body:not(.home-page) .header > .mobile-logo {
+    position: absolute !important;
+    top: 22px !important;
+    left: 20px !important;
+    z-index: 60 !important;
+    display: block !important;
+    width: 58px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    background: url("../img/icons/Logo.svg") left center / contain no-repeat !important;
+    filter: brightness(0) invert(1) !important;
+  }
+
+  html body:not(.home-page) .header > .nav-static > .logo {
+    display: none !important;
+  }
+
+  html body:not(.home-page) .header > .nav-static {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 40 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 28px !important;
+    width: 100% !important;
+    height: 100dvh !important;
+    padding: 80px 24px 40px !important;
+    background: #242323 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-100%) !important;
+  }
+
+  html body:not(.home-page) .header.is-menu-open > .nav-static {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+  }
+
+  html body:not(.home-page) .header > .nav-static a {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    color: #ffffff !important;
+    font-size: 24px !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+  }
+
+  html body:not(.home-page) .header > .menu-toggle {
+    position: absolute !important;
+    top: 24px !important;
+    right: 20px !important;
+    z-index: 60 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 9px !important;
+    width: 52px !important;
+    height: 13px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    color: #ffffff !important;
+    background: transparent !important;
+  }
+
+  html body:not(.home-page) .header > .menu-toggle span {
+    display: block !important;
+    width: 52px !important;
+    height: 1px !important;
+    background: currentColor !important;
+    transform: none !important;
+  }
 }

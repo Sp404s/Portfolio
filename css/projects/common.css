@@ -8,7 +8,7 @@
   height: calc(800px + var(--header-height));
   padding-top: var(--header-height);
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 0;
   background: var(--black);
 }
 
@@ -45,11 +45,11 @@
 
 .project-copy h1,
 .project-copy h2 {
-  color: var(--accent);
-  font-family: var(--font-involve);
+  color: var(--white);
+  font-family: var(--font-gravity);
   font-size: 32px;
   line-height: 1.1;
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -74,7 +74,7 @@
 .project-image {
   background: var(--card-bg);
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .project-image img,
@@ -120,8 +120,8 @@
   will-change: transform;
 }
 
-.project-slider.is-dragging {
-  cursor: grabbing;
+.project-slider__track.is-wheel-moving {
+  transition: transform 220ms ease-out;
 }
 
 .project-slider__group {
@@ -135,51 +135,34 @@
   flex: 0 0 var(--slider-item-width);
   width: var(--slider-item-width);
   height: 500px;
-  border-radius: 10px;
+  overflow: hidden;
+  border-radius: 20px;
   background: var(--card-bg);
 }
 
-.project-reveal-item {
-  opacity: 0;
-  transition: opacity 520ms ease, transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.project-reveal-item.from-left {
-  transform: translateX(-72px);
-}
-
-.project-reveal-item.from-right {
-  transform: translateX(72px);
-}
-
-.project-reveal-item.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.project-reveal-item.is-past {
-  opacity: 0;
-  transform: translateX(-42px);
-}
-
-.project-reveal-item.from-right.is-past {
-  transform: translateX(42px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .project-reveal-item,
-  .project-reveal-item.is-past {
-    opacity: 1;
-    transform: translateX(0);
-    transition: none;
-  }
+.project-slider.is-dragging {
+  cursor: grabbing;
 }
 
 @media (max-width: 768px) {
   body::before {
     filter: blur(58px) saturate(105%);
     opacity: 0.78;
+  }
+}
+
+/* Internal pages have no navbar, so the cover must not reserve header space. */
+@media (min-width: 769px) {
+  html body.project-page .project-cover {
+    height: 800px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  html body.project-page .project-cover {
+    height: 360px;
+    padding-top: 0;
   }
 }
 
@@ -224,5 +207,21 @@
 
   .project-slider__item {
     height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  html body.project-page .project-cover {
+    height: auto !important;
+    min-height: 0;
+    padding-top: var(--header-height) !important;
+  }
+
+  html body.project-page .project-cover img {
+    width: 100%;
+    height: auto !important;
+    min-height: 0;
+    object-fit: contain;
+    object-position: center;
   }
 }

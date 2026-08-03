@@ -1,0 +1,369 @@
+@media (min-width: 769px) and (pointer: fine) {
+  html body.home-page {
+    overflow: hidden !important;
+    background: #242323 !important;
+  }
+
+  html body.home-page .site {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 0 !important;
+    overflow: hidden;
+    background: #242323 !important;
+  }
+
+  html body.home-page .header {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    z-index: 20;
+    width: 100%;
+    height: 97px !important;
+    min-height: 97px !important;
+    margin: 0 !important;
+    padding-top: 34px !important;
+    background: #242323 !important;
+  }
+
+  html body.home-page .home-horizontal {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #242323 !important;
+  }
+
+  html body.home-page .home-track {
+    display: flex;
+    width: max-content;
+    height: 100vh;
+    transform: translate3d(0, 0, 0) !important;
+    will-change: transform;
+  }
+
+  html body.home-page .hero.home-panel {
+    position: relative;
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
+    min-height: 0;
+    margin: 0 !important;
+    padding: 0 100px !important;
+    overflow: hidden !important;
+    background: #242323 !important;
+  }
+
+  html body.home-page .hero__background {
+    background: #242323 !important;
+  }
+
+  html body.home-page .hero-decor {
+    top: 360px !important;
+    right: 11vw !important;
+    left: auto !important;
+    width: min(760px, 39vw) !important;
+    height: auto !important;
+    aspect-ratio: 1;
+    transform: none !important;
+  }
+
+  html body.home-page .hero-decor__circle {
+    inset: -7.5% !important;
+    width: 115% !important;
+    height: 115% !important;
+  }
+
+  html body.home-page .hero-decor__clock {
+    top: -37% !important;
+  }
+
+  html body.home-page .hero__content--redesign {
+    position: absolute;
+    top: 400px;
+    left: 100px;
+    z-index: 3;
+    display: flex;
+    width: 1074px;
+    height: auto;
+    transform: none !important;
+  }
+
+  html body.home-page .hero__content--redesign .hero__label {
+    width: auto;
+    height: auto;
+    margin: 0 !important;
+    color: #ffffff !important;
+    font-size: 20px !important;
+  }
+
+  html body.home-page .hero__content--redesign h1 {
+    width: auto;
+    height: auto;
+    margin: 30px 0 0 !important;
+    color: #ffffff !important;
+    font-size: 80px !important;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  html body.home-page .hero__content--redesign > .hero__text {
+    width: 415px;
+    height: auto;
+    margin: 40px 0 0 218px !important;
+    color: #ffffff !important;
+    font-size: 30px !important;
+    line-height: normal;
+  }
+
+  html body.home-page .hero__content--redesign .hero__action {
+    width: 197px;
+    height: 60px;
+    margin-top: 50px !important;
+    background: #f2542d !important;
+    color: #ffffff !important;
+    font-size: 26px !important;
+  }
+
+  html body.home-page .home-projects {
+    position: relative;
+    flex: 0 0 100vw;
+    display: flex !important;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100vw;
+    min-width: 100vw;
+    height: 100vh;
+    min-height: 0;
+    margin: 0 !important;
+    padding: 327px 100px 0 !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-padding-right: 100px;
+    scrollbar-width: none;
+    background: #242323 !important;
+  }
+
+  html body.home-page .home-projects::-webkit-scrollbar {
+    display: none;
+  }
+
+  html body.home-page .home-projects::before {
+    position: absolute;
+    top: 197px;
+    left: 100px;
+    z-index: 2;
+    content: "МОИ РАБОТЫ";
+    color: #ffffff;
+    font-family: var(--font-gravity);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  html body.home-page .home-projects__title {
+    position: absolute;
+    top: 197px;
+    left: 100px;
+    z-index: 2;
+    margin: 0;
+    color: #ffffff;
+    font-family: var(--font-gravity);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  html body.home-page .home-project-card {
+    position: relative;
+    flex: 0 0 calc((100vw - 260px) / 4);
+    width: calc((100vw - 260px) / 4);
+    height: min(740px, calc(100vh - 440px)) !important;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    opacity: 1;
+    transform: none;
+    background: #ffffff;
+    color: #242323;
+  }
+
+  html body.home-page .home-project-card::after {
+    display: none;
+  }
+
+  html body.home-page .home-project-card img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% - 138px);
+    object-fit: cover;
+    transform: none;
+  }
+
+  html body.home-page .home-project-card__top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 138px;
+    padding: 18px 24px;
+    background: #ffffff;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  html body.home-page .home-project-card__top h2 {
+    color: #242323;
+    font-family: var(--font-involve);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  html body.home-page .home-project-card__top p {
+    margin-top: 18px;
+    color: #f2542d;
+    font-family: var(--font-involve);
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  html body.home-page .home-project-card__bottom {
+    display: none;
+  }
+
+  html body.home-page .projects-timeline {
+    display: block !important;
+  }
+
+  html body.home-page .projects-timeline::before,
+  html body.home-page .projects-timeline__thumb,
+  html body.home-page .projects-timeline__year {
+    display: none !important;
+  }
+
+  html body.home-page .projects-timeline {
+    --timeline-left: 0px;
+    --timeline-inset: 0px;
+    position: absolute;
+    right: 100px;
+    bottom: 6px;
+    left: 100px;
+    z-index: 3;
+    display: block !important;
+    width: auto;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+    color: #0f9596;
+  }
+
+  html body.home-page .projects-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: var(--timeline-inset);
+    left: var(--timeline-inset);
+    height: 4px;
+    background: #0f9596;
+    border-radius: 999px;
+    opacity: 1;
+  }
+
+  html body.home-page .projects-timeline__thumb {
+    position: absolute;
+    top: -11px;
+    left: var(--timeline-left);
+    z-index: 1;
+    width: 26px;
+    min-width: 0;
+    height: 26px;
+    padding: 0;
+    border: 4px solid #0f9596;
+    border-radius: 50%;
+    background: #242323;
+    opacity: 1 !important;
+    color: transparent;
+    transform: translateX(-50%);
+  }
+
+  html body.home-page .projects-timeline__year {
+    position: absolute;
+    top: 22px;
+    left: var(--timeline-left);
+    color: #0f9596;
+    font-family: var(--font-gravity);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+
+  html body.home-page .projects-timeline__thumb::before {
+    display: none;
+  }
+
+  html body.home-page .projects-timeline__thumb::after {
+    content: attr(data-year);
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    color: #f2542d;
+    font-family: var(--font-gravity);
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+    transform: translateX(-50%);
+  }
+
+  html body.home-page .projects-timeline {
+    display: block !important;
+  }
+
+  html body.home-page .projects-timeline::before,
+  html body.home-page .projects-timeline__thumb,
+  html body.home-page .projects-timeline__year {
+    display: block !important;
+  }
+
+  html body.home-page .projects-timeline__thumb {
+    border-color: #f2542d;
+  }
+
+  html body.home-page .projects-timeline__year,
+  html body.home-page .projects-timeline__thumb::after {
+    color: #f2542d;
+  }
+
+  html body.home-page .home-projects::before {
+    display: none !important;
+  }
+}
+
+/* Keycap render has transparency, so its image area uses the brand teal. */
+html body.home-page .home-project-card--keycap,
+html body.home-page .home-project-card--keycap img {
+  background: #0f9596 !important;
+}
+
+html body.home-page .home-project-card--keycap img {
+  object-position: center;
+  transform: scale(1.35) !important;
+  transform-origin: center center;
+}
+
+@media (max-width: 768px) {
+  html body.home-page .home-project-card--keycap img {
+    transform: scale(1.2) !important;
+  }
+}

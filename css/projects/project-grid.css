@@ -1,0 +1,92 @@
+/* Shared 8-column desktop and 6-column mobile grid for classic project pages. */
+@media (min-width: 769px) {
+  .project-page .project-section,
+  .project-page .city-video {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  .project-page .project-copy--left {
+    grid-column: 1 / span 3;
+  }
+
+  .project-page .project-copy--middle {
+    grid-column: 6 / span 3;
+  }
+
+  .project-page .project-image--wide,
+  .project-page .project-image--stol-right {
+    grid-column: 5 / span 4;
+    height: 540px;
+  }
+
+  .project-page .project-image--square,
+  .project-page .project-image--stol-left {
+    grid-column: 1 / span 4;
+    height: 540px;
+  }
+
+  .project-page .city-video__player {
+    grid-column: 2 / span 6;
+  }
+
+  .project-page .project-slider {
+    padding-left: 100px;
+  }
+
+  .project-page .project-slider__track {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  html body.project-page .project-cover {
+    height: auto !important;
+    min-height: 0;
+    padding-top: var(--header-height) !important;
+  }
+
+  html body.project-page .project-cover img {
+    width: 100%;
+    height: auto !important;
+    min-height: 0;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .project-page .project-section,
+  .project-page .city-video {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .project-page .project-copy--left,
+  .project-page .project-copy--middle,
+  .project-page .project-image--wide,
+  .project-page .project-image--square,
+  .project-page .project-image--stol-left,
+  .project-page .project-image--stol-right,
+  .project-page .city-video__player {
+    grid-column: 1 / -1;
+  }
+
+  .project-page .project-image--wide,
+  .project-page .project-image--square,
+  .project-page .project-image--stol-left,
+  .project-page .project-image--stol-right {
+    height: auto;
+    aspect-ratio: 5 / 3;
+  }
+
+  .project-page .project-slider {
+    padding-left: 20px;
+  }
+
+  .project-page .project-slider__track {
+    padding-left: 0;
+  }
+}

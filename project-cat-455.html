@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/icons/Logo.svg" type="image/svg+xml">
   <title>Кафедра ЦАТ — Александр Гусев</title>
   <link href="https://fonts.cdnfonts.com/css/gravity" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -10,20 +11,29 @@
   <link rel="stylesheet" href="css/projects/city-monopoly.css">
   <link rel="stylesheet" href="css/projects/cat-455.css">
   <link rel="stylesheet" href="css/adaptive.css">
-  <script src="js/page-loader.js" defer></script>
-  <script src="js/menu.js" defer></script>
-  <script src="js/project-slider.js" defer></script>
-  <script src="js/project-video.js" defer></script>
-  <script src="js/project-reveal.js" defer></script>
+  <link rel="stylesheet" href="css/projects/project-grid.css">
 </head>
 <body class="project-page">
+  <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
+    <img src="img/decor/загрузка1.png" alt="">
+    <p data-loader-text data-text="...кря?" aria-hidden="true"></p>
+  </div>
   <header class="header header--page">
-    <a class="logo" href="index.html" aria-label="Главная"><span class="logo__mark" aria-hidden="true"></span><span class="logo__text">ALEX_G</span></a>
+    <a class="logo mobile-logo" href="index.html" aria-label="Главная"></a>
+
     <nav class="nav" aria-label="Основная навигация">
       <a href="index.html">Главная</a>
       <a href="about.html">Обо мне</a>
-      <a href="index.html#projects">Проекты</a>
+      <a href="index.html?section=projects">Проекты</a>
       <a href="blog.html">Блог</a>
+    </nav>
+    <nav class="nav-static" aria-label="Navigation">
+      <a class="logo" href="index.html" aria-label="Главная"><span class="logo__mark" aria-hidden="true"></span><span class="logo__text">ALEX_G</span></a>
+      <a href="index.html">&#1043;&#1051;&#1040;&#1042;&#1053;&#1040;&#1071;</a>
+      <a href="blog.html">&#1053;&#1054;&#1042;&#1054;&#1057;&#1058;&#1048;</a>
+      <a href="about.html">&#1054;&#1041;&#1054; &#1052;&#1053;&#1045;</a>
+      <a href="index.html?section=projects">&#1056;&#1040;&#1041;&#1054;&#1058;&#1067;</a>
+      <a href="index.html#contacts">&#1050;&#1054;&#1053;&#1058;&#1040;&#1050;&#1058;&#1067;</a>
     </nav>
     <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
   </header>
@@ -142,5 +152,8 @@
       </div>
     </section>
   </main>
+  <script src="js/mobile-menu.js"></script>
+  <script src="js/page-loader.js"></script>
+  <script src="js/project-media.js"></script>
 </body>
 </html>
