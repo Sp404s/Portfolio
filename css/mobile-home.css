@@ -177,7 +177,7 @@ html body .mobile-logo {
 
   html body.home-page .hero__content--redesign .hero__action {
     position: absolute;
-    top: calc(47% - 20px + min(282px, calc(100vw - 120px)) + 40px);
+    top: calc(187px + min(282px, calc(100vw - 120px)) + 40px);
     left: 0;
     display: flex;
     width: 176px;
@@ -192,7 +192,7 @@ html body .mobile-logo {
 
   html body.home-page .hero-decor {
     position: absolute;
-    top: calc(47% - 20px);
+    top: 187px;
     right: auto;
     left: calc(50% + 6px);
     z-index: 1;
