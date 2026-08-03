@@ -113,6 +113,9 @@
     let pointerStart = 0;
     let offsetStart = 0;
     let dragging = false;
+    let lastAutoplayTime = performance.now();
+    let autoplayPausedUntil = 0;
+    const autoplaySpeed = 16;
 
     const getBounds = () => ({
       min: Math.min(0, slider.clientWidth - track.scrollWidth),
@@ -130,8 +133,34 @@
       render();
     };
 
+    const pauseAutoplay = () => {
+      autoplayPausedUntil = performance.now() + 1200;
+    };
+
+    const getLoopWidth = () => {
+      const group = track.querySelector(".project-slider__group");
+      return group ? group.getBoundingClientRect().width : 0;
+    };
+
+    const autoplay = (now) => {
+      const elapsed = Math.min(50, Math.max(0, now - lastAutoplayTime));
+      lastAutoplayTime = now;
+
+      if (!dragging && now >= autoplayPausedUntil) {
+        const loopWidth = getLoopWidth();
+        if (loopWidth > 0 && track.scrollWidth > slider.clientWidth) {
+          offset -= (autoplaySpeed * elapsed) / 1000;
+          if (offset <= -loopWidth) offset += loopWidth;
+          render();
+        }
+      }
+
+      window.requestAnimationFrame(autoplay);
+    };
+
     slider.addEventListener("pointerdown", (event) => {
       if (event.button !== 0) return;
+      pauseAutoplay();
       dragging = true;
       pointerStart = event.clientX;
       offsetStart = offset;
@@ -159,6 +188,7 @@
     });
 
     slider.addEventListener("wheel", (event) => {
+      pauseAutoplay();
       const distance = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
       const { min, max } = getBounds();
       const next = Math.min(max, Math.max(min, offset - distance));
@@ -174,11 +204,13 @@
     slider.addEventListener("keydown", (event) => {
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
       event.preventDefault();
+      pauseAutoplay();
       moveBy(event.key === "ArrowLeft" ? 120 : -120);
     });
 
     slider.setAttribute("tabindex", "0");
     window.addEventListener("resize", render);
     requestAnimationFrame(render);
+    window.requestAnimationFrame(autoplay);
   });
 })();

@@ -21,13 +21,20 @@
       const projectRect = projects.getBoundingClientRect();
       const lastCardRect = cards[cards.length - 1].getBoundingClientRect();
       const timelineTop = 163;
+      const lastCardCenter = lastCardRect.top + (lastCardRect.height / 2);
+      const lineEnd = lastCardCenter - projectRect.top - timelineTop;
+      const thumbRadius = timelineThumb.offsetHeight / 2;
       const targetHeight = Math.max(
         0,
-        lastCardRect.bottom - projectRect.top - timelineTop + 11,
+        lineEnd + thumbRadius,
       );
 
-      timeline.style.bottom = 'auto';
-      timeline.style.height = `${targetHeight}px`;
+      timeline.style.setProperty('bottom', 'auto', 'important');
+      timeline.style.setProperty('height', `${targetHeight}px`, 'important');
+      timeline.style.setProperty(
+        '--mobile-timeline-line-height',
+        `${Math.max(0, lineEnd - 11)}px`,
+      );
     };
 
     const getCardPageTop = (card) => card.getBoundingClientRect().top + window.scrollY;
@@ -101,6 +108,10 @@
     window.addEventListener('scroll', requestTimelineUpdate, { passive: true });
     window.addEventListener('resize', requestTimelineUpdate);
     window.addEventListener('load', requestTimelineUpdate, { once: true });
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(requestTimelineUpdate);
+      observer.observe(projects);
+    }
     requestTimelineUpdate();
   };
 

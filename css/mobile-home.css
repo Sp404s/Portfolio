@@ -111,6 +111,7 @@ html body .mobile-logo {
   html body.home-page .hero {
     position: relative;
     width: 100%;
+    margin-top: 78px;
     height: max(100svh, 820px) !important;
     min-height: 820px !important;
     padding: 0 !important;
@@ -139,7 +140,7 @@ html body .mobile-logo {
 
   html body.home-page .hero__content--redesign .hero__label {
     position: absolute;
-    top: 136px;
+    top: 0;
     left: 0;
     width: auto;
     height: auto;
@@ -151,7 +152,7 @@ html body .mobile-logo {
 
   html body.home-page .hero__content--redesign h1 {
     position: absolute;
-    top: 166px;
+    top: 30px;
     left: 0;
     width: 100%;
     height: auto;
@@ -164,7 +165,7 @@ html body .mobile-logo {
 
   html body.home-page .hero__content--redesign > .hero__text {
     position: absolute;
-    top: 223px;
+    top: 87px;
     left: 69px;
     width: min(231px, calc(100% - 69px));
     height: auto;
@@ -344,10 +345,10 @@ html body .mobile-logo {
   html body.home-page .projects-timeline::before {
     top: 11px;
     right: auto;
-    bottom: 11px;
+    bottom: auto;
     left: calc(50% - 2px);
     width: 4px;
-    height: auto;
+    height: var(--mobile-timeline-line-height, auto) !important;
     border-radius: 999px;
     background: #0f9596 !important;
     opacity: 1 !important;
