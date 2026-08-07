@@ -62,6 +62,13 @@
         player.querySelector("[data-video-mute-icon]"),
         video.muted || video.volume === 0 ? icons.mute : icons.volume,
       );
+
+      const toggleButton = player.querySelector("[data-video-toggle]");
+      if (toggleButton) {
+        const label = isPlaying ? "Поставить видео на паузу" : "Воспроизвести видео";
+        toggleButton.setAttribute("aria-label", label);
+        toggleButton.setAttribute("title", label);
+      }
     };
 
     player.querySelectorAll("[data-video-play], [data-video-toggle]").forEach((button) => {
@@ -100,8 +107,36 @@
       syncVideoState();
     });
 
+    const fullscreenButton = player.querySelector("[data-video-fullscreen]");
+    const updateFullscreenState = () => {
+      const isFullscreen = document.fullscreenElement === player;
+      player.classList.toggle("is-fullscreen", isFullscreen);
+      if (!fullscreenButton) return;
+      const label = isFullscreen ? "Выйти из полноэкранного режима" : "На весь экран";
+      fullscreenButton.setAttribute("aria-label", label);
+      fullscreenButton.setAttribute("title", label);
+    };
+
+    fullscreenButton?.addEventListener("click", async () => {
+      try {
+        if (document.fullscreenElement) {
+          await document.exitFullscreen();
+        } else if (player.requestFullscreen) {
+          await player.requestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen();
+        }
+      } catch {
+        // Fullscreen can be rejected by the browser or an embedded context.
+      }
+      updateFullscreenState();
+    });
+
+    document.addEventListener("fullscreenchange", updateFullscreenState);
+
     const volume = player.querySelector("[data-video-volume]");
     video.volume = volume ? Number(volume.value) : 0.8;
+    updateFullscreenState();
     syncVideoState();
   });
 
