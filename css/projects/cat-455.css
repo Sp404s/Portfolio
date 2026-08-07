@@ -8,7 +8,7 @@
 }
 
 .project-image--concept img {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .project-image--document {

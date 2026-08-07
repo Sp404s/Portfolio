@@ -89,4 +89,21 @@
   .project-page .project-slider__track {
     padding-left: 0;
   }
+
+  /* Keep mobile media inside its grid without exposing light cover backgrounds. */
+  html body.project-page .project-cover {
+    background: var(--page-bg);
+  }
+
+  html body.project-page .project-cover img,
+  html body.project-page .project-image img,
+  html body.project-page .project-slider__item img {
+    display: block;
+    max-width: 100%;
+  }
+
+  html body.project-page .project-cover img {
+    object-fit: cover;
+    object-position: center;
+  }
 }

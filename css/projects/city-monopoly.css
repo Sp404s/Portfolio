@@ -217,18 +217,27 @@
   }
 
   .city-video__controls {
-    grid-template-columns: auto auto auto minmax(0, 1fr) auto minmax(40px, 0.7fr) auto;
-    gap: 4px;
-    padding: 34px 10px 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    padding: 34px 8px 10px;
   }
 
   .city-video__control-button {
-    width: 26px;
-    height: 26px;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .city-video__progress {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .city-video__volume {
-    width: 100%;
+    flex: 0 1 44px;
+    width: 44px;
+    min-width: 28px;
   }
 
   .video-fullscreen-icon {
