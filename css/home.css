@@ -13,10 +13,6 @@
   display: none;
 }
 
-.home-mobile-contacts {
-  display: none;
-}
-
 html.open-projects .home-page {
   visibility: hidden;
 }

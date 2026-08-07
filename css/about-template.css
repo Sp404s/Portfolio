@@ -40,8 +40,8 @@
 
 @media (min-width: 901px) {
   .about-layout {
-    min-height: 100vh;
-    padding: 190px 100px 100px;
+    min-height: 0;
+    padding: 190px 100px 0;
   }
 
   .about-hero {
@@ -148,8 +148,8 @@
   }
 
   .about-layout {
-    min-height: 1432px;
-    padding: 86px 20px 80px !important;
+    min-height: 0;
+    padding: 86px 20px 0 !important;
   }
 
   .about-hero {

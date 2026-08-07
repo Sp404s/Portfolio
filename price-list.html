@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/adaptive.css">
   <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/price-list.css">
 </head>
 <body class="blog-page price-page">
   <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
@@ -30,26 +31,221 @@
       <a href="blog.html">НОВОСТИ</a>
       <a href="about.html">ОБО МНЕ</a>
       <a href="index.html?section=projects">РАБОТЫ</a>
-      <a href="about.html#contacts">КОНТАКТЫ</a>
+      <a href="price-list.html">УСЛУГИ</a>
     </nav>
     <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
       <span></span><span></span>
     </button>
   </header>
 
-  <main class="blog-placeholder" aria-labelledby="price-title">
-    <div class="blog-placeholder__grid">
-      <div class="blog-placeholder__dinosaur">
-        <img src="img/decor/динозаврик.svg" alt="">
+  <main class="price-page__main" aria-labelledby="price-title">
+    <section class="price-page__top" aria-label="Прайс и условия работы">
+      <section class="price-page__catalog" aria-labelledby="price-title">
+        <div class="price-page__catalog-heading">
+          <h1 id="price-title">Прайс</h1>
+        </div>
+        <div class="price-table-wrap">
+        <table class="price-table">
+          <colgroup>
+            <col class="price-table__service-col">
+            <col class="price-table__cost-col">
+            <col class="price-table__deposit-col">
+            <col class="price-table__details-col">
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Услуга</th>
+              <th scope="col">Стоимость</th>
+              <th scope="col" class="price-table__deposit-head">Предоплата</th>
+              <th scope="col">Что входит</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Логотип</th>
+              <td>от 5 000 ₽</td>
+              <td>1 000 ₽</td>
+              <td>1–2 концепции, подготовка финальных файлов</td>
+            </tr>
+            <tr>
+              <th scope="row">Мини-фирменный стиль</th>
+              <td>от 12 000 ₽</td>
+              <td>2 400 ₽</td>
+              <td>Логотип, палитра, шрифты, правила использования</td>
+            </tr>
+            <tr>
+              <th scope="row">Оформление соцсетей</th>
+              <td>от 4 000 ₽</td>
+              <td>800 ₽</td>
+              <td>Аватар, обложка, шаблон публикации</td>
+            </tr>
+            <tr>
+              <th scope="row">Баннер / Афиша</th>
+              <td>от 2 000 ₽</td>
+              <td>400 ₽</td>
+              <td>Дизайн одного макета</td>
+            </tr>
+            <tr>
+              <th scope="row">Визитка / Листовка</th>
+              <td>от 2 000 ₽</td>
+              <td>400 ₽</td>
+              <td>Макет, подготовленный к печати</td>
+            </tr>
+            <tr>
+              <th scope="row">Верстка презентации</th>
+              <td>от 500 ₽ / слайд</td>
+              <td>Без предоплаты*</td>
+              <td>Дизайн и оформление презентации</td>
+            </tr>
+            <tr>
+              <th scope="row">Верстка буклета / каталога</th>
+              <td>от 700 ₽ / стр.</td>
+              <td>20% от стоимости</td>
+              <td>Верстка и подготовка к печати</td>
+            </tr>
+            <tr>
+              <th scope="row">2D-иллюстрация</th>
+              <td>от 3 000 ₽</td>
+              <td>600 ₽</td>
+              <td>Иллюстрация по техническому заданию</td>
+            </tr>
+            <tr>
+              <th scope="row">Простая 3D-модель</th>
+              <td>от 4 000 ₽</td>
+              <td>800 ₽</td>
+              <td>Моделирование объекта</td>
+            </tr>
+            <tr>
+              <th scope="row">Предметная 3D-визуализация</th>
+              <td>от 5 000 ₽ / изображение</td>
+              <td>1 000 ₽</td>
+              <td>Фотореалистичная визуализация</td>
+            </tr>
+            <tr>
+              <th scope="row">Дополнительные правки</th>
+              <td>700 ₽ / час</td>
+              <td>—</td>
+              <td>Работы сверх согласованного объема</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section class="price-page__process" aria-labelledby="process-title">
+        <h2 id="process-title">Оказание услуг</h2>
+        <p class="price-page__lead">Работаю с задачами в 3D-графике, 2D-графике, фирменном стиле и айдентике. Каждый проект начинаю с обсуждения задачи и фиксирую условия до начала разработки.</p>
+        <ol class="price-steps">
+        <li class="price-step">
+          <span class="price-step__number">01</span>
+          <div>
+            <h3>Оставьте заявку</h3>
+            <p>Выберите интересующую услугу и заполните короткую форму. Опишите задачу, приложите материалы, если они есть, и оставьте удобный способ связи.</p>
+          </div>
+        </li>
+        <li class="price-step">
+          <span class="price-step__number">02</span>
+          <div>
+            <h3>Обсуждение проекта</h3>
+            <p>Я связываюсь с вами в течение рабочего дня. Мы обсуждаем задачу, уточняем детали, сроки, бюджет и разбираем все интересующие вас вопросы.</p>
+          </div>
+        </li>
+        <li class="price-step">
+          <span class="price-step__number">03</span>
+          <div>
+            <h3>Согласование условий</h3>
+            <p>После обсуждения вы получаете итоговую стоимость проекта, сроки выполнения, перечень работ, договор или условия оказания услуг и ссылку для внесения предоплаты.</p>
+          </div>
+        </li>
+        <li class="price-step">
+          <span class="price-step__number">04</span>
+          <div>
+            <h3>Предоплата</h3>
+            <p>После поступления предоплаты я начинаю работу над проектом.</p>
+          </div>
+        </li>
+        <li class="price-step">
+          <span class="price-step__number">05</span>
+          <div>
+            <h3>Разработка проекта</h3>
+            <p>Выполняю работу по согласованному техническому заданию, отправляю промежуточный результат и вношу предусмотренные правки.</p>
+          </div>
+        </li>
+        <li class="price-step">
+          <span class="price-step__number">06</span>
+          <div>
+            <h3>Финальное согласование</h3>
+            <p>После утверждения проекта оплачивается оставшаяся часть стоимости.</p>
+          </div>
+        </li>
+        <li class="price-step">
+          <span class="price-step__number">07</span>
+          <div>
+            <h3>Передача материалов</h3>
+            <p>Вы получаете готовый проект в согласованных форматах. При необходимости передаются исходные файлы.</p>
+          </div>
+        </li>
+        </ol>
+      </section>
+    </section>
+
+    <section class="price-page__request" aria-labelledby="request-title">
+      <div class="price-page__request-copy">
+        <h2 id="request-title">Оставить заявку</h2>
+        <p>Задайте вопрос, расскажите о задаче или просто проконсультируйтесь по проекту, я отвечу на все интересующие вопросы.</p>
       </div>
-      <div class="blog-placeholder__content">
-        <h1 id="price-title">Страница в разработке</h1>
-        <p>Здесь будет прайс лист. И возможность оставить заявку на заказ.</p>
+      <form class="price-form" action="#" method="post" data-order-form>
+        <label class="price-form__field">
+          <span>ФИО</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label class="price-form__field">
+          <span>Телефон</span>
+          <input type="tel" name="phone" placeholder="+7" autocomplete="tel" required>
+        </label>
+        <label class="price-form__field">
+          <span>Мессенджер</span>
+          <input type="text" name="messenger" placeholder="Telegram или WhatsApp">
+        </label>
+        <label class="price-form__field price-form__field--wide">
+          <span>Опишите задание или задайте вопрос</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="price-form__submit" type="submit">Оставить заявку</button>
+      </form>
+      <div class="price-composition" aria-hidden="true">
+        <img class="price-composition__circle" src="img/decor/Окружность.svg" alt="">
+        <img class="price-composition__phone" src="img/decor/Телефон.png" alt="">
       </div>
-    </div>
+    </section>
   </main>
 
   <script src="js/mobile-menu.js"></script>
   <script src="js/page-loader.js"></script>
+  <footer class="legal-footer" aria-label="Юридическая информация">
+    <div class="legal-footer__inner">
+      <section class="legal-footer__contacts" id="contacts">
+        <h2>КОНТАКТЫ</h2>
+        <div class="legal-footer__contacts-content">
+          <div class="legal-footer__contact-info">
+            <p>почта: <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a></p>
+            <p>ТГ: <a href="https://t.me/Alex_G8" target="_blank" rel="noopener noreferrer">@Alex_G8</a></p>
+            <p>ВК: <a href="https://vk.com/3funnydays" target="_blank" rel="noopener noreferrer">@3funnydays</a></p>
+          </div>
+          <img class="legal-footer__qr legal-footer__qr--vk" src="img/icons/VK.svg" alt="VK">
+          <img class="legal-footer__qr legal-footer__qr--tg" src="img/icons/TG.png" alt="Telegram">
+        </div>
+      </section>
+      <div class="legal-footer__meta">
+        <nav class="legal-footer__links" aria-label="Документы сайта">
+          <a href="privacy.html">Политика обработки персональных данных</a>
+          <a href="personal-data-consent.html">Согласие на обработку персональных данных</a>
+          <a href="cookies.html">Политика cookies</a>
+        </nav>
+        <p class="legal-footer__note">Реквизиты ИП будут добавлены после регистрации.</p>
+        <p class="legal-footer__copyright">© Alex_G 2026</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -149,6 +149,22 @@
     display: none;
   }
 
+  html body.home-page .header {
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  html body.home-page .header > .nav-static {
+    align-self: center !important;
+  }
+
+  html body.home-page .header > .nav-static > a:not(.logo) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
   html body.home-page .home-projects::before {
     position: absolute;
     top: 197px;
@@ -365,5 +381,25 @@ html body.home-page .home-project-card--keycap img {
 @media (max-width: 768px) {
   html body.home-page .home-project-card--keycap img {
     transform: scale(1.2) !important;
+  }
+}
+
+/* Desktop timeline: show the year once and keep all controls teal. */
+@media (min-width: 769px) {
+  html body.home-page .projects-timeline::before {
+    background: #0f9596 !important;
+  }
+
+  html body.home-page .projects-timeline__thumb {
+    border-color: #0f9596 !important;
+    color: transparent !important;
+  }
+
+  html body.home-page .projects-timeline__thumb::after {
+    color: #0f9596 !important;
+  }
+
+  html body.home-page .projects-timeline__year {
+    display: none !important;
   }
 }
