@@ -1,4 +1,4 @@
-const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "8847549155";
+const CHAT_ID = process.env.TELEGRAM_CHAT_ID || "95459466";
 
 function clean(value, maxLength) {
   return String(value || "")
