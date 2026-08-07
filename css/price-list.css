@@ -257,6 +257,12 @@
   height: 18px;
   flex: 0 0 auto;
   margin-top: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  appearance: auto;
+  accent-color: var(--accent);
 }
 
 .price-form__consent a {
