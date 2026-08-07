@@ -46,7 +46,16 @@ module.exports = async function handler(req, res) {
     });
 
     if (!telegramResponse.ok) {
-      return res.status(502).json({ ok: false, error: "Telegram не принял заявку" });
+      const telegramError = await telegramResponse.json().catch(() => null);
+      const description = telegramError?.description;
+      console.error("Telegram sendMessage failed", {
+        status: telegramResponse.status,
+        description
+      });
+      return res.status(502).json({
+        ok: false,
+        error: description || "Telegram не принял заявку"
+      });
     }
 
     return res.status(200).json({ ok: true });
