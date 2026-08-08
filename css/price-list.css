@@ -330,6 +330,15 @@
   border-color: var(--accent);
 }
 
+.price-form__phone input,
+.price-form__messenger-control > input {
+  width: auto;
+  padding: 13px 14px;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+}
+
 .price-form__submit {
   justify-self: stretch;
   min-height: 56px;
@@ -401,17 +410,28 @@
 .price-form__success-icon,
 .price-form__success-label {
   display: none;
+  opacity: 0;
+  transform: scale(.82) translateY(8px);
+  transition: opacity .55s ease .25s, transform .55s ease .25s;
 }
 
 .price-page__request-copy,
-.price-form {
-  transition: opacity .45s ease, transform .45s ease, min-height .45s ease;
+.price-form,
+.price-form > * {
+  transition: opacity .6s ease, transform .6s ease, max-height .7s ease, margin .7s ease, padding .7s ease;
+}
+
+.price-page__request-copy {
+  max-height: 260px;
+  overflow: hidden;
 }
 
 .price-page__request.is-submitted .price-page__request-copy {
+  max-height: 0;
+  margin: 0;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-16px);
+  transform: translateY(-30px);
 }
 
 .price-page__request.is-submitted .price-form {
@@ -419,19 +439,30 @@
   grid-row: 1 / span 2;
   min-height: 520px;
   margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0;
 }
 
 .price-page__request.is-submitted .price-form > :not(.price-form__submit) {
+  max-height: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transform: translateY(-24px);
 }
 
 .price-page__request.is-submitted .price-form__submit {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  inset: auto;
   z-index: 2;
   display: flex;
+  flex: 1 1 auto;
+  width: 100%;
   min-height: 0;
   flex-direction: column;
   align-items: center;
@@ -439,6 +470,7 @@
   gap: 16px;
   font-size: 26px;
   cursor: default;
+  transform: translateY(0);
 }
 
 .price-page__request.is-submitted .price-form__submit-label {
@@ -455,10 +487,25 @@
   border-radius: 50%;
   font-size: 36px;
   line-height: 1;
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
 .price-page__request.is-submitted .price-form__success-label {
   display: block;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.price-form__messenger-option input:checked + .price-form__messenger-icon,
+.price-form__messenger-option:focus-within .price-form__messenger-icon {
+  background: transparent;
+  color: var(--accent);
+}
+
+.price-form__messenger-option input:checked + .price-form__messenger-icon img,
+.price-form__messenger-option:focus-within .price-form__messenger-icon img {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(96%) saturate(2404%) hue-rotate(348deg) brightness(101%) contrast(102%);
 }
 
 .price-composition {

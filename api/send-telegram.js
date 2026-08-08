@@ -19,7 +19,7 @@ module.exports = async function handler(req, res) {
   const messenger = clean(body.messenger, 80);
   const message = clean(body.message, 3000);
 
-  if (body.website || !name || !/^\+7\d{10}$/.test(phone) || !message || body.consent !== true) {
+  if (body.website || !name || !/^\+7\d{10}$/.test(phone) || body.consent !== true) {
     return res.status(400).json({ ok: false, error: "Заполните обязательные поля" });
   }
 
@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
     `Мессенджер: ${messenger || "не указан"}`,
     "",
     "Задача:",
-    message
+    message || "не указана"
   ].join("\n");
 
   try {
