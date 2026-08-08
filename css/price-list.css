@@ -209,6 +209,105 @@
   grid-column: 1;
 }
 
+.price-form__phone,
+.price-form__messenger-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 52px;
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 10px;
+}
+
+.price-form__phone:focus-within,
+.price-form__messenger-control:focus-within {
+  border-color: var(--accent);
+}
+
+.price-form__phone-prefix {
+  flex: 0 0 auto;
+  padding-left: 14px;
+  color: var(--white);
+}
+
+.price-form__phone input,
+.price-form__messenger-control > input {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+  padding: 13px 14px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.price-form__messenger-control > input {
+  padding-right: 132px;
+}
+
+.price-form__messenger-options {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transform: translateY(-50%);
+}
+
+.price-form__messenger-option {
+  position: relative;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.price-form__messenger-option input {
+  position: absolute;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.price-form__messenger-icon {
+  display: flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .55);
+  border-radius: 50%;
+  color: var(--white);
+  font-family: var(--font-involve);
+  font-size: 8px;
+  line-height: 1;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+
+.price-form__messenger-icon img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+
+.price-form__messenger-icon--max {
+  font-size: 7px;
+  font-weight: 700;
+}
+
+.price-form__messenger-option input:checked + .price-form__messenger-icon,
+.price-form__messenger-option:focus-within .price-form__messenger-icon {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
 .price-form input,
 .price-form textarea {
   width: 100%;
@@ -246,7 +345,7 @@
 
 .price-form__consent {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   font-size: 14px;
   line-height: 1.35;
@@ -297,6 +396,69 @@
 .price-form__submit:disabled {
   cursor: wait;
   opacity: 0.7;
+}
+
+.price-form__success-icon,
+.price-form__success-label {
+  display: none;
+}
+
+.price-page__request-copy,
+.price-form {
+  transition: opacity .45s ease, transform .45s ease, min-height .45s ease;
+}
+
+.price-page__request.is-submitted .price-page__request-copy {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-16px);
+}
+
+.price-page__request.is-submitted .price-form {
+  position: relative;
+  grid-row: 1 / span 2;
+  min-height: 520px;
+  margin-top: 0;
+}
+
+.price-page__request.is-submitted .price-form > :not(.price-form__submit) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.price-page__request.is-submitted .price-form__submit {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 26px;
+  cursor: default;
+}
+
+.price-page__request.is-submitted .price-form__submit-label {
+  display: none;
+}
+
+.price-page__request.is-submitted .price-form__success-icon {
+  display: flex;
+  width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--white);
+  border-radius: 50%;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.price-page__request.is-submitted .price-form__success-label {
+  display: block;
 }
 
 .price-composition {
@@ -491,6 +653,14 @@
     font-size: 16px;
   }
 
+  .price-form__messenger-control > input {
+    padding-right: 126px;
+  }
+
+  .price-form__messenger-options {
+    right: 8px;
+  }
+
   .price-composition {
     min-height: 300px;
   }
@@ -507,5 +677,13 @@
     right: auto;
     width: min(58%, 210px);
     transform: translateX(-50%) rotate(-8deg);
+  }
+
+  .price-page__request.is-submitted .price-form {
+    grid-area: copy;
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 360px;
+    margin-top: 0;
   }
 }

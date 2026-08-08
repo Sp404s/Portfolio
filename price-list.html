@@ -197,16 +197,35 @@
       <form class="price-form" action="#" method="post" data-order-form>
         <label class="price-form__field">
           <span>ФИО</span>
-          <input type="text" name="name" autocomplete="name" required>
+          <input type="text" name="name" autocomplete="name" placeholder="Ваше имя" required>
         </label>
         <label class="price-form__field">
           <span>Телефон</span>
-          <input type="tel" name="phone" placeholder="+7" autocomplete="tel" required>
+          <span class="price-form__phone">
+            <span class="price-form__phone-prefix" aria-hidden="true">+7</span>
+            <input type="tel" name="phone" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="900 000-00-00" autocomplete="tel" data-phone-input required>
+          </span>
         </label>
-        <label class="price-form__field">
+        <div class="price-form__field">
           <span>Мессенджер</span>
-          <input type="text" name="messenger" placeholder="Telegram или WhatsApp">
-        </label>
+          <div class="price-form__messenger-control">
+            <input type="text" name="messenger" placeholder="Введите ник" autocomplete="off" data-messenger-input>
+            <div class="price-form__messenger-options" role="radiogroup" aria-label="Выберите мессенджер">
+              <label class="price-form__messenger-option">
+                <input type="radio" name="messenger_type" value="ВК">
+                <span class="price-form__messenger-icon"><img src="img/icons/VK.svg" alt="ВК"></span>
+              </label>
+              <label class="price-form__messenger-option">
+                <input type="radio" name="messenger_type" value="Telegram">
+                <span class="price-form__messenger-icon"><img src="img/icons/TG.svg" alt="Telegram"></span>
+              </label>
+              <label class="price-form__messenger-option">
+                <input type="radio" name="messenger_type" value="MAX">
+                <span class="price-form__messenger-icon price-form__messenger-icon--max" aria-label="MAX">MAX</span>
+              </label>
+            </div>
+          </div>
+        </div>
         <label class="price-form__field price-form__field--wide">
           <span>Опишите задание или задайте вопрос</span>
           <textarea name="message" rows="5" required></textarea>
@@ -217,7 +236,11 @@
         </label>
         <input class="price-form__honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="price-form__status" data-order-status role="status" aria-live="polite"></p>
-        <button class="price-form__submit" type="submit">Оставить заявку</button>
+        <button class="price-form__submit" type="submit">
+          <span class="price-form__submit-label">Оставить заявку</span>
+          <span class="price-form__success-icon" aria-hidden="true">✓</span>
+          <span class="price-form__success-label">Спасибо за заявку!</span>
+        </button>
       </form>
       <div class="price-composition" aria-hidden="true">
         <img class="price-composition__circle" src="img/decor/Окружность.svg" alt="">
