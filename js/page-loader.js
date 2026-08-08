@@ -6,8 +6,11 @@
 
   let isHidden = loader.classList.contains('is-hidden');
   let textTimer = 0;
+  let failSafeTimer = 0;
   let isNavigating = false;
   const navigationTransitionTime = 340;
+  const initialRevealDelay = 120;
+  const maximumLoaderTime = 1800;
 
   const animateLoaderText = () => {
     if (!loaderText) return;
@@ -48,7 +51,14 @@
 
     isHidden = true;
     window.clearTimeout(textTimer);
+    window.clearTimeout(failSafeTimer);
     loader.classList.add('is-hidden');
+  };
+
+  const revealPage = () => {
+    window.requestAnimationFrame(() => {
+      window.setTimeout(hideLoader, initialRevealDelay);
+    });
   };
 
   const isInternalNavigation = (link) => {
@@ -82,18 +92,19 @@
     }
   });
 
-  window.addEventListener('load', hideLoader, { once: true });
-
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
       showLoader();
-      window.requestAnimationFrame(hideLoader);
+      revealPage();
     }
   });
 
   showLoader();
+  failSafeTimer = window.setTimeout(hideLoader, maximumLoaderTime);
 
-  if (document.readyState === 'complete') {
-    window.requestAnimationFrame(hideLoader);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', revealPage, { once: true });
+  } else {
+    revealPage();
   }
 })();
