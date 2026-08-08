@@ -321,6 +321,22 @@
   resize: vertical;
 }
 
+.price-form input:-webkit-autofill,
+.price-form input:-webkit-autofill:hover,
+.price-form input:-webkit-autofill:focus,
+.price-form input:-webkit-autofill:active {
+  box-shadow: 0 0 0 1000px var(--page-bg) inset !important;
+  -webkit-text-fill-color: var(--accent) !important;
+  caret-color: var(--accent);
+  transition: background-color 9999s ease-out 0s;
+}
+
+.price-form input:autofill {
+  box-shadow: 0 0 0 1000px var(--page-bg) inset;
+  color: var(--accent);
+  caret-color: var(--accent);
+}
+
 .price-form textarea {
   min-height: 220px;
 }
