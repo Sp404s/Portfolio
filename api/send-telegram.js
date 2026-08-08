@@ -7,6 +7,64 @@ function clean(value, maxLength) {
     .slice(0, maxLength);
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function parseMessengerUrl(value, domains) {
+  try {
+    const url = new URL(value.trim());
+    const hostname = url.hostname.replace(/^www\./, "").toLowerCase();
+    if (!domains.includes(hostname) || !["http:", "https:"].includes(url.protocol)) return null;
+
+    url.protocol = "https:";
+    const handle = url.pathname.replace(/^\/+|\/+$/g, "").split("/").pop() || "";
+    return handle ? { handle, url: url.toString() } : null;
+  } catch {
+    return null;
+  }
+}
+
+function normalizeMessengerHandle(value) {
+  return value.trim().replace(/^@/, "");
+}
+
+function buildMessengerLink(type, value) {
+  if (!value) return null;
+
+  const normalizedType = type.toLowerCase();
+  let handle = "";
+  let url = "";
+
+  if (normalizedType === "telegram") {
+    const directLink = parseMessengerUrl(value, ["t.me", "telegram.me"]);
+    if (directLink) return directLink;
+    handle = normalizeMessengerHandle(value);
+    if (!/^[a-zA-Z0-9_]{5,32}$/.test(handle)) return null;
+    url = `https://t.me/${handle}`;
+  } else if (normalizedType === "вк") {
+    const directLink = parseMessengerUrl(value, ["vk.com"]);
+    if (directLink) return directLink;
+    handle = normalizeMessengerHandle(value);
+    if (!/^[a-zA-Z0-9_.-]+$/.test(handle)) return null;
+    url = `https://vk.com/${handle}`;
+  } else if (normalizedType === "max") {
+    const directLink = parseMessengerUrl(value, ["max.ru"]);
+    if (directLink) return directLink;
+    handle = normalizeMessengerHandle(value);
+    if (!/^[a-zA-Z0-9_.-]+$/.test(handle)) return null;
+    url = `https://max.ru/${handle}`;
+  } else {
+    return null;
+  }
+
+  return { handle, url };
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
@@ -17,6 +75,7 @@ module.exports = async function handler(req, res) {
   const name = clean(body.name, 120);
   const phone = clean(body.phone, 40);
   const messenger = clean(body.messenger, 80);
+  const messengerType = clean(body.messenger_type, 20);
   const message = clean(body.message, 3000);
 
   if (body.website || !name || !/^\+7\d{10}$/.test(phone) || body.consent !== true) {
@@ -27,22 +86,34 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ ok: false, error: "Telegram не настроен" });
   }
 
+  const messengerLink = buildMessengerLink(messengerType, messenger);
+  const messengerLabel = messengerType || "Мессенджер";
+  const messengerValue = messengerLink
+    ? `<a href="${escapeHtml(messengerLink.url)}">${escapeHtml(messengerLabel)}: @${escapeHtml(messengerLink.handle)}</a>`
+    : escapeHtml([messengerLabel, messenger].filter(Boolean).join(": ") || "не указан");
+
   const text = [
-    "Новая заявка с сайта",
+    "<b>Новая заявка с сайта</b>",
     "",
-    `ФИО: ${name}`,
-    `Телефон: ${phone}`,
-    `Мессенджер: ${messenger || "не указан"}`,
+    "<b>Клиент</b>",
+    `Имя: ${escapeHtml(name)}`,
+    `Телефон: <a href="tel:${escapeHtml(phone)}">${escapeHtml(phone)}</a>`,
+    `Связаться: ${messengerValue}`,
     "",
-    "Задача:",
-    message || "не указана"
+    "<b>Задача</b>",
+    escapeHtml(message || "не указана")
   ].join("\n");
 
   try {
     const telegramResponse = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: CHAT_ID, text })
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text,
+        parse_mode: "HTML",
+        link_preview_options: { is_disabled: true }
+      })
     });
 
     if (!telegramResponse.ok) {

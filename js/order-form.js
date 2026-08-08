@@ -197,7 +197,8 @@
 
     const messengerType = form.querySelector("input[name=messenger_type]:checked")?.value || "";
     const messengerName = String(data.messenger || "").trim();
-    data.messenger = [messengerType, messengerName].filter(Boolean).join(": ");
+    data.messenger = messengerName;
+    data.messenger_type = messengerType;
 
     try {
       const response = await fetch("/api/send-telegram", {
