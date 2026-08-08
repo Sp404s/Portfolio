@@ -1,0 +1,48 @@
+.home-page .hero__content--redesign .hero-animated-line {
+  display: block;
+}
+
+.home-page .hero__content--redesign .hero-word-clip {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.home-page .hero__content--redesign .hero-word,
+.home-page .hero__content--redesign .hero-char {
+  display: inline-block;
+}
+
+.home-page .hero__content--redesign .hero-word {
+  will-change: transform;
+}
+
+.home-page .hero__content--redesign .hero-char {
+  will-change: transform;
+}
+
+.hero-animation-pending .home-page .hero__content--redesign > .hero__label,
+.hero-animation-pending .home-page .hero__content--redesign > h1,
+.hero-animation-pending .home-page .hero__content--redesign > .hero__text,
+.hero-animation-pending .home-page .hero__content--redesign > .hero__action {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero-animation-running .home-page .hero__content--redesign > .hero__label,
+.hero-animation-running .home-page .hero__content--redesign > h1,
+.hero-animation-running .home-page .hero__content--redesign > .hero__text,
+.hero-animation-running .home-page .hero__content--redesign > .hero__action,
+.hero-animation-complete .home-page .hero__content--redesign > .hero__label,
+.hero-animation-complete .home-page .hero__content--redesign > h1,
+.hero-animation-complete .home-page .hero__content--redesign > .hero__text,
+.hero-animation-complete .home-page .hero__content--redesign > .hero__action {
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .hero__content--redesign .hero-word,
+  .home-page .hero__content--redesign .hero-char {
+    transform: none !important;
+  }
+}

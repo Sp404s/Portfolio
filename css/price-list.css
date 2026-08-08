@@ -243,7 +243,7 @@
 }
 
 .price-form__messenger-control > input {
-  padding-right: 132px;
+  padding-right: 162px;
 }
 
 .price-form__messenger-options {
@@ -252,15 +252,15 @@
   right: 10px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   transform: translateY(-50%);
 }
 
 .price-form__messenger-option {
   position: relative;
   display: flex;
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -278,22 +278,22 @@
 
 .price-form__messenger-icon {
   display: flex;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, .55);
-  border-radius: 50%;
+  border: 0;
+  border-radius: 0;
   color: var(--white);
   font-family: var(--font-involve);
   font-size: 8px;
   line-height: 1;
-  transition: border-color .2s ease, background-color .2s ease;
+  transition: transform .25s ease, color .25s ease;
 }
 
 .price-form__messenger-icon img {
-  width: 17px;
-  height: 17px;
+  width: 30px;
+  height: 30px;
   object-fit: contain;
 }
 
@@ -304,8 +304,8 @@
 
 .price-form__messenger-option input:checked + .price-form__messenger-icon,
 .price-form__messenger-option:focus-within .price-form__messenger-icon {
-  border-color: var(--accent);
-  background: var(--accent);
+  background: transparent;
+  transform: scale(1.12);
 }
 
 .price-form input,
@@ -407,94 +407,104 @@
   opacity: 0.7;
 }
 
-.price-form__success-icon,
-.price-form__success-label {
-  display: none;
-  opacity: 0;
-  transform: scale(.82) translateY(8px);
-  transition: opacity .55s ease .25s, transform .55s ease .25s;
-}
-
 .price-page__request-copy,
-.price-form,
-.price-form > * {
-  transition: opacity .6s ease, transform .6s ease, max-height .7s ease, margin .7s ease, padding .7s ease;
+.price-form {
+  transition: opacity .65s ease, transform .75s cubic-bezier(.22, .8, .24, 1);
 }
 
-.price-page__request-copy {
-  max-height: 260px;
-  overflow: hidden;
-}
-
-.price-page__request.is-submitted .price-page__request-copy {
-  max-height: 0;
-  margin: 0;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-30px);
-}
-
-.price-page__request.is-submitted .price-form {
-  position: relative;
-  grid-row: 1 / span 2;
-  min-height: 520px;
-  margin-top: 0;
+.price-form-success {
+  position: absolute;
+  top: var(--success-top, 0px);
+  left: var(--success-left, 0px);
+  width: var(--success-width, 100%);
+  height: var(--success-height, 60px);
+  z-index: 5;
   display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 0;
-}
-
-.price-page__request.is-submitted .price-form > :not(.price-form__submit) {
-  max-height: 0;
-  margin: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  gap: 18px;
+  padding: 0 32px;
+  overflow: hidden;
+  border-radius: 10px;
+  color: var(--white);
+  background: var(--accent);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(-24px);
+  transform: none;
+  transition: none;
 }
 
-.price-page__request.is-submitted .price-form__submit {
-  position: relative;
-  inset: auto;
-  z-index: 2;
+.price-form-success__button-label {
+  position: absolute;
+  inset: 0;
   display: flex;
-  flex: 1 1 auto;
-  width: 100%;
-  min-height: 0;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  font-size: 26px;
-  cursor: default;
-  transform: translateY(0);
+  font-family: var(--font-involve);
+  font-size: 24px;
+  line-height: 1;
+  color: var(--white);
+  opacity: 1;
 }
 
-.price-page__request.is-submitted .price-form__submit-label {
-  display: none;
-}
-
-.price-page__request.is-submitted .price-form__success-icon {
+.price-form-success__icon {
   display: flex;
-  width: 58px;
-  height: 58px;
+  width: 72px;
+  height: 72px;
   align-items: center;
   justify-content: center;
   border: 3px solid var(--white);
   border-radius: 50%;
-  font-size: 36px;
+  font-size: 42px;
   line-height: 1;
-  opacity: 1;
-  transform: scale(1) translateY(0);
+  opacity: 0;
+  transform: scale(.55) rotate(-12deg);
+  transition: none;
 }
 
-.price-page__request.is-submitted .price-form__success-label {
-  display: block;
+.price-form-success__label {
+  font-family: var(--font-involve);
+  font-size: 32px;
+  line-height: 1.1;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: none;
+}
+
+.price-form-success__text {
+  max-width: 390px;
+  margin: 0;
+  font-family: var(--font-involve);
+  font-size: 18px;
+  line-height: 1.35;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: none;
+}
+
+.price-page__request.is-submitted .price-page__request-copy,
+.price-page__request.is-submitted .price-form {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-18px);
+}
+
+.price-page__request.is-success-active .price-form-success {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  visibility: visible;
+  pointer-events: none;
+}
+
+.price-page__request.is-success-content .price-form-success__icon,
+.price-page__request.is-success-content .price-form-success__label,
+.price-page__request.is-success-content .price-form-success__text {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(0);
 }
 
 .price-form__messenger-option input:checked + .price-form__messenger-icon,
@@ -642,6 +652,15 @@
     grid-area: form;
   }
 
+  .price-form-success {
+    padding: 0 24px;
+    border-radius: 10px;
+  }
+
+  .price-form-success__label {
+    font-size: 28px;
+  }
+
   .price-composition {
     grid-area: art;
   }
@@ -701,7 +720,7 @@
   }
 
   .price-form__messenger-control > input {
-    padding-right: 126px;
+    padding-right: 158px;
   }
 
   .price-form__messenger-options {
@@ -726,11 +745,4 @@
     transform: translateX(-50%) rotate(-8deg);
   }
 
-  .price-page__request.is-submitted .price-form {
-    grid-area: copy;
-    grid-column: 1 / -1;
-    grid-row: auto;
-    min-height: 360px;
-    margin-top: 0;
-  }
 }
