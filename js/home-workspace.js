@@ -3,7 +3,7 @@
   const horizontal = document.querySelector('[data-home-horizontal]');
   const track = document.querySelector('[data-home-track]');
   const projects = document.querySelector('#projects');
-  const cards = projects ? Array.from(projects.querySelectorAll('.home-project-card')) : [];
+  const cards = projects ? Array.from(projects.querySelectorAll('.home-project-card:not(.portfolio-banner)')) : [];
   const projectTitle = document.querySelector('.home-projects__title');
   const timeline = document.querySelector('[data-home-timeline]');
   const timelineThumb = document.querySelector('[data-timeline-thumb]');

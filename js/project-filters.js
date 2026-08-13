@@ -5,7 +5,7 @@
   if (!filters || !projects) return;
 
   const buttons = Array.from(filters.querySelectorAll('[data-project-filter]'));
-  const cards = Array.from(projects.querySelectorAll('.home-project-card'));
+  const cards = Array.from(projects.querySelectorAll('.home-project-card:not(.portfolio-banner)'));
   const hero = document.querySelector('.hero');
   const heroAction = document.querySelector('.hero__content--redesign .hero__action');
   const projectsTitle = projects.querySelector('.home-projects__title');
