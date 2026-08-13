@@ -94,12 +94,12 @@
     justify-self: stretch;
     flex: 0 0 auto !important;
     box-sizing: border-box;
-    width: calc(100vw - 32px) !important;
-    inline-size: calc(100vw - 32px) !important;
+    width: 100vw !important;
+    inline-size: 100vw !important;
     min-width: 0;
-    max-width: calc(100vw - 32px) !important;
-    margin: -24px 0 24px;
-    padding: 3px 16px 5px 0;
+    max-width: 100vw !important;
+    margin: -24px 0 24px -20px;
+    padding: 3px 20px 5px;
     gap: 8px;
     overflow-x: auto;
     overflow-y: hidden;
