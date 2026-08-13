@@ -60,3 +60,27 @@ document.addEventListener('dragstart', (event) => {
   updateContactLinks();
   window.addEventListener('resize', updateContactLinks);
 })();
+// Keep the legal identity consistent in every repeated site footer.
+document.querySelectorAll('.legal-footer__note').forEach((note) => {
+  note.innerHTML = 'Гусев Александр Владимирович<br>Самозанятый, плательщик НПД<br>ИНН 470520940158 · Санкт-Петербург<br><a href="mailto:0Alex0G0@gmail.com">0Alex0G0@gmail.com</a> · <a href="tel:+79818081622">+7 981 808-16-22</a>';
+});
+
+document.querySelectorAll('.legal-footer__contact-info').forEach((contacts) => {
+  const emailLine = contacts.querySelector('p');
+  if (emailLine) {
+    emailLine.innerHTML = 'почта: <a href="mailto:0Alex0G0@gmail.com">0Alex0G0@gmail.com</a>';
+  }
+  if (!contacts.querySelector('a[href^="tel:"]')) {
+    const phoneLine = document.createElement('p');
+    phoneLine.innerHTML = 'тел.: <a href="tel:+79818081622">+7 981 808-16-22</a>';
+    emailLine?.after(phoneLine);
+  }
+});
+
+document.querySelectorAll('.legal-footer__links').forEach((links) => {
+  if (links.querySelector('a[href="offer.html"]')) return;
+  const terms = document.createElement('a');
+  terms.href = 'offer.html';
+  terms.textContent = 'Условия оказания услуг';
+  links.append(terms);
+});

@@ -575,3 +575,62 @@ html body.home-page .portfolio-banner__actions a:focus-visible {
     font-size: 24px;
   }
 }
+/* Final legal/footer layout: compact, single-line labels on every viewport. */
+.legal-footer,
+.legal-footer * {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+.legal-footer ::selection {
+  color: #ffffff;
+  background: var(--teal, #0f9596);
+}
+
+.legal-footer ::-moz-selection {
+  color: #ffffff;
+  background: var(--teal, #0f9596);
+}
+
+.legal-footer__contact-info p,
+.legal-footer__contact-info a,
+.legal-footer__links a {
+  white-space: nowrap !important;
+}
+
+.legal-footer__links a {
+  text-decoration: none !important;
+  text-underline-offset: 0 !important;
+  transition: color 180ms ease !important;
+}
+
+.legal-footer__links a:hover,
+.legal-footer__links a:focus-visible {
+  color: var(--accent, #f2542d) !important;
+}
+
+.legal-page__content {
+  margin-top: 140px !important;
+}
+
+@media (max-width: 900px) {
+  .legal-footer__contact-info p {
+    font-size: clamp(15px, 4.25vw, 18px) !important;
+  }
+
+  .legal-footer__links a {
+    width: max-content;
+    max-width: 100%;
+    font-size: clamp(11px, 3.05vw, 15px) !important;
+    line-height: 1.25 !important;
+  }
+
+  .legal-page__content {
+    margin-top: 86px !important;
+    padding-top: 20px !important;
+  }
+
+  .legal-page__content h1 {
+    margin-bottom: 24px !important;
+  }
+}

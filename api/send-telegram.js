@@ -101,7 +101,9 @@ module.exports = async function handler(req, res) {
     `Связаться: ${messengerValue}`,
     "",
     "<b>Задача</b>",
-    escapeHtml(message || "не указана")
+    escapeHtml(message || "не указана"),
+    "",
+    `<i>Удалить заявку и содержащиеся в ней персональные данные не позднее ${new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString("ru-RU", { timeZone: "Europe/Moscow" })}.</i>`
   ].join("\n");
 
   try {
