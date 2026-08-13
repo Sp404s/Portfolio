@@ -231,6 +231,16 @@
   display: none;
 }
 
+/* The banner is intentionally an empty project-sized block. */
+.home-page .portfolio-banner {
+  padding: 0 !important;
+  background: #242323 !important;
+}
+
+.home-page .portfolio-banner > * {
+  display: none !important;
+}
+
 /* Download banner at the end of the portfolio cards. */
 .home-page .portfolio-banner {
   position: relative;
