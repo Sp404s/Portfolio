@@ -68,9 +68,17 @@
     });
   };
 
+  let lastViewportWidth = window.innerWidth;
+
+  const updateGapAfterWidthChange = () => {
+    if (window.innerWidth === lastViewportWidth) return;
+    lastViewportWidth = window.innerWidth;
+    setMobileProjectsGap();
+  };
+
   setMobileProjectsGap();
   window.addEventListener('load', setMobileProjectsGap, { once: true });
-  window.addEventListener('resize', setMobileProjectsGap);
+  window.addEventListener('resize', updateGapAfterWidthChange);
   window.setTimeout(setMobileProjectsGap, 1200);
 
   if (document.fonts?.ready) {
