@@ -241,7 +241,6 @@
   box-sizing: border-box;
   padding: clamp(20px, 2.2vw, 30px);
   overflow: hidden;
-  border-radius: 10px;
   background: #242323 !important;
   opacity: 1 !important;
   transform: none !important;
@@ -318,23 +317,12 @@
   outline-offset: 2px;
 }
 
-@media (min-width: 1920px) {
-  .home-page .portfolio-banner {
-    flex: 0 0 512px;
-    width: 512px;
-    height: 650px;
-  }
-}
-
 @media (max-width: 768px) {
   html body.home-page .portfolio-banner {
     grid-column: 1 / 5;
     display: flex !important;
     width: auto !important;
-    height: 360px;
-    min-height: 360px;
     padding: 20px;
-    border-radius: 10px;
     overflow: hidden !important;
     background: #242323 !important;
     opacity: 1 !important;
