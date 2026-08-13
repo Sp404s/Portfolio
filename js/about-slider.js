@@ -1,4 +1,9 @@
 (() => {
+  document.querySelectorAll('img').forEach((image) => {
+    image.decoding = 'async';
+    if (!image.closest('.about-hero, .site-loader')) image.loading = 'lazy';
+  });
+
   const grid = document.querySelector('.software-grid');
   if (!grid || grid.dataset.sliderReady === 'true') return;
 
