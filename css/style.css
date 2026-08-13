@@ -103,18 +103,16 @@ body {
   pointer-events: auto;
   isolation: isolate;
   overflow: hidden;
-  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 700ms;
+  will-change: opacity;
 }
 
 .site-loader.is-hidden {
   display: none;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
 }
 
-.site-loader:not(.is-hidden) {
-  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s;
+.site-loader.is-leaving {
+  pointer-events: none;
+  animation: site-loader-background-out 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
 }
 
 .site-loader img {
@@ -124,7 +122,8 @@ body {
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 150px);
   object-fit: contain;
-  animation: site-loader-spin 900ms linear infinite;
+  will-change: transform;
+  animation: site-loader-spin 900ms linear infinite !important;
 }
 
 .site-loader p {
@@ -135,11 +134,53 @@ body {
   font-size: 20px;
   line-height: 1;
   text-align: center;
+  will-change: transform, opacity;
+}
+
+.site-loader.is-leaving img {
+  animation: site-loader-disc-out 950ms cubic-bezier(0.45, 0, 0.55, 1) forwards !important;
+}
+
+.site-loader.is-leaving p {
+  animation: site-loader-text-out 900ms cubic-bezier(0.45, 0, 0.55, 1) forwards !important;
 }
 
 @keyframes site-loader-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes site-loader-disc-out {
+  from { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
+  to { opacity: 0; transform: translate3d(0, 115vh, 0) rotate(240deg); }
+}
+
+@keyframes site-loader-text-out {
+  from { opacity: 1; transform: translate3d(0, 0, 0); }
+  to { opacity: 0; transform: translate3d(0, 115vh, 0); }
+}
+
+@keyframes site-loader-background-out {
+  0%, 18% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@media (max-width: 600px) {
+  .site-loader img {
+    width: min(68vw, 280px);
+    height: min(68vw, 280px);
+    max-height: calc(100dvh - 170px);
+  }
+
+  .site-loader p {
+    margin-top: 14px;
+    font-size: 18px;
+  }
+
+  .site-loader.is-leaving img,
+  .site-loader.is-leaving p {
+    animation-duration: 950ms !important;
   }
 }
 
@@ -701,14 +742,6 @@ html body::before {
   .price-step p {
     font-size: var(--notebook-small-size) !important;
   }
-}
-
-.site-loader {
-  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 700ms !important;
-}
-
-.site-loader img {
-  animation: site-loader-spin 900ms linear infinite !important;
 }
 
 @media (max-width: 900px) {

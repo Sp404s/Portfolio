@@ -4,11 +4,12 @@
 
   if (!loader) return;
 
-  let isHidden = loader.classList.contains('is-hidden');
+  let isHidden = false;
   let textTimer = 0;
-  let failSafeTimer = 0;
-  const initialRevealDelay = 120;
-  const maximumLoaderTime = 1200;
+  const startedAt = performance.now();
+  const minimumVisibleTime = 1500;
+  const maximumWaitingTime = 6000;
+  const exitDuration = 1100;
 
   const animateLoaderText = () => {
     if (!loaderText) return;
@@ -33,15 +34,8 @@
       }, 650);
     };
 
-    window.clearTimeout(textTimer);
     loaderText.textContent = '';
     step();
-  };
-
-  const showLoader = () => {
-    isHidden = false;
-    loader.classList.remove('is-hidden');
-    animateLoaderText();
   };
 
   const hideLoader = () => {
@@ -49,26 +43,39 @@
 
     isHidden = true;
     window.clearTimeout(textTimer);
-    window.clearTimeout(failSafeTimer);
-    loader.classList.add('is-hidden');
+    loader.classList.add('is-leaving');
+
+    window.setTimeout(() => {
+      loader.classList.add('is-hidden');
+      loader.classList.remove('is-leaving');
+      loader.setAttribute('aria-hidden', 'true');
+    }, exitDuration);
   };
 
-  const revealPage = () => {
-    window.requestAnimationFrame(() => {
-      window.setTimeout(hideLoader, initialRevealDelay);
-    });
-  };
-
-  window.addEventListener('pageshow', () => {
-    hideLoader();
+  const waitForWindowLoad = new Promise((resolve) => {
+    if (document.readyState === 'complete') {
+      resolve();
+      return;
+    }
+    window.addEventListener('load', resolve, { once: true });
   });
 
-  showLoader();
-  failSafeTimer = window.setTimeout(hideLoader, maximumLoaderTime);
+  const waitForFonts = document.fonts?.ready?.catch(() => undefined) || Promise.resolve();
+  const waitForPage = Promise.all([waitForWindowLoad, waitForFonts]);
+  const failSafe = new Promise((resolve) => window.setTimeout(resolve, maximumWaitingTime));
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', revealPage, { once: true });
-  } else {
-    revealPage();
-  }
+  const revealPage = async () => {
+    await Promise.race([waitForPage, failSafe]);
+    const remainingTime = Math.max(0, minimumVisibleTime - (performance.now() - startedAt));
+    window.setTimeout(() => window.requestAnimationFrame(hideLoader), remainingTime);
+  };
+
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) hideLoader();
+  });
+
+  loader.classList.remove('is-hidden', 'is-leaving');
+  loader.removeAttribute('aria-hidden');
+  animateLoaderText();
+  revealPage();
 })();
