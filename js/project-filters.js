@@ -20,6 +20,33 @@
     card.dataset.projectCategory = category ? normalize(category.textContent) : '';
   });
 
+  const applyProjectFilter = (selectedButton) => {
+    const selectedCategory = normalize(selectedButton.dataset.projectFilter);
+
+    buttons.forEach((button) => {
+      const isActive = button === selectedButton;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+
+    cards.forEach((card) => {
+      card.hidden = selectedCategory !== 'all'
+        && card.dataset.projectCategory !== selectedCategory;
+    });
+
+    updateSingleProjectTimeline();
+
+    const targetLeft = selectedButton.offsetLeft
+      - ((filters.clientWidth - selectedButton.offsetWidth) / 2);
+    filters.scrollTo({ left: targetLeft, behavior: 'smooth' });
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      applyProjectFilter(event.currentTarget);
+    });
+  });
+
   const setMobileProjectsGap = () => {
     if (!hero || !heroAction || !projectsTitle) return;
 
@@ -54,7 +81,7 @@
     document.fonts.ready.then(setMobileProjectsGap);
   }
 
-  const updateSingleProjectTimeline = () => {
+  function updateSingleProjectTimeline() {
     if (!timeline || !window.matchMedia('(max-width: 768px)').matches) {
       projects.classList.remove('has-single-project');
       return;
@@ -75,7 +102,7 @@
       timelineThumb.dataset.year = year;
       timelineYear.textContent = year;
     });
-  };
+  }
 
   updateSingleProjectTimeline();
   window.addEventListener('resize', updateSingleProjectTimeline);
@@ -88,31 +115,4 @@
     event.preventDefault();
   }, { passive: false });
 
-  filters.addEventListener('click', (event) => {
-    const selectedButton = event.target.closest('[data-project-filter]');
-    if (!selectedButton) return;
-
-    const selectedCategory = normalize(selectedButton.dataset.projectFilter);
-
-    buttons.forEach((button) => {
-      const isActive = button === selectedButton;
-      button.classList.toggle('is-active', isActive);
-      button.setAttribute('aria-pressed', String(isActive));
-    });
-
-    cards.forEach((card) => {
-      card.hidden = selectedCategory !== 'all'
-        && card.dataset.projectCategory !== selectedCategory;
-    });
-
-    updateSingleProjectTimeline();
-
-    const targetLeft = selectedButton.offsetLeft
-      - ((filters.clientWidth - selectedButton.offsetWidth) / 2);
-    if (typeof filters.scrollTo === 'function') {
-      filters.scrollTo({ left: targetLeft, behavior: 'smooth' });
-    } else {
-      filters.scrollLeft = targetLeft;
-    }
-  });
 })();
