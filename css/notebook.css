@@ -62,6 +62,16 @@
 
 /* Mobile: space between the hero screen and the projects section. */
 @media (max-width: 768px) {
+  html body.home-page::before {
+    position: absolute !important;
+    inset: 0 0 auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+
   html body.home-page .hero__content--redesign {
     pointer-events: none !important;
   }
