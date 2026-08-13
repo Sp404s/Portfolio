@@ -1,0 +1,209 @@
+/* Shared laptop scale. Keep this stylesheet last on every page. */
+@media (min-width: 901px) and (max-width: 1919px) {
+  :root {
+    --header-height: 68px;
+    --side-padding: clamp(48px, 5vw, 68px);
+    --notebook-page-title: clamp(52px, 4.4vw, 68px);
+    --notebook-section-title: clamp(38px, 3.2vw, 52px);
+    --notebook-body-size: clamp(16px, 1.15vw, 18px);
+    --notebook-small-size: clamp(14px, 1vw, 16px);
+  }
+
+  html body .header {
+    height: var(--header-height) !important;
+    min-height: var(--header-height) !important;
+  }
+
+  html body .header .nav-static {
+    height: 30px !important;
+    font-size: clamp(15px, 1.45vw, 20px) !important;
+  }
+
+  html body .header .nav-static > a:not(.logo) {
+    height: 30px !important;
+  }
+
+  .about-hero h1,
+  .price-page__catalog-heading h1,
+  .legal-page__content h1,
+  .new-project-page h1 {
+    font-size: var(--notebook-page-title) !important;
+    line-height: 1 !important;
+  }
+
+  .about-section h2,
+  .price-page__process h2,
+  .price-page__request-copy h2,
+  .project-copy h1,
+  .project-copy h2,
+  .new-project-page h2,
+  .legal-page__content h2 {
+    font-size: var(--notebook-section-title) !important;
+    line-height: 1.08 !important;
+  }
+
+  .about-hero__lead,
+  .about-hero__secondary,
+  .price-page__lead,
+  .price-page__request-copy > p:last-child,
+  .project-copy p,
+  .new-project-page p,
+  .legal-page__content p,
+  .legal-page__content li,
+  .blog-placeholder p {
+    font-size: var(--notebook-body-size) !important;
+    line-height: 1.4 !important;
+  }
+
+  .price-step p {
+    font-size: var(--notebook-small-size) !important;
+  }
+}
+
+/* Mobile: space between the hero screen and the projects section. */
+@media (max-width: 768px) {
+  html body.home-page .home-projects {
+    margin-top: 0 !important;
+  }
+
+  .home-page .project-filters {
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    position: relative;
+    z-index: 10;
+    grid-column: 1 / -1 !important;
+    align-self: stretch;
+    justify-self: stretch;
+    flex: 0 0 auto !important;
+    box-sizing: border-box;
+    width: calc(100vw - 32px) !important;
+    inline-size: calc(100vw - 32px) !important;
+    min-width: 0;
+    max-width: calc(100vw - 32px) !important;
+    margin: -24px 0 24px;
+    padding: 0 0 2px;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    pointer-events: auto !important;
+    scrollbar-width: none;
+    scroll-snap-type: none;
+  }
+
+  .home-page .project-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-page .project-filter {
+    flex: 0 0 auto !important;
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 7px 18px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font: inherit;
+    font-size: clamp(16px, 4.8vw, 20px);
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-x;
+    pointer-events: auto !important;
+  }
+
+  .home-page .project-filter.is-active {
+    background: #fff;
+    color: #181818;
+  }
+
+  .home-page .project-filters.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+  }
+
+  .home-page .home-project-card[hidden] {
+    display: none !important;
+  }
+
+  html body.home-page .home-projects.has-single-project .projects-timeline {
+    position: absolute !important;
+    right: 16px !important;
+    bottom: auto !important;
+    left: auto !important;
+    display: block !important;
+    width: 26px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  html body.home-page .home-projects.has-single-project .projects-timeline::before {
+    content: "" !important;
+    top: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: 50% !important;
+    display: block !important;
+    width: 4px !important;
+    height: 100% !important;
+    background: #0f9596 !important;
+    opacity: 1 !important;
+    transform: translateX(-50%) !important;
+  }
+
+  html body.home-page .home-projects.has-single-project .projects-timeline__thumb {
+    top: 0 !important;
+    left: 50% !important;
+    display: block !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  html body.home-page .home-projects.has-single-project .projects-timeline__year {
+    top: 0 !important;
+    right: calc(50% + 18px) !important;
+    left: auto !important;
+    display: block !important;
+    transform: translateY(-50%) !important;
+  }
+
+  html body.home-page .projects-timeline__thumb,
+  html body.home-page .projects-timeline__year {
+    transition: top 280ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  html body.home-page .projects-timeline {
+    position: absolute !important;
+    right: 20px !important;
+    left: auto !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    justify-self: auto !important;
+    width: 26px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body.home-page .projects-timeline__thumb {
+    transform: translate(-50%, -50%) !important;
+  }
+
+  html body.home-page .projects-timeline__year {
+    transform: translateY(-50%) !important;
+  }
+
+  html body.home-page .projects-timeline::before {
+    top: 0 !important;
+    height: var(--mobile-timeline-line-height, 100%) !important;
+  }
+}
+
+.project-filters {
+  display: none;
+}

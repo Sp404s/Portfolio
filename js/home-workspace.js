@@ -17,31 +17,32 @@
 
     const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
-    const syncMobileTimelineHeight = () => {
-      const projectRect = projects.getBoundingClientRect();
-      const lastCardRect = cards[cards.length - 1].getBoundingClientRect();
-      const timelineTop = 163;
-      const lastCardCenter = lastCardRect.top + (lastCardRect.height / 2);
-      const lineEnd = lastCardCenter - projectRect.top - timelineTop;
-      const thumbRadius = timelineThumb.offsetHeight / 2;
-      const targetHeight = Math.max(
-        0,
-        lineEnd + thumbRadius,
-      );
+    const getVisibleCards = () => cards.filter((card) => !card.hidden);
 
+    const syncMobileTimelineHeight = () => {
+      const visibleCards = getVisibleCards();
+      if (!visibleCards.length) return;
+      const projectRect = projects.getBoundingClientRect();
+      const firstCardRect = visibleCards[0].getBoundingClientRect();
+      const lastCardRect = visibleCards[visibleCards.length - 1].getBoundingClientRect();
+      const timelineTop = firstCardRect.top - projectRect.top;
+      const targetHeight = Math.max(0, lastCardRect.bottom - firstCardRect.top);
+
+      timeline.style.setProperty('top', `${timelineTop}px`, 'important');
       timeline.style.setProperty('bottom', 'auto', 'important');
       timeline.style.setProperty('height', `${targetHeight}px`, 'important');
       timeline.style.setProperty(
         '--mobile-timeline-line-height',
-        `${Math.max(0, lineEnd - 11)}px`,
+        `${targetHeight}px`,
       );
     };
 
     const getCardPageTop = (card) => card.getBoundingClientRect().top + window.scrollY;
 
     const getScrollRange = () => {
-      const firstTop = getCardPageTop(cards[0]);
-      const lastTop = getCardPageTop(cards[cards.length - 1]);
+      const visibleCards = getVisibleCards();
+      const firstTop = getCardPageTop(visibleCards[0]);
+      const lastTop = getCardPageTop(visibleCards[visibleCards.length - 1]);
       const anchor = 120;
 
       return {
@@ -52,21 +53,24 @@
 
     const updateTimeline = () => {
       frame = 0;
+      const visibleCards = getVisibleCards();
+      if (!visibleCards.length) return;
       const range = getScrollRange();
       const progress = range.end === range.start
         ? 0
         : clamp((window.scrollY - range.start) / (range.end - range.start), 0, 1);
       const timelineHeight = timeline.clientHeight;
-      const thumbTop = progress * Math.max(0, timelineHeight - timelineThumb.offsetHeight);
-      const index = Math.min(cards.length - 1, Math.round(progress * (cards.length - 1)));
+      const thumbTop = progress * timelineHeight;
+      const index = Math.min(visibleCards.length - 1, Math.round(progress * (visibleCards.length - 1)));
 
       timelineThumb.style.top = `${thumbTop}px`;
       timelineYear?.style.setProperty('top', `${thumbTop}px`);
-      timelineThumb.dataset.year = cards[index]?.dataset.projectYear || '';
-      if (timelineYear) timelineYear.textContent = cards[index]?.dataset.projectYear || '';
+      timelineThumb.dataset.year = visibleCards[index]?.dataset.projectYear || '';
+      if (timelineYear) timelineYear.textContent = visibleCards[index]?.dataset.projectYear || '';
     };
 
     const requestTimelineUpdate = () => {
+      if (projects.classList.contains('has-single-project')) return;
       syncMobileTimelineHeight();
       if (!frame) frame = window.requestAnimationFrame(updateTimeline);
     };

@@ -1,4 +1,11 @@
 (() => {
+  document.querySelectorAll("img").forEach((image) => {
+    image.decoding = "async";
+    if (!image.closest(".project-cover, .new-project-hero, .site-loader")) {
+      image.loading = "lazy";
+    }
+  });
+
   const root = "img/icons/";
   const icons = {
     play: `${root}Play.svg`,
@@ -150,6 +157,7 @@
     let dragging = false;
     let lastAutoplayTime = performance.now();
     let autoplayPausedUntil = 0;
+    let autoplayVisible = true;
     const autoplaySpeed = 16;
 
     const getBounds = () => ({
@@ -181,7 +189,7 @@
       const elapsed = Math.min(50, Math.max(0, now - lastAutoplayTime));
       lastAutoplayTime = now;
 
-      if (!dragging && now >= autoplayPausedUntil) {
+      if (autoplayVisible && !document.hidden && !dragging && now >= autoplayPausedUntil) {
         const loopWidth = getLoopWidth();
         if (loopWidth > 0 && track.scrollWidth > slider.clientWidth) {
           offset -= (autoplaySpeed * elapsed) / 1000;
@@ -244,6 +252,13 @@
     });
 
     slider.setAttribute("tabindex", "0");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        autoplayVisible = entry.isIntersecting;
+        lastAutoplayTime = performance.now();
+      }, { rootMargin: "200px" });
+      observer.observe(slider);
+    }
     window.addEventListener("resize", render);
     requestAnimationFrame(render);
     window.requestAnimationFrame(autoplay);

@@ -7,10 +7,8 @@
   let isHidden = loader.classList.contains('is-hidden');
   let textTimer = 0;
   let failSafeTimer = 0;
-  let isNavigating = false;
-  const navigationTransitionTime = 340;
   const initialRevealDelay = 120;
-  const maximumLoaderTime = 1800;
+  const maximumLoaderTime = 1200;
 
   const animateLoaderText = () => {
     if (!loaderText) return;
@@ -61,42 +59,8 @@
     });
   };
 
-  const isInternalNavigation = (link) => {
-    if (link.hasAttribute('download') || link.target === '_blank') return false;
-
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return false;
-
-    const target = new URL(link.href, window.location.href);
-    return target.origin === window.location.origin
-      && (target.pathname !== window.location.pathname || target.search !== window.location.search);
-  };
-
-  const navigateWithLoader = (link) => {
-    if (isNavigating) return;
-
-    isNavigating = true;
-    showLoader();
-    window.setTimeout(() => {
-      window.location.href = link.href;
-    }, navigationTransitionTime);
-  };
-
-  document.addEventListener('click', (event) => {
-    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-
-    const link = event.target.closest('a[href]');
-    if (link && isInternalNavigation(link)) {
-      event.preventDefault();
-      navigateWithLoader(link);
-    }
-  });
-
-  window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
-      showLoader();
-      revealPage();
-    }
+  window.addEventListener('pageshow', () => {
+    hideLoader();
   });
 
   showLoader();
