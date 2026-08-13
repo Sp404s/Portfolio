@@ -241,7 +241,8 @@
   box-sizing: border-box;
   padding: clamp(20px, 2.2vw, 30px);
   overflow: hidden;
-  background: #242323;
+  border-radius: 10px;
+  background: #242323 !important;
   opacity: 1 !important;
   transform: none !important;
   cursor: default;
@@ -254,9 +255,12 @@
 .home-page .portfolio-banner > img.portfolio-banner__goose {
   position: absolute;
   z-index: -1;
-  inset: 0 0 auto auto;
-  width: min(86%, 430px);
-  height: auto;
+  top: 0;
+  right: -8%;
+  bottom: auto;
+  left: auto;
+  width: auto;
+  height: 145%;
   max-width: none;
   object-fit: contain;
   object-position: top right;
@@ -324,18 +328,28 @@
 
 @media (max-width: 768px) {
   html body.home-page .portfolio-banner {
-    grid-column: 1 / 7;
-    width: 100%;
+    grid-column: 1 / 5;
+    display: flex !important;
+    width: auto !important;
     height: 360px;
     min-height: 360px;
     padding: 20px;
     border-radius: 10px;
+    overflow: hidden !important;
+    background: #242323 !important;
+    opacity: 1 !important;
   }
 
   html body.home-page .portfolio-banner > img.portfolio-banner__goose {
-    inset: 0 -10px auto auto;
-    width: min(82%, 310px);
-    height: auto;
+    top: 0;
+    right: -8%;
+    bottom: auto;
+    left: auto;
+    width: auto;
+    height: 145%;
+    max-width: none;
+    object-fit: contain;
+    object-position: top right;
   }
 
   .portfolio-banner__content h2 {
