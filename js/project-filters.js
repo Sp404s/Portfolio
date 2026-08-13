@@ -41,11 +41,7 @@
     filters.scrollTo({ left: targetLeft, behavior: 'smooth' });
   };
 
-  buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      applyProjectFilter(event.currentTarget);
-    });
-  });
+  window.applyProjectFilter = applyProjectFilter;
 
   const setMobileProjectsGap = () => {
     if (!hero || !heroAction || !projectsTitle) return;

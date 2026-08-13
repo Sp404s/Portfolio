@@ -89,13 +89,13 @@
         <section class="home-projects home-panel" id="projects" aria-label="Проекты">
           <h2 class="home-projects__title">&#1052;&#1054;&#1048; &#1056;&#1040;&#1041;&#1054;&#1058;&#1067;</h2>
           <div class="project-filters" role="group" aria-label="Фильтр проектов">
-            <button class="project-filter is-active" type="button" data-project-filter="all" aria-pressed="true">Все</button>
-            <button class="project-filter" type="button" data-project-filter="3d-графика" aria-pressed="false">3D-графика</button>
-            <button class="project-filter" type="button" data-project-filter="3d-печать" aria-pressed="false">3D-печать</button>
-            <button class="project-filter" type="button" data-project-filter="анимация" aria-pressed="false">Анимация</button>
-            <button class="project-filter" type="button" data-project-filter="3d-модель" aria-pressed="false">3D-модель</button>
-            <button class="project-filter" type="button" data-project-filter="мебель" aria-pressed="false">Мебель</button>
-            <button class="project-filter" type="button" data-project-filter="3d-визуализация" aria-pressed="false">3D-визуализация</button>
+            <button class="project-filter is-active" type="button" data-project-filter="all" aria-pressed="true" onclick="window.applyProjectFilter?.(this)">Все</button>
+            <button class="project-filter" type="button" data-project-filter="3d-графика" aria-pressed="false" onclick="window.applyProjectFilter?.(this)">3D-графика</button>
+            <button class="project-filter" type="button" data-project-filter="3d-печать" aria-pressed="false" onclick="window.applyProjectFilter?.(this)">3D-печать</button>
+            <button class="project-filter" type="button" data-project-filter="анимация" aria-pressed="false" onclick="window.applyProjectFilter?.(this)">Анимация</button>
+            <button class="project-filter" type="button" data-project-filter="3d-модель" aria-pressed="false" onclick="window.applyProjectFilter?.(this)">3D-модель</button>
+            <button class="project-filter" type="button" data-project-filter="мебель" aria-pressed="false" onclick="window.applyProjectFilter?.(this)">Мебель</button>
+            <button class="project-filter" type="button" data-project-filter="3d-визуализация" aria-pressed="false" onclick="window.applyProjectFilter?.(this)">3D-визуализация</button>
           </div>
           <a class="home-project-card" href="project-wallpaper.html" data-project-year="2026">
             <img src="img/projects/Обои для телефона/маяк рендер 1.webp" alt="Обои для телефона с маяком">
@@ -232,7 +232,7 @@
   </div>
   <script src="js/mobile-menu.js"></script>
   <script src="js/home-workspace.js?v=20260813-2"></script>
-  <script src="js/project-filters.js?v=20260813-12"></script>
+  <script src="js/project-filters.js?v=20260813-13"></script>
   <script src="js/page-loader.js"></script>
   <script src="js/hero-text-animation.js"></script>
 </body>
