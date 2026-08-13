@@ -99,7 +99,7 @@
     min-width: 0;
     max-width: calc(100vw - 32px) !important;
     margin: -24px 0 24px;
-    padding: 0 0 2px;
+    padding: 3px 16px 5px 0;
     gap: 8px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -119,9 +119,9 @@
   .home-page .project-filter {
     flex: 0 0 auto !important;
     box-sizing: border-box;
-    min-height: 44px;
-    padding: 7px 18px;
-    border: 2px solid #fff;
+    min-height: 38px;
+    padding: 6px 16px;
+    border: 0;
     border-radius: 8px;
     background: transparent;
     color: #fff;
@@ -139,6 +139,11 @@
   .home-page .project-filter.is-active {
     background: #fff;
     color: #181818;
+  }
+
+  .home-page .project-filter:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: -2px;
   }
 
   .home-page .project-filters.is-dragging {
