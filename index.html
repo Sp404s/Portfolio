@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/home-workspace.css">
   <link rel="stylesheet" href="css/hero-text-animation.css">
   <link rel="stylesheet" href="css/tablet-home.css">
-  <link rel="stylesheet" href="css/notebook.css?v=20260813-12">
+  <link rel="stylesheet" href="css/notebook.css?v=20260813-34">
 </head>
 <body class="home-page is-ready">
   <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
@@ -193,7 +193,16 @@
             </div>
           </a>
 
-          <div class="home-project-card portfolio-banner" aria-hidden="true"></div>
+          <article class="home-project-card portfolio-banner" aria-labelledby="portfolio-banner-title">
+            <img class="portfolio-banner__goose" src="img/baner/goose.png" alt="" aria-hidden="true">
+            <div class="portfolio-banner__content">
+              <h2 id="portfolio-banner-title">СТАРЫЕ<br>ПОРТФОЛИО</h2>
+              <div class="portfolio-banner__actions">
+                <a href="https://github.com/Sp404s/Portfolio/releases/download/portfolio-pdfs/default.pdf" download>Скачать портфолио фотографа</a>
+                <a href="https://github.com/Sp404s/Portfolio/releases/download/portfolio-pdfs/_.pdf" download>Скачать портфолио дизайнера</a>
+              </div>
+            </div>
+          </article>
 
           <div class="projects-timeline" aria-label="Хронология проектов" data-home-timeline>
             <span class="projects-timeline__thumb" data-timeline-thumb>2026</span>
@@ -233,7 +242,7 @@
     <div class="bottom-bar" aria-hidden="true"></div>
   </div>
   <script src="js/mobile-menu.js"></script>
-  <script src="js/home-workspace.js?v=20260813-3"></script>
+  <script src="js/home-workspace.js?v=20260813-4"></script>
   <script src="js/project-filters.js?v=20260813-15"></script>
   <script src="js/page-loader.js"></script>
   <script src="js/hero-text-animation.js"></script>

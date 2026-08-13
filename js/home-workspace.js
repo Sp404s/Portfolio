@@ -130,6 +130,7 @@
   let timelineFrame = 0;
   let timelineCurrent = 0;
   let activeCardIndex = 0;
+  let timelineDragging = false;
 
   const ease = (value) => value * value * (3 - (2 * value));
 
@@ -183,19 +184,13 @@
     timeline.style.left = `${firstCard.offsetLeft}px`;
     timeline.style.right = 'auto';
     timeline.style.width = `${width}px`;
-    timeline.style.setProperty('--timeline-inset', `${cardWidth / 2}px`);
+    timeline.style.setProperty('--timeline-inset', '0px');
   };
 
   const getTimelineLeft = (index, scrollLeft = projects.scrollLeft) => {
     if (!timeline) return 0;
-
-    const currentScrollLeft = projects.scrollLeft;
-    projects.scrollLeft = scrollLeft;
-    const cardRect = cards[index].getBoundingClientRect();
-    const timelineRect = timeline.getBoundingClientRect();
-    projects.scrollLeft = currentScrollLeft;
-
-    return cardRect.left - timelineRect.left + (cardRect.width / 2);
+    if (cards.length < 2) return 0;
+    return (index / (cards.length - 1)) * timeline.clientWidth;
   };
 
   const setTimelinePosition = (target, animate = true) => {
@@ -235,6 +230,52 @@
     if (timelineYear) timelineYear.textContent = year;
     setTimelinePosition(timelineLeft ?? getTimelineLeft(index), animate);
   };
+
+  const setDesktopTimelineFromPointer = (clientX) => {
+    if (!timeline || !timelineThumb) return;
+    const rect = timeline.getBoundingClientRect();
+    const progress = Math.min(1, Math.max(0, (clientX - rect.left) / Math.max(1, rect.width)));
+    const index = Math.min(cards.length - 1, Math.round(progress * (cards.length - 1)));
+    const maxScrollLeft = Math.max(0, projects.scrollWidth - projects.clientWidth);
+
+    cancelAnimationFrame(timelineFrame);
+    timelineFrame = 0;
+    timelineCurrent = progress * timeline.clientWidth;
+    timeline.style.setProperty('--timeline-left', `${timelineCurrent}px`);
+    projects.scrollLeft = progress * maxScrollLeft;
+    activeCardIndex = index;
+    timelineThumb.dataset.year = cards[index]?.dataset.projectYear || '';
+    if (timelineYear) timelineYear.textContent = cards[index]?.dataset.projectYear || '';
+    syncProjectTitle();
+  };
+
+  timelineThumb?.addEventListener('pointerdown', (event) => {
+    timelineDragging = true;
+    locked = true;
+    timelineThumb.classList.add('is-dragging');
+    timelineThumb.setPointerCapture?.(event.pointerId);
+    setDesktopTimelineFromPointer(event.clientX);
+    event.preventDefault();
+  });
+
+  timelineThumb?.addEventListener('pointermove', (event) => {
+    if (!timelineDragging) return;
+    setDesktopTimelineFromPointer(event.clientX);
+    event.preventDefault();
+  });
+
+  const stopDesktopTimelineDrag = (event) => {
+    if (!timelineDragging) return;
+    timelineDragging = false;
+    locked = false;
+    timelineThumb.classList.remove('is-dragging');
+    timelineThumb.releasePointerCapture?.(event.pointerId);
+    const target = getTimelineLeft(activeCardIndex);
+    setTimelinePosition(target);
+  };
+
+  timelineThumb?.addEventListener('pointerup', stopDesktopTimelineDrag);
+  timelineThumb?.addEventListener('pointercancel', stopDesktopTimelineDrag);
 
   const animateCards = (from, to) => {
     animateValue(from, to, 420, (value) => {
