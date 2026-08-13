@@ -80,43 +80,15 @@
   updateSingleProjectTimeline();
   window.addEventListener('resize', updateSingleProjectTimeline);
 
-  let mouseDragStart = 0;
-  let mouseScrollStart = 0;
-  let isMouseDragging = false;
-  let blockMouseClick = false;
+  filters.addEventListener('wheel', (event) => {
+    if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+    if (filters.scrollWidth <= filters.clientWidth) return;
 
-  filters.addEventListener('pointerdown', (event) => {
-    if (event.pointerType !== 'mouse' || event.button !== 0) return;
-    mouseDragStart = event.clientX;
-    mouseScrollStart = filters.scrollLeft;
-    isMouseDragging = true;
-    blockMouseClick = false;
-    filters.setPointerCapture?.(event.pointerId);
-  });
-
-  filters.addEventListener('pointermove', (event) => {
-    if (!isMouseDragging || event.pointerType !== 'mouse') return;
-    const distance = event.clientX - mouseDragStart;
-    if (Math.abs(distance) > 5) blockMouseClick = true;
-    filters.scrollLeft = mouseScrollStart - distance;
-  });
-
-  const stopMouseDragging = (event) => {
-    if (!isMouseDragging || event.pointerType !== 'mouse') return;
-    isMouseDragging = false;
-    filters.releasePointerCapture?.(event.pointerId);
-  };
-
-  filters.addEventListener('pointerup', stopMouseDragging);
-  filters.addEventListener('pointercancel', stopMouseDragging);
+    filters.scrollLeft += event.deltaY;
+    event.preventDefault();
+  }, { passive: false });
 
   filters.addEventListener('click', (event) => {
-    if (blockMouseClick) {
-      event.preventDefault();
-      blockMouseClick = false;
-      return;
-    }
-
     const selectedButton = event.target.closest('[data-project-filter]');
     if (!selectedButton) return;
 
