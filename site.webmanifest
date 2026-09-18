@@ -1,0 +1,16 @@
+{
+  "name": "Александр Гусев — портфолио",
+  "short_name": "Alex Gusev",
+  "lang": "ru",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#242323",
+  "theme_color": "#242323",
+  "icons": [
+    {
+      "src": "img/icons/favicon.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,142 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="img/icons/favicon.png" type="image/png">
-  <title>Обо мне</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="stylesheet" href="css/adaptive.css">
-  <link rel="stylesheet" href="css/about-template.css">
-  <link rel="stylesheet" href="css/notebook.css?v=20260813-35">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#242323">
+  <title>Обо мне — Александр Гусев</title>
+  <link rel="preload" href="img/icons/Logo.svg" as="image" type="image/svg+xml">
+  <meta name="description" content="Коротко об Александре Гусеве, его специализации и инструментах.">
+  <meta property="og:title" content="Обо мне — Александр Гусев">
+  <meta property="og:description" content="3D-художник и дизайнер из Санкт-Петербурга: специализация, инструменты и опыт.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/about me/IMG_20260723_152742.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="img/icons/favicon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/site-refinement.css?v=20260820-14">
+  <script src="js/site-shell.js?v=20260820-4" defer></script>
+  <script src="js/about-skills.js?v=20260819-1" defer></script>
 </head>
-<body class="about-page">
-  <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
-    <img src="img/decor/загрузка1.webp" alt="">
-    <p data-loader-text data-text="...кря?" aria-hidden="true"></p>
-  </div>
-  <header class="header header--page">
-    <a class="logo mobile-logo" href="index.html" aria-label="Главная"></a>
-    <nav class="nav" aria-label="Navigation">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="index.html?section=projects">Works</a>
-      <a href="blog.html">News</a>
-    </nav>
-    <nav class="nav-static" aria-label="Основная навигация">
-      <a class="logo" href="index.html" aria-label="Главная">
-        <span class="logo__mark" aria-hidden="true"></span>
-        <span class="logo__text">ALEX_G</span>
-      </a>
-      <a href="index.html">ГЛАВНАЯ</a>
-      <a href="blog.html">НОВОСТИ</a>
-      <a href="about.html">ОБО МНЕ</a>
-      <a href="index.html?section=projects">РАБОТЫ</a>
-      <a href="price-list.html">УСЛУГИ</a>
-    </nav>
-    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
-      <span></span><span></span>
-    </button>
-  </header>
-
-  <main class="about-layout">
-    <section class="about-hero">
-      <h1>ОБО МНЕ</h1>
-      <div class="about-hero__content">
-        <p class="about-hero__lead">Привет! Меня зовут Гусев Александр.<br>Я 3D-художник и графический дизайнер.<br>Занимаюсь брендингом и разработкой рекламы</p>
-        <p class="about-hero__secondary">В свободное время я увлекаюсь фотографией, 3D-моделированием и видеомонтажом. Мне нравится изучать новое и экспериментировать, ведь из каждой области можно почерпнуть что-то ценное и применить это в работе.</p>
-        <a class="about-download" href="img/decor/Резюме Гусева Александра.pdf" download>
-          <span>Скачать резюме</span>
-        </a>
-        <figure class="about-hero__image">
-          <img src="img/decor/Резюме фото.png" alt="Резюме Гусева Александра" decoding="async">
-        </figure>
-      </div>
-    </section>
-
-    <section class="about-section about-software">
-      <h2>ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ</h2>
-      <div class="software-grid">
-        <article class="software-card">
-          <img src="img/icons/Ps.svg" alt="">
-          <h3>Adobe Photoshop</h3>
-          <strong>85%</strong>
-          <span>Уровень владения</span>
-        </article>
-        <article class="software-card">
-          <img src="img/icons/Ai.svg" alt="">
-          <h3>Adobe Illustrator</h3>
-          <strong>87%</strong>
-          <span>Уровень владения</span>
-        </article>
-        <article class="software-card">
-          <img src="img/icons/Pr.svg" alt="">
-          <h3>Adobe Premiere Pro</h3>
-          <strong>85%</strong>
-          <span>Уровень владения</span>
-        </article>
-        <article class="software-card">
-          <img src="img/icons/Ae.svg" alt="">
-          <h3>Adobe After Effects</h3>
-          <strong>70%</strong>
-          <span>Уровень владения</span>
-        </article>
-        <article class="software-card">
-          <img src="img/icons/Figma.svg" alt="">
-          <h3>Figma</h3>
-          <strong>80%</strong>
-          <span>Уровень владения</span>
-        </article>
-        <article class="software-card">
-          <img src="img/icons/Blender.svg" alt="">
-          <h3>Blender</h3>
-          <strong>87%</strong>
-          <span>Уровень владения</span>
-        </article>
-        <article class="software-card">
-          <img src="img/icons/3Ds Max.svg" alt="">
-          <h3>3Ds Max</h3>
-          <strong>60%</strong>
-          <span>Уровень владения</span>
-        </article>
-        <article class="software-card">
-          <img src="img/icons/AutoCAD.svg" alt="">
-          <h3>AutoCAD</h3>
-          <strong>40%</strong>
-          <span>Уровень владения</span>
-        </article>
-      </div>
-    </section>
-
-  </main>
-  <footer class="legal-footer" aria-label="Юридическая информация">
-    <div class="legal-footer__inner">
-      <section class="legal-footer__contacts" id="contacts">
-        <h2>КОНТАКТЫ</h2>
-        <div class="legal-footer__contacts-content">
-          <div class="legal-footer__contact-info">
-            <p>почта: <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a></p>
-            <p>ТГ: <a href="https://t.me/Alex_G8" target="_blank" rel="noopener noreferrer">@Alex_G8</a></p>
-            <p>ВК: <a href="https://vk.com/3funnydays" target="_blank" rel="noopener noreferrer">@3funnydays</a></p>
-          </div>
-          <img class="legal-footer__qr legal-footer__qr--vk" src="img/icons/VK.svg" alt="VK">
-          <img class="legal-footer__qr legal-footer__qr--tg" src="img/icons/TG.png" alt="Telegram">
+<body>
+  <site-header></site-header>
+  <main class="page-main" id="main-content">
+    <section class="about-simple">
+      <div class="about-simple__copy">
+        <p class="eyebrow">Обо мне</p>
+        <h1 class="page-title">Александр Гусев</h1>
+        <p class="lede">3D‑художник и дизайнер из Санкт‑Петербурга. Помогаю превратить идею в понятный визуальный результат.</p>
+        <div class="about-simple__text">
+          <p>Работаю с предметным моделированием, визуализацией интерьеров, анимацией и графическим дизайном. Беру проект от поиска визуального направления до финальных материалов.</p>
+          <p>Ценю ясную коммуникацию, аккуратную геометрию и решения, которые отвечают задаче, а не просто выглядят эффектно.</p>
         </div>
-      </section>
-      <div class="legal-footer__meta">
-        <nav class="legal-footer__links" aria-label="Документы сайта">
-          <a href="privacy.html">Политика обработки персональных данных</a>
-          <a href="personal-data-consent.html">Согласие на обработку персональных данных</a>
-          <a href="cookies.html">Политика cookies</a>
-        </nav>
-        <p class="legal-footer__note">Реквизиты ИП будут добавлены после регистрации.</p>
-        <p class="legal-footer__copyright">© Alex_G 2026</p>
+        <div class="about-simple__actions">
+          <a class="button button--primary" href="price-list.html#contact">Обсудить проект</a>
+          <a class="button button--secondary" href="img/decor/Резюме Гусева Александра.pdf" download>Скачать резюме</a>
+        </div>
       </div>
-    </div>
-  </footer>
-  <script src="js/mobile-menu.js"></script>
-  <script src="js/about-slider.js"></script>
-  <script src="js/page-loader.js"></script>
+      <figure class="about-simple__card">
+        <img src="img/about me/IMG_20260723_152742.webp" alt="Александр Гусев" decoding="async" fetchpriority="high">
+      </figure>
+    </section>
+
+    <section class="about-skills" aria-labelledby="software-title" data-skills>
+      <div class="about-skills__head">
+        <div>
+          <p class="eyebrow">Инструменты</p>
+          <h2 id="software-title">Программное обеспечение</h2>
+        </div>
+      </div>
+      <div class="about-skills__grid" role="list">
+        <article class="skill-card" role="listitem" style="--level:.85;--delay:0ms">
+          <div class="skill-card__head"><img class="skill-card__logo" src="img/icons/Ps.svg" alt=""><strong data-skill-value="85">0%</strong></div>
+          <h3>Adobe Photoshop</h3><p>Графика и постобработка</p>
+          <div class="skill-card__track" role="progressbar" aria-label="Adobe Photoshop" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><span></span></div>
+        </article>
+        <article class="skill-card" role="listitem" style="--level:.87;--delay:70ms">
+          <div class="skill-card__head"><img class="skill-card__logo" src="img/icons/Ai.svg" alt=""><strong data-skill-value="87">0%</strong></div>
+          <h3>Adobe Illustrator</h3><p>Векторная графика и айдентика</p>
+          <div class="skill-card__track" role="progressbar" aria-label="Adobe Illustrator" aria-valuemin="0" aria-valuemax="100" aria-valuenow="87"><span></span></div>
+        </article>
+        <article class="skill-card" role="listitem" style="--level:.85;--delay:140ms">
+          <div class="skill-card__head"><img class="skill-card__logo" src="img/icons/Pr.svg" alt=""><strong data-skill-value="85">0%</strong></div>
+          <h3>Adobe Premiere Pro</h3><p>Монтаж и презентация проектов</p>
+          <div class="skill-card__track" role="progressbar" aria-label="Adobe Premiere Pro" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85"><span></span></div>
+        </article>
+        <article class="skill-card" role="listitem" style="--level:.70;--delay:210ms">
+          <div class="skill-card__head"><img class="skill-card__logo" src="img/icons/Ae.svg" alt=""><strong data-skill-value="70">0%</strong></div>
+          <h3>Adobe After Effects</h3><p>Моушн-дизайн и композитинг</p>
+          <div class="skill-card__track" role="progressbar" aria-label="Adobe After Effects" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"><span></span></div>
+        </article>
+        <article class="skill-card" role="listitem" style="--level:.80;--delay:280ms">
+          <div class="skill-card__head"><img class="skill-card__logo" src="img/icons/Figma.svg" alt=""><strong data-skill-value="80">0%</strong></div>
+          <h3>Figma</h3><p>Интерфейсы и прототипы</p>
+          <div class="skill-card__track" role="progressbar" aria-label="Figma" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80"><span></span></div>
+        </article>
+        <article class="skill-card" role="listitem" style="--level:.87;--delay:350ms">
+          <div class="skill-card__head"><img class="skill-card__logo" src="img/icons/Blender.svg" alt=""><strong data-skill-value="87">0%</strong></div>
+          <h3>Blender</h3><p>3D-моделирование и визуализация</p>
+          <div class="skill-card__track" role="progressbar" aria-label="Blender" aria-valuemin="0" aria-valuemax="100" aria-valuenow="87"><span></span></div>
+        </article>
+        <article class="skill-card" role="listitem" style="--level:.60;--delay:420ms">
+          <div class="skill-card__head"><img class="skill-card__logo" src="img/icons/3Ds Max.svg" alt=""><strong data-skill-value="60">0%</strong></div>
+          <h3>3ds Max</h3><p>Моделирование и сборка сцен</p>
+          <div class="skill-card__track" role="progressbar" aria-label="3ds Max" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span></span></div>
+        </article>
+        <article class="skill-card" role="listitem" style="--level:.40;--delay:490ms">
+          <div class="skill-card__head"><img class="skill-card__logo" src="img/icons/AutoCAD.svg" alt=""><strong data-skill-value="40">0%</strong></div>
+          <h3>AutoCAD</h3><p>Чертежи и документация</p>
+          <div class="skill-card__track" role="progressbar" aria-label="AutoCAD" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40"><span></span></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <site-footer></site-footer>
 </body>
 </html>

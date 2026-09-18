@@ -1,82 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="img/icons/favicon.png" type="image/png">
-  <title>Новости</title>
-  <link href="https://fonts.cdnfonts.com/css/gravity" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/adaptive.css">
-  <link rel="stylesheet" href="css/blog.css">
-  <link rel="stylesheet" href="css/notebook.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#242323">
+  <title>Новости — Александр Гусев</title>
+  <meta name="description" content="Рабочие заметки Александра Гусева: проекты в процессе и завершённые работы.">
+  <meta property="og:title" content="Новости — Александр Гусев">
+  <meta property="og:description" content="Проекты в работе, завершённые кейсы и короткие профессиональные заметки.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/projects/Фотоаппарат Fujifilm/cover-render.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="img/icons/Logo.svg" as="image" type="image/svg+xml">
+  <link rel="icon" href="img/icons/favicon.png"><link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/site-refinement.css?v=20260820-13">
+  <script src="js/site-shell.js?v=20260820-4" defer></script>
+  <script src="data/news.js?v=20260820-2" defer></script>
+  <script src="js/news-feed.js?v=20260820-2" defer></script>
 </head>
-<body class="blog-page">
-  <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
-    <img src="img/decor/загрузка1.webp" alt="">
-    <p data-loader-text data-text="...кря?" aria-hidden="true"></p>
-  </div>
-  <header class="header header--page">
-    <a class="logo mobile-logo" href="index.html" aria-label="Главная"></a>
-    <nav class="nav" aria-label="Navigation">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="index.html?section=projects">Works</a>
-      <a href="blog.html">News</a>
-    </nav>
-    <nav class="nav-static" aria-label="Navigation">
-      <a class="logo" href="index.html" aria-label="Home">
-        <span class="logo__mark" aria-hidden="true"></span>
-        <span class="logo__text">ALEX_G</span>
-      </a>
-      <a href="index.html">&#1043;&#1051;&#1040;&#1042;&#1053;&#1040;&#1071;</a>
-      <a href="blog.html">&#1053;&#1054;&#1042;&#1054;&#1057;&#1058;&#1048;</a>
-      <a href="about.html">&#1054;&#1041;&#1054; &#1052;&#1053;&#1045;</a>
-      <a href="index.html?section=projects">&#1056;&#1040;&#1041;&#1054;&#1058;&#1067;</a>
-      <a href="price-list.html">УСЛУГИ</a>
-    </nav>
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-  <main class="blog-placeholder" aria-labelledby="blog-title">
-    <div class="blog-placeholder__grid">
-      <div class="blog-placeholder__dinosaur">
-        <img src="img/decor/динозаврик.svg" alt="">
-      </div>
-      <div class="blog-placeholder__content">
-        <h1 id="blog-title">Страница в разработке</h1>
-        <p>Планирую выкладывать здесь текстуры, фотографии, 3D-модели, плагины и многие другие наработки. А также делиться новостями =)</p>
-      </div>
-    </div>
+<body>
+  <site-header></site-header>
+  <main class="page-main" id="main-content">
+    <section class="page-hero page-hero--split">
+      <div><p class="eyebrow">Новости</p><h1 class="page-title">Рабочая лента</h1></div>
+      <div class="page-hero__aside"><p>Коротко рассказываю, над чем работаю, что завершил и какие решения нашёл в процессе.</p></div>
+    </section>
+    <section class="news-list" aria-label="Новости проектов" data-news-feed></section>
   </main>
-  <script src="js/mobile-menu.js"></script>
-  <script src="js/page-loader.js"></script>
-  <footer class="legal-footer" aria-label="Юридическая информация">
-    <div class="legal-footer__inner">
-      <section class="legal-footer__contacts" id="contacts">
-        <h2>КОНТАКТЫ</h2>
-        <div class="legal-footer__contacts-content">
-          <div class="legal-footer__contact-info">
-            <p>почта: <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a></p>
-            <p>ТГ: <a href="https://t.me/Alex_G8" target="_blank" rel="noopener noreferrer">@Alex_G8</a></p>
-            <p>ВК: <a href="https://vk.com/3funnydays" target="_blank" rel="noopener noreferrer">@3funnydays</a></p>
-          </div>
-          <img class="legal-footer__qr legal-footer__qr--vk" src="img/icons/VK.svg" alt="VK">
-          <img class="legal-footer__qr legal-footer__qr--tg" src="img/icons/TG.png" alt="Telegram">
-        </div>
-      </section>
-      <div class="legal-footer__meta">
-        <nav class="legal-footer__links" aria-label="Документы сайта">
-          <a href="privacy.html">Политика обработки персональных данных</a>
-          <a href="personal-data-consent.html">Согласие на обработку персональных данных</a>
-          <a href="cookies.html">Политика cookies</a>
-        </nav>
-        <p class="legal-footer__note">Реквизиты ИП будут добавлены после регистрации.</p>
-        <p class="legal-footer__copyright">© Alex_G 2026</p>
-      </div>
-    </div>
-  </footer>
+  <site-footer></site-footer>
 </body>
 </html>

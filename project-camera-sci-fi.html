@@ -2,49 +2,29 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="img/icons/favicon.png" type="image/png">
-  <title>Камера SCI-FI — Александр Гусев</title>
-  <link href="https://fonts.cdnfonts.com/css/gravity" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#242323">
+  <link rel="icon" href="img/icons/favicon.png" type="image/png"><link rel="manifest" href="site.webmanifest">
+  <title>Камера SCI-FI — Александр Гусев</title><link rel="preload" href="img/icons/Logo.svg" as="image" type="image/svg+xml">
+  <meta name="description" content="Кейс «Камера SCI-FI»: разработка, моделирование и визуализация 3D-объекта.">
+  <meta property="og:title" content="Камера SCI-FI — Александр Гусев">
+  <meta property="og:description" content="Кейс «Камера SCI-FI»: разработка, моделирование и визуализация 3D-объекта.">
+  <meta property="og:type" content="article">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/projects/common.css">
   <link rel="stylesheet" href="css/projects/camera-sci-fi.css">
   <link rel="stylesheet" href="css/adaptive.css">
   <link rel="stylesheet" href="css/projects/project-grid.css">
   <link rel="stylesheet" href="css/notebook.css">
+  <link rel="stylesheet" href="css/site-refinement.css?v=20260820-13">
+  <meta property="og:image" content="img/projects/Камера sci-fi/ren1.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="js/site-shell.js?v=20260820-4" defer></script>
+  <script src="js/project-gallery.js?v=20260820-12" defer></script>
 </head>
 <body class="project-page">
-  <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
-    <img src="img/decor/загрузка1.webp" alt="">
-    <p data-loader-text data-text="...кря?" aria-hidden="true"></p>
-  </div>
-  <header class="header header--page">
-    <a class="logo mobile-logo" href="index.html" aria-label="Главная"></a>
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="index.html">Главная</a>
-      <a href="about.html">Обо мне</a>
-      <a href="index.html?section=projects">Проекты</a>
-      <a href="blog.html">Блог</a>
-    </nav>
-    <nav class="nav-static" aria-label="Navigation">
-      <a class="logo" href="index.html" aria-label="Главная">
-        <span class="logo__mark" aria-hidden="true"></span>
-        <span class="logo__text">ALEX_G</span>
-      </a>
-      <a href="index.html">&#1043;&#1051;&#1040;&#1042;&#1053;&#1040;&#1071;</a>
-      <a href="blog.html">&#1053;&#1054;&#1042;&#1054;&#1057;&#1058;&#1048;</a>
-      <a href="about.html">&#1054;&#1041;&#1054; &#1052;&#1053;&#1045;</a>
-      <a href="index.html?section=projects">&#1056;&#1040;&#1041;&#1054;&#1058;&#1067;</a>
-      <a href="price-list.html">УСЛУГИ</a>
-    </nav>
+  <site-header></site-header>
 
-    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
-      <span></span>
-      <span></span>
-    </button>
-  </header>
-
-  <main class="project-template">
+  <main id="main-content" class="project-template">
     <section class="project-cover project-cover--light project-cover--camera-sci-fi" aria-label="Камера SCI-FI">
       <img src="img/projects/Камера sci-fi/ren1.webp" alt="Камера SCI-FI">
     </section>
@@ -59,13 +39,13 @@
         </p>
       </div>
       <div class="project-image project-image--wide project-image--contain">
-        <img src="img/projects/Камера sci-fi/сеттинг1.webp" alt="Сеттинг проекта">
+        <img loading="lazy" decoding="async" src="img/projects/Камера sci-fi/сеттинг1.webp" alt="Сеттинг проекта">
       </div>
     </section>
 
     <section class="project-section project-section--second grid-12">
       <div class="project-image project-image--square project-image--contain">
-        <img src="img/projects/Камера sci-fi/реф2.webp" alt="Референсы камеры">
+        <img loading="lazy" decoding="async" src="img/projects/Камера sci-fi/реф2.webp" alt="Референсы камеры">
       </div>
       <div class="project-copy project-copy--middle">
         <h2>Подбор референсов</h2>
@@ -87,13 +67,13 @@
         </p>
       </div>
       <div class="project-image project-image--wide project-image--contain">
-        <img src="img/projects/Камера sci-fi/High poly4.webp" alt="High poly камеры">
+        <img loading="lazy" decoding="async" src="img/projects/Камера sci-fi/High poly4.webp" alt="High poly камеры">
       </div>
     </section>
 
     <section class="project-section project-section--second grid-12">
       <div class="project-image project-image--square project-image--contain">
-        <img src="img/projects/Камера sci-fi/low poly5.webp" alt="Low poly камеры">
+        <img loading="lazy" decoding="async" src="img/projects/Камера sci-fi/low poly5.webp" alt="Low poly камеры">
       </div>
       <div class="project-copy project-copy--middle">
         <h2>Low poly модель</h2>
@@ -115,54 +95,25 @@
         </p>
       </div>
       <div class="project-image project-image--wide project-image--contain">
-        <img src="img/projects/Камера sci-fi/текстурирование6.webp" alt="Текстурирование камеры">
+        <img loading="lazy" decoding="async" src="img/projects/Камера sci-fi/текстурирование6.webp" alt="Текстурирование камеры">
       </div>
     </section>
 
-    <section class="project-slider" aria-label="Слайдер рендеров проекта" data-project-slider>
-      <div class="project-slider__track" data-project-slider-track>
-        <div class="project-slider__group">
-          <div class="project-slider__item project-slider__item--contain"><img src="img/projects/Камера sci-fi/ren1.webp" alt="Рендер камеры 1"></div>
-          <div class="project-slider__item project-slider__item--contain"><img src="img/projects/Камера sci-fi/ren2.webp" alt="Рендер камеры 2"></div>
-        </div>
-        <div class="project-slider__group" aria-hidden="true">
-          <div class="project-slider__item project-slider__item--contain"><img src="img/projects/Камера sci-fi/ren1.webp" alt=""></div>
-          <div class="project-slider__item project-slider__item--contain"><img src="img/projects/Камера sci-fi/ren2.webp" alt=""></div>
-        </div>
-        <div class="project-slider__group" aria-hidden="true">
-          <div class="project-slider__item project-slider__item--contain"><img src="img/projects/Камера sci-fi/ren1.webp" alt=""></div>
-          <div class="project-slider__item project-slider__item--contain"><img src="img/projects/Камера sci-fi/ren2.webp" alt=""></div>
-        </div>
+    <project-gallery aria-label="Слайдер рендеров проекта">
+    <img loading="lazy" decoding="async" src="img/projects/Камера sci-fi/ren1.webp" alt="Рендер камеры 1">
+    <img loading="lazy" decoding="async" src="img/projects/Камера sci-fi/ren2.webp" alt="Рендер камеры 2">
+  </project-gallery>
+      <section class="project-cta" aria-labelledby="project-cta-title">
+      <p class="project-cta__eyebrow">Есть похожая задача?</p>
+      <h2 id="project-cta-title">Давайте обсудим ваш проект</h2>
+      <div class="project-cta__actions">
+        <a href="mailto:0Alex0G0@gmail.com?subject=Обсуждение%20проекта">Написать на почту</a>
+        <a href="https://t.me/Alex_G8" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="price-list.html">Посмотреть услуги</a>
       </div>
     </section>
-  </main>
-  <script src="js/mobile-menu.js"></script>
-  <script src="js/page-loader.js"></script>
+</main>
   <script src="js/project-media.js"></script>
-  <footer class="legal-footer" aria-label="Юридическая информация">
-    <div class="legal-footer__inner">
-      <section class="legal-footer__contacts" id="contacts">
-        <h2>КОНТАКТЫ</h2>
-        <div class="legal-footer__contacts-content">
-          <div class="legal-footer__contact-info">
-            <p>почта: <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a></p>
-            <p>ТГ: <a href="https://t.me/Alex_G8" target="_blank" rel="noopener noreferrer">@Alex_G8</a></p>
-            <p>ВК: <a href="https://vk.com/3funnydays" target="_blank" rel="noopener noreferrer">@3funnydays</a></p>
-          </div>
-          <img class="legal-footer__qr legal-footer__qr--vk" src="img/icons/VK.svg" alt="VK">
-          <img class="legal-footer__qr legal-footer__qr--tg" src="img/icons/TG.png" alt="Telegram">
-        </div>
-      </section>
-      <div class="legal-footer__meta">
-        <nav class="legal-footer__links" aria-label="Документы сайта">
-          <a href="privacy.html">Политика обработки персональных данных</a>
-          <a href="personal-data-consent.html">Согласие на обработку персональных данных</a>
-          <a href="cookies.html">Политика cookies</a>
-        </nav>
-        <p class="legal-footer__note">Реквизиты ИП будут добавлены после регистрации.</p>
-        <p class="legal-footer__copyright">© Alex_G 2026</p>
-      </div>
-    </div>
-  </footer>
+  <site-footer></site-footer>
 </body>
 </html>

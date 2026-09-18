@@ -2,10 +2,13 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="img/icons/favicon.png" type="image/png">
-  <title>Кафедра ЦАТ — Александр Гусев</title>
-  <link href="https://fonts.cdnfonts.com/css/gravity" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#242323">
+  <link rel="icon" href="img/icons/favicon.png" type="image/png"><link rel="manifest" href="site.webmanifest">
+  <title>Кафедра ЦАТ — Александр Гусев</title><link rel="preload" href="img/icons/Logo.svg" as="image" type="image/svg+xml">
+  <meta name="description" content="Кейс «Кафедра ЦАТ, аудитория 455»: 3D-визуализация пространства и вариантов освещения.">
+  <meta property="og:title" content="Кафедра ЦАТ — Александр Гусев">
+  <meta property="og:description" content="Кейс «Кафедра ЦАТ, аудитория 455»: 3D-визуализация пространства и вариантов освещения.">
+  <meta property="og:type" content="article">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/projects/common.css">
   <link rel="stylesheet" href="css/projects/city-monopoly.css">
@@ -13,33 +16,16 @@
   <link rel="stylesheet" href="css/adaptive.css">
   <link rel="stylesheet" href="css/projects/project-grid.css">
   <link rel="stylesheet" href="css/notebook.css">
+  <link rel="stylesheet" href="css/site-refinement.css?v=20260820-13">
+  <meta property="og:image" content="img/projects/Кафедра ЦАТ (ауд.455)/1.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="js/site-shell.js?v=20260820-4" defer></script>
+  <script src="js/project-gallery.js?v=20260820-12" defer></script>
 </head>
 <body class="project-page">
-  <div class="site-loader" data-site-loader aria-label="Загрузка страницы">
-    <img src="img/decor/загрузка1.webp" alt="">
-    <p data-loader-text data-text="...кря?" aria-hidden="true"></p>
-  </div>
-  <header class="header header--page">
-    <a class="logo mobile-logo" href="index.html" aria-label="Главная"></a>
+  <site-header></site-header>
 
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="index.html">Главная</a>
-      <a href="about.html">Обо мне</a>
-      <a href="index.html?section=projects">Проекты</a>
-      <a href="blog.html">Блог</a>
-    </nav>
-    <nav class="nav-static" aria-label="Navigation">
-      <a class="logo" href="index.html" aria-label="Главная"><span class="logo__mark" aria-hidden="true"></span><span class="logo__text">ALEX_G</span></a>
-      <a href="index.html">&#1043;&#1051;&#1040;&#1042;&#1053;&#1040;&#1071;</a>
-      <a href="blog.html">&#1053;&#1054;&#1042;&#1054;&#1057;&#1058;&#1048;</a>
-      <a href="about.html">&#1054;&#1041;&#1054; &#1052;&#1053;&#1045;</a>
-      <a href="index.html?section=projects">&#1056;&#1040;&#1041;&#1054;&#1058;&#1067;</a>
-      <a href="price-list.html">УСЛУГИ</a>
-    </nav>
-    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
-  </header>
-
-  <main class="project-template">
+  <main id="main-content" class="project-template">
     <section class="project-cover project-cover--light project-cover--cat-455" aria-label="Кафедра ЦАТ, аудитория 455">
       <img src="img/projects/Кафедра ЦАТ (ауд.455)/1.webp" alt="Визуализация зоны хранения и кофе в аудитории 455">
     </section>
@@ -51,13 +37,13 @@
         <p>В качестве результата нужно было подготовить не только интерьерную концепцию, но и полный комплект рабочих материалов: обмеры, планы, развертки, 3D-модель, дневные и ночные визуализации, а также видеопрезентацию.</p>
       </div>
       <div class="project-image project-image--wide">
-        <img src="img/projects/Кафедра ЦАТ (ауд.455)/Фото_аудитории455.jpg" alt="Исходное состояние аудитории 455">
+        <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/Фото_аудитории455.jpg" alt="Исходное состояние аудитории 455">
       </div>
     </section>
 
     <section class="project-section project-section--second grid-12">
       <div class="project-image project-image--square project-image--concept">
-        <img src="img/projects/Кафедра ЦАТ (ауд.455)/начало 3дмоделироввания.webp" alt="Начало разработки 3D-модели аудитории">
+        <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/начало 3дмоделироввания.webp" alt="Начало разработки 3D-модели аудитории">
       </div>
       <div class="project-copy project-copy--middle">
         <h2>От обмеров к концепции</h2>
@@ -73,13 +59,13 @@
         <p>План расстановки мебели и развертка стен фиксируют логику проекта и связывают будущую визуализацию с реальными строительными решениями.</p>
       </div>
       <div class="project-image project-image--wide project-image--document">
-        <img src="img/projects/Кафедра ЦАТ (ауд.455)/План расстановки мебели 1.svg" alt="План расстановки мебели">
+        <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/План расстановки мебели 1.svg" alt="План расстановки мебели">
       </div>
     </section>
 
     <section class="project-section project-section--second grid-12">
       <div class="project-image project-image--square project-image--document">
-        <img src="img/projects/Кафедра ЦАТ (ауд.455)/Развертка 1.svg" alt="Развертка стены с мебелью и хранением">
+        <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/Развертка 1.svg" alt="Развертка стены с мебелью и хранением">
       </div>
       <div class="project-copy project-copy--middle">
         <h2>Сборка пространства в 3ds Max</h2>
@@ -95,23 +81,23 @@
         <p>Сцену настроил в двух состояниях: дневном, где работают естественный свет и мягкие заполнения, и вечернем, где характер пространства формируют люминесцентные источники. Для проекта подготовлено десять основных камер и девять ракурсов для анимации.</p>
       </div>
       <div class="project-image project-image--wide">
-        <img src="img/projects/Кафедра ЦАТ (ауд.455)/2.webp" alt="Дневная визуализация интерьера аудитории">
+        <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/2.webp" alt="Дневная визуализация интерьера аудитории">
       </div>
     </section>
 
     <section class="city-video city-video--cat-455 grid-12" aria-label="Промо-видео проекта">
       <div class="city-video__player" data-project-video>
-        <video class="city-video__media" preload="none" playsinline>
+        <video class="city-video__media" preload="none" playsinline poster="img/projects/Кафедра ЦАТ (ауд.455)/1.webp">
           <source src="img/projects/Кафедра ЦАТ (ауд.455)/Промо_ролик.mp4" type="video/mp4">
         </video>
-        <button class="city-video__play" type="button" aria-label="Воспроизвести видео" data-video-play><img class="video-icon video-icon--center" src="img/icons/Play.svg" alt="" aria-hidden="true" data-video-center-icon></button>
+        <button class="city-video__play" type="button" aria-label="Воспроизвести видео" data-video-play><img loading="lazy" decoding="async" class="video-icon video-icon--center" src="img/icons/Play.svg" alt="" aria-hidden="true" data-video-center-icon></button>
         <div class="city-video__hover-zone" aria-hidden="true"></div>
         <div class="city-video__controls" data-video-controls>
-          <button class="city-video__control-button" type="button" aria-label="Назад на 5 секунд" title="Назад на 5 секунд" data-video-back><img class="video-icon video-icon--skip-back" src="img/icons/Skip_right.svg" alt="" aria-hidden="true"></button>
-          <button class="city-video__control-button" type="button" aria-label="Воспроизвести видео" title="Воспроизвести видео" data-video-toggle><img class="video-icon" src="img/icons/Play.svg" alt="" aria-hidden="true" data-video-toggle-icon></button>
-          <button class="city-video__control-button" type="button" aria-label="Вперед на 5 секунд" title="Вперед на 5 секунд" data-video-forward><img class="video-icon" src="img/icons/Skip_right.svg" alt="" aria-hidden="true"></button>
+          <button class="city-video__control-button" type="button" aria-label="Назад на 5 секунд" title="Назад на 5 секунд" data-video-back><img loading="lazy" decoding="async" class="video-icon video-icon--skip-back" src="img/icons/Skip_right.svg" alt="" aria-hidden="true"></button>
+          <button class="city-video__control-button" type="button" aria-label="Воспроизвести видео" title="Воспроизвести видео" data-video-toggle><img loading="lazy" decoding="async" class="video-icon" src="img/icons/Play.svg" alt="" aria-hidden="true" data-video-toggle-icon></button>
+          <button class="city-video__control-button" type="button" aria-label="Вперед на 5 секунд" title="Вперед на 5 секунд" data-video-forward><img loading="lazy" decoding="async" class="video-icon" src="img/icons/Skip_right.svg" alt="" aria-hidden="true"></button>
           <input class="city-video__progress" type="range" min="0" max="1000" value="0" aria-label="Прогресс видео" data-video-progress>
-          <button class="city-video__control-button" type="button" aria-label="Выключить звук" title="Выключить звук" data-video-mute><img class="video-icon" src="img/icons/volume.svg" alt="" aria-hidden="true" data-video-mute-icon></button>
+          <button class="city-video__control-button" type="button" aria-label="Выключить звук" title="Выключить звук" data-video-mute><img loading="lazy" decoding="async" class="video-icon" src="img/icons/volume.svg" alt="" aria-hidden="true" data-video-mute-icon></button>
           <input class="city-video__volume" type="range" min="0" max="1" step="0.05" value="0.8" aria-label="Громкость видео" title="Громкость видео" data-video-volume>
           <button class="city-video__control-button" type="button" aria-label="На весь экран" title="На весь экран" data-video-fullscreen><span class="video-fullscreen-icon" aria-hidden="true"></span></button>
         </div>
@@ -120,7 +106,7 @@
 
     <section class="project-section project-section--second grid-12">
       <div class="project-image project-image--square">
-        <img src="img/projects/Кафедра ЦАТ (ауд.455)/11.webp" alt="360-обзор интерьера аудитории">
+        <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/11.webp" alt="360-обзор интерьера аудитории">
       </div>
       <div class="project-copy project-copy--middle">
         <h2>Итоговая визуализация</h2>
@@ -129,58 +115,34 @@
       </div>
     </section>
 
-    <section class="project-slider" aria-label="Дневные и ночные рендеры проекта" data-project-slider>
-      <div class="project-slider__track" data-project-slider-track>
-        <div class="project-slider__group">
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/1.webp" alt="Дневной рендер 1"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/2.webp" alt="Дневной рендер 2"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/3.webp" alt="Дневной рендер 3"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/4.webp" alt="Дневной рендер 4"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/5.webp" alt="Дневной рендер 5"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/6.webp" alt="Дневной рендер 6"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/7.webp" alt="Дневной рендер 7"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/8.webp" alt="Дневной рендер 8"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/10.webp" alt="Дневной рендер 9"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/1_ночь.webp" alt="Ночной рендер 1"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/2_ночь.webp" alt="Ночной рендер 2"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/3_ночь.webp" alt="Ночной рендер 3"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/4_ночь.webp" alt="Ночной рендер 4"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/6_ночь.webp" alt="Ночной рендер 5"></div>
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/7_ночь.webp" alt="Ночной рендер 6"></div>
-        </div>
-        <div class="project-slider__group" aria-hidden="true">
-          <div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/1.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/2.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/3.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/4.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/5.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/6.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/7.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/8.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/10.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/1_ночь.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/2_ночь.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/3_ночь.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/4_ночь.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/6_ночь.webp" alt=""></div><div class="project-slider__item"><img src="img/projects/Кафедра ЦАТ (ауд.455)/7_ночь.webp" alt=""></div>
-        </div>
+    <project-gallery aria-label="Дневные и ночные рендеры проекта">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/1.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/1.webp" alt="Дневной рендер 1">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/2.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/2.webp" alt="Дневной рендер 2">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/3.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/3.webp" alt="Дневной рендер 3">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/4.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/4.webp" alt="Дневной рендер 4">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/5.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/5.webp" alt="Дневной рендер 5">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/6.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/6.webp" alt="Дневной рендер 6">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/7.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/7.webp" alt="Дневной рендер 7">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/8.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/8.webp" alt="Дневной рендер 8">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/10.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/10.webp" alt="Дневной рендер 9">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/1_ночь.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/1_ночь.webp" alt="Ночной рендер 1">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/2_ночь.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/2_ночь.webp" alt="Ночной рендер 2">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/3_ночь.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/3_ночь.webp" alt="Ночной рендер 3">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/4_ночь.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/4_ночь.webp" alt="Ночной рендер 4">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/6_ночь.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/6_ночь.webp" alt="Ночной рендер 5">
+    <img loading="lazy" decoding="async" src="img/projects/Кафедра ЦАТ (ауд.455)/slider/7_ночь.webp" data-full-src="img/projects/Кафедра ЦАТ (ауд.455)/7_ночь.webp" alt="Ночной рендер 6">
+  </project-gallery>
+      <section class="project-cta" aria-labelledby="project-cta-title">
+      <p class="project-cta__eyebrow">Есть похожая задача?</p>
+      <h2 id="project-cta-title">Давайте обсудим ваш проект</h2>
+      <div class="project-cta__actions">
+        <a href="mailto:0Alex0G0@gmail.com?subject=Обсуждение%20проекта">Написать на почту</a>
+        <a href="https://t.me/Alex_G8" target="_blank" rel="noopener noreferrer">Telegram</a>
+        <a href="price-list.html">Посмотреть услуги</a>
       </div>
     </section>
-  </main>
-  <script src="js/mobile-menu.js"></script>
-  <script src="js/page-loader.js"></script>
+</main>
   <script src="js/project-media.js"></script>
-  <footer class="legal-footer" aria-label="Юридическая информация">
-    <div class="legal-footer__inner">
-      <section class="legal-footer__contacts" id="contacts">
-        <h2>КОНТАКТЫ</h2>
-        <div class="legal-footer__contacts-content">
-          <div class="legal-footer__contact-info">
-            <p>почта: <a href="mailto:agusev2004@yandex.ru">agusev2004@yandex.ru</a></p>
-            <p>ТГ: <a href="https://t.me/Alex_G8" target="_blank" rel="noopener noreferrer">@Alex_G8</a></p>
-            <p>ВК: <a href="https://vk.com/3funnydays" target="_blank" rel="noopener noreferrer">@3funnydays</a></p>
-          </div>
-          <img class="legal-footer__qr legal-footer__qr--vk" src="img/icons/VK.svg" alt="VK">
-          <img class="legal-footer__qr legal-footer__qr--tg" src="img/icons/TG.png" alt="Telegram">
-        </div>
-      </section>
-      <div class="legal-footer__meta">
-        <nav class="legal-footer__links" aria-label="Документы сайта">
-          <a href="privacy.html">Политика обработки персональных данных</a>
-          <a href="personal-data-consent.html">Согласие на обработку персональных данных</a>
-          <a href="cookies.html">Политика cookies</a>
-        </nav>
-        <p class="legal-footer__note">Реквизиты ИП будут добавлены после регистрации.</p>
-        <p class="legal-footer__copyright">© Alex_G 2026</p>
-      </div>
-    </div>
-  </footer>
+  <site-footer></site-footer>
 </body>
 </html>
