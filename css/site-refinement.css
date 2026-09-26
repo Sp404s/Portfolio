@@ -66,7 +66,7 @@ project-gallery{display:block;width:calc(100% - 200px);min-height:clamp(292.5px,
 
 /* SVG clock artwork used in the hero */
 .home-hero__clock{font-size:0;border:0;background:transparent;box-shadow:none}
-.home-hero__clock::before{content:'';position:absolute;inset:0;border:0;background:url('../img/decor/Окружность.svg') center/contain no-repeat;mask:none}
+.home-hero__clock::before{content:'';position:absolute;inset:0;border:0;background:url('../img/decor/Окружность.svg?v=20260926-2') center/contain no-repeat;mask:none}
 .home-hero__clock::after{content:'';position:absolute;inset:-18%;background:url('../img/decor/Часы.svg') center/contain no-repeat;opacity:.9}
 .home-hero__clock-hand,.home-hero__clock-center{display:none}
 
