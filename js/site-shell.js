@@ -1,10 +1,27 @@
 (function () {
   const pages = {
+    home: 'index.html',
     news: 'blog.html',
     projects: 'projects.html',
     services: 'price-list.html',
     about: 'about.html'
   };
+
+  const icons = {
+    home: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7v9a1 1 0 0 1-1 1h-5v-6h-4v6h-5a1 1 0 0 1-1-1z"/></svg>',
+    news: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h11a2 2 0 0 1 2 2v15H6a2 2 0 0 1-2-2v-14a1 1 0 0 1 1-1Z"/><path d="M8 8h6M8 12h6M8 16h4M18 7h2v11.5a2 2 0 0 1-2 2"/></svg>',
+    projects: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
+    services: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2"/></svg>',
+    about: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.5-4.2 3-6.5 7-6.5s6.5 2.3 7 6.5"/></svg>'
+  };
+
+  const navigation = [
+    ['home', 'Главная'],
+    ['news', 'Новости'],
+    ['projects', 'Работы'],
+    ['services', 'Услуги'],
+    ['about', 'Обо мне']
+  ];
 
   const currentFile = () => {
     const file = window.location.pathname.split('/').pop() || 'index.html';
@@ -21,41 +38,12 @@
         <a class="skip-link" href="#main-content">Перейти к содержанию</a>
         <header class="site-header" aria-label="Основная навигация">
           <div class="site-header__inner">
-            <a class="site-logo" href="index.html" aria-label="Александр Гусев — главная"><img class="site-logo__image" src="img/icons/Logo.svg" width="198" height="51" alt="" decoding="sync" fetchpriority="high"></a>
-            <button class="site-menu-button" type="button" aria-expanded="false" aria-controls="site-navigation">
-              <span class="site-menu-button__label">Меню</span><span class="site-menu-button__icon" aria-hidden="true"></span>
-            </button>
+            <a class="site-logo" href="index.html" aria-label="Александр Гусев — главная"><img class="site-logo__image" src="img/icons/favicon.png" width="128" height="128" alt="" decoding="sync" fetchpriority="high"></a>
             <nav class="site-nav" id="site-navigation" aria-label="Разделы сайта">
-              <a href="${pages.news}" ${active === pages.news ? 'aria-current="page"' : ''}>Новости</a>
-              <a href="${pages.projects}" ${active === pages.projects ? 'aria-current="page"' : ''}>Работы</a>
-              <a href="${pages.services}" ${active === pages.services ? 'aria-current="page"' : ''}>Услуги</a>
-              <a href="${pages.about}" ${active === pages.about ? 'aria-current="page"' : ''}>Обо мне</a>
+              ${navigation.map(([key, label]) => `<a href="${pages[key]}" ${active === pages[key] ? 'aria-current="page"' : ''} aria-label="${label}">${icons[key]}<span class="site-nav__label">${label}</span></a>`).join('')}
             </nav>
           </div>
         </header>`;
-
-      const button = this.querySelector('.site-menu-button');
-      const nav = this.querySelector('.site-nav');
-      const close = () => {
-        button.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
-        document.body.classList.remove('menu-open');
-      };
-      button.addEventListener('click', () => {
-        const opening = button.getAttribute('aria-expanded') !== 'true';
-        button.setAttribute('aria-expanded', String(opening));
-        nav.classList.toggle('is-open', opening);
-        document.body.classList.toggle('menu-open', opening);
-      });
-      nav.addEventListener('click', (event) => {
-        if (event.target.closest('a')) close();
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') close();
-      });
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) close();
-      });
     }
   }
 
