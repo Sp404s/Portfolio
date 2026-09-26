@@ -39,11 +39,39 @@
         <header class="site-header" aria-label="Основная навигация">
           <div class="site-header__inner">
             <a class="site-logo" href="index.html" aria-label="Александр Гусев — главная"><img class="site-logo__image" src="img/icons/favicon.png" width="128" height="128" alt="" decoding="sync" fetchpriority="high"></a>
+            <button class="site-menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Открыть меню">
+              <span class="site-menu-button__label">Меню</span><span class="site-menu-button__icon" aria-hidden="true"></span>
+            </button>
             <nav class="site-nav" id="site-navigation" aria-label="Разделы сайта">
               ${navigation.map(([key, label]) => `<a href="${pages[key]}" ${active === pages[key] ? 'aria-current="page"' : ''} aria-label="${label}">${icons[key]}<span class="site-nav__label">${label}</span></a>`).join('')}
             </nav>
           </div>
         </header>`;
+
+      const button = this.querySelector('.site-menu-button');
+      const nav = this.querySelector('.site-nav');
+      const close = () => {
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Открыть меню');
+        nav.classList.remove('is-open');
+        document.body.classList.remove('menu-open');
+      };
+      button.addEventListener('click', () => {
+        const opening = button.getAttribute('aria-expanded') !== 'true';
+        button.setAttribute('aria-expanded', String(opening));
+        button.setAttribute('aria-label', opening ? 'Закрыть меню' : 'Открыть меню');
+        nav.classList.toggle('is-open', opening);
+        document.body.classList.toggle('menu-open', opening);
+      });
+      nav.addEventListener('click', (event) => {
+        if (event.target.closest('a')) close();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') close();
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) close();
+      });
     }
   }
 
