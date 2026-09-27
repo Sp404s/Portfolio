@@ -200,23 +200,29 @@ main img,main video{filter:grayscale(1) contrast(1.04)}
 }
 
 @media(max-width:768px){
+  .home-shell{scroll-behavior:smooth;scroll-padding-top:72px;scroll-snap-type:y mandatory}
+  body.home-page{overscroll-behavior-y:contain}
   .portfolio-home{min-height:0;display:block}
-  .portfolio-intro{min-height:calc(100svh - 72px);padding:28px 20px}
+  .portfolio-intro{height:calc(100svh - 72px);min-height:580px;padding:28px 20px;scroll-snap-align:start;scroll-snap-stop:always}
   .portfolio-intro::before{font-size:78vw;right:-.08em;bottom:-.2em}
   .portfolio-intro__top img{width:44px;height:44px;border-radius:13px}
   .portfolio-intro__copy{margin:70px 0 54px}
   .portfolio-intro h1{font-size:clamp(48px,14vw,70px)}
   .portfolio-intro__copy>p:last-child{margin-top:24px;font-size:17px}
   .portfolio-intro__footer{font-size:11px}
-  .portfolio-panels{display:grid;overflow:visible;border-right:0}
-  .portfolio-panel{min-height:260px;padding:20px;overflow:visible;border-left:0;border-top:1px solid #000}
-  .portfolio-panel::before{top:74px;right:20px;left:20px;background:var(--accent);opacity:1}
+  .portfolio-panels{display:block;overflow:visible;border-right:0}
+  .portfolio-panel{width:100%;height:calc(100svh - 72px);min-height:580px;padding:26px 20px 30px;display:flex;overflow:hidden;flex-direction:column;border-left:0;border-top:1px solid #000;scroll-snap-align:start;scroll-snap-stop:always;touch-action:pan-y;transition:background-color .25s ease,color .25s ease}
+  .portfolio-panel::before{top:34%;right:20px;left:20px;height:3px;background:var(--accent);opacity:1;transition:transform .5s cubic-bezier(.22,1,.36,1);transform:scaleX(.32)}
+  .portfolio-panel:active{background:#000;color:#fff}
+  .portfolio-panel:active::before{transform:scaleX(1)}
   .portfolio-panel__head{font-size:10px}
-  .portfolio-panel__head strong{font-size:12px}
-  .portfolio-panel__head i{opacity:1;transform:none}
-  .portfolio-panel__body{position:static;margin-top:68px;opacity:1;transform:none}
-  .portfolio-panel__body small{margin-bottom:12px}
-  .portfolio-panel__title{font-size:38px;white-space:normal}
-  .portfolio-panel__text{margin-top:14px}
-  .portfolio-panel__action{margin-top:20px}
+  .portfolio-panel__head strong{font-size:13px}
+  .portfolio-panel__head i{top:23px;right:20px;width:34px;height:34px;opacity:1;transform:none}
+  .portfolio-panel:active .portfolio-panel__head i{border-color:#fff;background:var(--accent);color:#000}
+  .portfolio-panel__body{position:static;margin-top:auto;opacity:1;transform:none}
+  .portfolio-panel__body small{margin-bottom:14px}
+  .portfolio-panel__title{font-size:clamp(42px,12vw,58px);white-space:normal}
+  .portfolio-panel__text{max-width:520px;margin-top:18px;font-size:16px}
+  .portfolio-panel:active .portfolio-panel__text{color:rgba(255,255,255,.7)}
+  .portfolio-panel__action{margin-top:26px}
 }
