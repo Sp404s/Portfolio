@@ -107,4 +107,19 @@
 
   if (!customElements.get('site-header')) customElements.define('site-header', SiteHeader);
   if (!customElements.get('site-footer')) customElements.define('site-footer', SiteFooter);
+
+  const homePanels = Array.from(document.querySelectorAll('.portfolio-panel'));
+  if (homePanels.length) {
+    document.documentElement.classList.add('home-scroll-motion');
+    if ('IntersectionObserver' in window) {
+      const panelObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('is-in-view', entry.isIntersecting && entry.intersectionRatio >= 0.48);
+        });
+      }, { threshold: [0.2, 0.48, 0.72], rootMargin: '-72px 0px 0px 0px' });
+      homePanels.forEach((panel) => panelObserver.observe(panel));
+    } else {
+      homePanels.forEach((panel) => panel.classList.add('is-in-view'));
+    }
+  }
 })();
