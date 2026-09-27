@@ -168,18 +168,26 @@ main img,main video{filter:grayscale(1) contrast(1.04)}
 .portfolio-intro__footer a:hover{text-decoration:underline;text-underline-offset:4px}
 .portfolio-panels{display:flex;min-width:0;overflow:hidden;border-right:1px solid #000;background:#fff}
 .portfolio-panel{position:relative;min-width:76px;flex:1 1 0;overflow:hidden;padding:28px 22px 34px;border-left:1px solid #000;background:#fff;color:#000;transition:flex-grow .75s cubic-bezier(.22,1,.36,1),background-color .3s ease}
-.portfolio-panel::before{content:'';position:absolute;left:22px;right:22px;top:43%;height:1px;background:#000;opacity:.26;transform-origin:left center;transition:top .75s cubic-bezier(.22,1,.36,1),height .25s ease,background-color .25s ease,opacity .25s ease}
+.portfolio-panel::before{content:'';position:absolute;left:22px;right:22px;top:49%;height:1px;background:#000;opacity:.26;transform-origin:left center;transition:height .25s ease,background-color .25s ease,opacity .25s ease,transform .55s cubic-bezier(.22,1,.36,1)}
 .portfolio-panel:hover,.portfolio-panel:focus-visible{flex-grow:3.5;background:#fff;outline-offset:-3px}
-.portfolio-panel:hover::before,.portfolio-panel:focus-visible::before{top:35%;height:3px;background:var(--accent);opacity:1}
+.portfolio-panel:hover::before,.portfolio-panel:focus-visible::before{height:3px;background:var(--accent);opacity:1;transform:scaleX(1)}
 .portfolio-panel__head{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
 .portfolio-panel__head>span{color:var(--accent);font-weight:700}
 .portfolio-panel__head strong{min-width:0;font-size:12px;line-height:1.15;white-space:normal}
 .portfolio-panel__head i{position:absolute;top:28px;right:22px;width:28px;height:28px;display:grid;place-items:center;border:1px solid #000;border-radius:50%;font-size:14px;font-style:normal;opacity:0;transform:translateX(-8px);transition:opacity .25s ease,transform .35s ease,background-color .25s ease,color .25s ease}
 .portfolio-panel:hover .portfolio-panel__head i,.portfolio-panel:focus-visible .portfolio-panel__head i{opacity:1;transform:none}
+.portfolio-panel__media{position:absolute;top:13%;right:22px;left:22px;height:31%;overflow:hidden;background:#efefed;opacity:.28;transform:scale(.94);transition:opacity .4s ease,transform .75s cubic-bezier(.22,1,.36,1)}
+.portfolio-panel__media img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06);transition:transform 1s cubic-bezier(.22,1,.36,1)}
+.portfolio-panel--services .portfolio-panel__media img{object-position:62% 50%}
+.portfolio-panel--news .portfolio-panel__media img{object-position:58% 50%}
+.portfolio-panel--about .portfolio-panel__media img{object-position:50% 31%}
+.portfolio-panel:hover .portfolio-panel__media,.portfolio-panel:focus-visible .portfolio-panel__media{opacity:1;transform:none}
+.portfolio-panel:hover .portfolio-panel__media img,.portfolio-panel:focus-visible .portfolio-panel__media img{transform:scale(1.025)}
 .portfolio-panel__body{position:absolute;left:22px;right:22px;bottom:38px;display:flex;flex-direction:column;align-items:flex-start;opacity:0;transform:translateY(28px);transition:opacity .32s ease .08s,transform .62s cubic-bezier(.22,1,.36,1) .08s}
 .portfolio-panel:hover .portfolio-panel__body,.portfolio-panel:focus-visible .portfolio-panel__body{opacity:1;transform:none}
 .portfolio-panel__body small{margin-bottom:16px;color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
 .portfolio-panel__title{font-size:clamp(30px,3.2vw,58px);font-weight:600;line-height:.94;letter-spacing:-.055em;white-space:normal}
+.portfolio-panel__title em{color:var(--accent);font-style:normal}
 .portfolio-panel__text{max-width:410px;margin-top:20px;color:rgba(0,0,0,.64);font-size:14px;line-height:1.45}
 .portfolio-panel__action{margin-top:26px;padding-bottom:4px;border-bottom:1px solid #000;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 
@@ -212,13 +220,15 @@ main img,main video{filter:grayscale(1) contrast(1.04)}
   .portfolio-intro__footer{font-size:11px}
   .portfolio-panels{display:block;overflow:visible;border-right:0}
   .portfolio-panel{width:100%;height:calc(100svh - 72px);min-height:580px;padding:26px 20px 30px;display:flex;overflow:hidden;flex-direction:column;border-left:0;border-top:1px solid #000;scroll-snap-align:start;scroll-snap-stop:always;touch-action:pan-y;transition:background-color .25s ease,color .25s ease}
-  .portfolio-panel::before{top:34%;right:20px;left:20px;height:3px;background:var(--accent);opacity:1;transition:transform .5s cubic-bezier(.22,1,.36,1);transform:scaleX(.32)}
+  .portfolio-panel::before{top:calc(112px + clamp(180px,31svh,300px));right:20px;left:20px;height:3px;background:var(--accent);opacity:1;transition:transform .5s cubic-bezier(.22,1,.36,1);transform:scaleX(.32)}
   .portfolio-panel:active{background:#000;color:#fff}
   .portfolio-panel:active::before{transform:scaleX(1)}
   .portfolio-panel__head{font-size:10px}
   .portfolio-panel__head strong{font-size:13px}
   .portfolio-panel__head i{top:23px;right:20px;width:34px;height:34px;opacity:1;transform:none}
   .portfolio-panel:active .portfolio-panel__head i{border-color:#fff;background:var(--accent);color:#000}
+  .portfolio-panel__media{top:92px;right:20px;left:20px;height:clamp(180px,31svh,300px);opacity:1;transform:none}
+  .portfolio-panel__media img{transform:none}
   .portfolio-panel__body{position:static;margin-top:auto;opacity:1;transform:none}
   .portfolio-panel__body small{margin-bottom:14px}
   .portfolio-panel__title{font-size:clamp(42px,12vw,58px);white-space:normal}
