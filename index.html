@@ -1,80 +1,33 @@
 <!doctype html>
-<html lang="ru" class="home-shell">
+<html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <title>Александр Гусев — графический дизайнер и 3D-художник</title>
-  <meta name="description" content="Портфолио Александра Гусева: графический дизайн, 3D-моделирование, визуализация и анимация.">
-  <meta property="og:title" content="Александр Гусев — графический дизайнер и 3D-художник">
-  <meta property="og:description" content="Развиваю идеи и превращаю их в понятные визуальные образы — от первой концепции до готового проекта.">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#080808">
+  <title>ALEX_G — графический дизайнер и 3D-художник</title>
+  <meta name="description" content="Портфолио Александра Гусева: 3D-графика, визуализация, анимация и графический дизайн.">
+  <meta property="og:title" content="ALEX_G — портфолио Александра Гусева">
+  <meta property="og:description" content="Визуальные решения для реальных задач — от идеи до готового проекта.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="img/projects/Фотоаппарат Fujifilm/cover-render.webp">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="img/icons/favicon.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="css/site-refinement.css?v=20260927-5">
-  <script src="js/site-shell.js?v=20260927-1" defer></script>
+  <link rel="stylesheet" href="css/portfolio-v2.css?v=20261008-1">
+  <script src="js/portfolio-v2.js?v=20261008-1" defer></script>
 </head>
-<body class="home-page">
-  <site-header></site-header>
-  <main class="portfolio-home" id="main-content">
-    <section class="portfolio-intro" aria-labelledby="home-title">
-      <div class="portfolio-intro__top">
-        <span>Портфолио / 2026</span>
-      </div>
-      <div class="portfolio-intro__copy">
-        <p class="portfolio-intro__eyebrow">Графический дизайнер · 3D-художник</p>
-        <h1 id="home-title">Привет, я<br>Гусев Александр.</h1>
-        <p>Развиваю идеи и превращаю их в понятные визуальные образы — от первой концепции до готового проекта.</p>
-      </div>
-      <div class="portfolio-intro__footer">
-        <span>Санкт‑Петербург</span>
-        <a href="mailto:0Alex0G0@gmail.com">Написать мне <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
+<body class="portfolio-site">
+  <a class="skip-link" href="#main-content">Перейти к содержанию</a>
+  <portfolio-sidebar></portfolio-sidebar>
+  <mobile-portfolio-menu></mobile-portfolio-menu>
 
-    <nav class="portfolio-panels" aria-label="Разделы портфолио">
-      <a class="portfolio-panel portfolio-panel--works" href="projects.html">
-        <span class="portfolio-panel__head"><span>01</span><strong>Работы</strong></span>
-        <span class="portfolio-panel__body">
-          <small>Избранные проекты</small>
-          <span class="portfolio-panel__title">От идеи<br>до <em>формы.</em></span>
-          <span class="portfolio-panel__text">3D‑моделирование, визуализация, анимация и графический дизайн.</span>
-          <span class="portfolio-panel__action">Смотреть проекты</span>
-        </span>
-      </a>
-
-      <a class="portfolio-panel portfolio-panel--services" href="price-list.html">
-        <span class="portfolio-panel__head"><span>02</span><strong>Услуги</strong></span>
-        <span class="portfolio-panel__body">
-          <small>Форматы работы</small>
-          <span class="portfolio-panel__title">Задача.<br>Процесс.<br><em>Результат.</em></span>
-          <span class="portfolio-panel__text">Направления, этапы сотрудничества и ориентировочная стоимость.</span>
-          <span class="portfolio-panel__action">Посмотреть услуги</span>
-        </span>
-      </a>
-
-      <a class="portfolio-panel portfolio-panel--news" href="blog.html">
-        <span class="portfolio-panel__head"><span>03</span><strong>Новости</strong></span>
-        <span class="portfolio-panel__body">
-          <small>Процесс и наблюдения</small>
-          <span class="portfolio-panel__title"><em>Что нового</em><br>в работе.</span>
-          <span class="portfolio-panel__text">Обновления проектов, заметки о процессе и профессиональные находки.</span>
-          <span class="portfolio-panel__action">Читать новости</span>
-        </span>
-      </a>
-
-      <a class="portfolio-panel portfolio-panel--about" href="about.html">
-        <span class="portfolio-panel__head"><span>04</span><strong>Обо мне</strong></span>
-        <span class="portfolio-panel__body">
-          <small>Опыт и инструменты</small>
-          <span class="portfolio-panel__title">Подход<br>к <em>дизайну.</em></span>
-          <span class="portfolio-panel__text">Коротко обо мне, компетенциях, программах и принципах работы.</span>
-          <span class="portfolio-panel__action">Познакомиться</span>
-        </span>
-      </a>
-    </nav>
+  <main class="site-frame" id="main-content">
+    <portfolio-hero id="hero"></portfolio-hero>
+    <portfolio-board id="works"></portfolio-board>
+    <portfolio-footer id="contacts"></portfolio-footer>
   </main>
+
+  <project-modal></project-modal>
+  <noscript>Для просмотра интерактивной галереи включите JavaScript.</noscript>
 </body>
 </html>

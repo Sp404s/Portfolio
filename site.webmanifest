@@ -1,11 +1,11 @@
 {
-  "name": "Александр Гусев — портфолио",
-  "short_name": "Alex Gusev",
+  "name": "ALEX_G — портфолио",
+  "short_name": "ALEX_G",
   "lang": "ru",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#242323",
-  "theme_color": "#242323",
+  "background_color": "#080808",
+  "theme_color": "#080808",
   "icons": [
     {
       "src": "img/icons/favicon.png",
