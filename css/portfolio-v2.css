@@ -738,7 +738,7 @@ img, video { display: block; max-width: 100%; }
   .site-frame { margin-left: 0; }
   .skip-link { left: 16px; }
   .hero { min-height: 100svh; padding-bottom: calc(26px + env(safe-area-inset-bottom)); }
-  .hero__video { object-position: 56% 50%; }
+  .hero__video { object-position: 72% 50%; }
   .hero__media::after { background: linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.18) 78%), linear-gradient(90deg, rgba(0,0,0,.35), transparent); }
   .hero__topline { top: calc(20px + env(safe-area-inset-top)); }
   .hero__topline span:last-child { display: none; }
