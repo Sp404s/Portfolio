@@ -654,10 +654,10 @@ img, video { display: block; max-width: 100%; }
 .resume-button {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  min-width: 230px;
+  justify-content: center;
+  min-width: 210px;
   min-height: 54px;
-  padding: 0 14px 0 20px;
+  padding: 0 22px;
   border: 1px solid var(--text);
   background: var(--text);
   color: var(--bg);
@@ -667,16 +667,6 @@ img, video { display: block; max-width: 100%; }
   text-decoration: none;
   text-transform: uppercase;
   transition: background 200ms ease, color 200ms ease;
-}
-.resume-button__icon {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  font-size: 16px;
-  line-height: 1;
 }
 .resume-button:hover,
 .resume-button:focus-visible { background: transparent; color: var(--text); }
