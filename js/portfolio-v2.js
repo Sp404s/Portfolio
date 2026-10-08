@@ -147,7 +147,7 @@
     connectedCallback() {
       this.innerHTML = `
         <aside class="desktop-sidebar" aria-label="Основная навигация">
-          <a class="desktop-sidebar__brand" href="index.html" aria-label="ALEX_G — главная">A_</a>
+          <a class="desktop-sidebar__brand" href="index.html" aria-label="ALEX_G — главная"><img src="img/icons/new__logo.svg" alt="" width="31" height="40"></a>
           <nav class="desktop-sidebar__nav">
             ${navItems.map(item => `
               <a class="desktop-sidebar__link${onAboutPage && item.key === 'about' ? ' is-active' : ''}" href="${item.href}" data-nav="${item.key}" ${onAboutPage && item.key === 'about' ? 'aria-current="page"' : ''}>
@@ -184,7 +184,7 @@
               <source src="img/decor/Заставка2.webm" type="video/webm">
             </video>
           </div>
-          <div class="hero__topline"><span>Портфолио / 2026</span><span>Санкт-Петербург · Доступен для проектов</span></div>
+          <div class="hero__topline"><span class="hero__portfolio-label">Портфолио / 2026</span><img class="hero__mobile-logo" src="img/icons/new__logo.svg" alt="ALEX_G" width="24" height="32"><span>Санкт-Петербург</span></div>
           <div class="hero__content">
             <p class="hero__disciplines">3D &nbsp;/&nbsp; Graphic &nbsp;/&nbsp; Branding &nbsp;/&nbsp; Digital</p>
             <h1 id="hero-title">ALEX_G</h1>
@@ -192,11 +192,9 @@
               <p class="hero__statement">Визуальные решения для реальных задач — от идеи до готового проекта.</p>
               <div class="hero__actions">
                 <a class="outline-button" href="#contacts">Связаться со мной</a>
-                <button class="hero__reel is-playing" type="button" data-reel-toggle><span class="hero__reel-icon" aria-hidden="true"></span><span data-reel-label>Пауза ролика</span></button>
               </div>
             </div>
           </div>
-          <p class="hero__side-note">Дизайн,<br>который<br>движет</p>
         </section>`;
     }
   }
@@ -210,7 +208,7 @@
       this.innerHTML = `
         <section class="portfolio-board" aria-labelledby="works-title">
           <div class="portfolio-board__header">
-            <div class="section-heading"><span>02</span><h2 id="works-title">Работы</h2></div>
+            <div class="section-heading"><h2 id="works-title">Работы</h2></div>
             <div class="project-filters" role="group" aria-label="Фильтр проектов">
               ${filters.map(([key, label], index) => `<button class="project-filter${index === 0 ? ' is-active' : ''}" type="button" data-filter="${key}" aria-pressed="${index === 0}">${label}</button>`).join('')}
             </div>
@@ -237,7 +235,7 @@
         <footer class="portfolio-footer">
           <div class="portfolio-footer__lead">
             <div>
-              <div class="section-heading"><span>04</span><h2>Контакты</h2></div>
+              <div class="section-heading"><h2>Контакты</h2></div>
               <h2>Создадим что-то ясное и сильное.</h2>
               <p>Расскажите о задаче — отвечу, задам необходимые вопросы и предложу следующий шаг.</p>
             </div>
@@ -276,25 +274,6 @@
   customElements.define('project-modal', ProjectModal);
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function initHero() {
-    const video = document.querySelector('.hero__video');
-    const toggle = document.querySelector('[data-reel-toggle]');
-    if (!video || !toggle) return;
-    const label = toggle.querySelector('[data-reel-label]');
-    toggle.addEventListener('click', () => {
-      if (video.paused) {
-        video.play().then(() => {
-          toggle.classList.add('is-playing');
-          label.textContent = 'Пауза ролика';
-        }).catch(() => {});
-      } else {
-        video.pause();
-        toggle.classList.remove('is-playing');
-        label.textContent = 'Продолжить ролик';
-      }
-    });
-  }
 
   function initFilters() {
     const filters = Array.from(document.querySelectorAll('[data-filter]'));
@@ -421,6 +400,38 @@
     cards.forEach(card => observer.observe(card));
   }
 
+  function initCardTilt() {
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!finePointer || reduceMotion) return;
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      let frame = 0;
+      card.addEventListener('pointermove', event => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+          const y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
+          const rotateX = (0.5 - y) * 6;
+          const rotateY = (x - 0.5) * 6;
+          card.style.setProperty('--tilt-x', `${rotateX.toFixed(2)}deg`);
+          card.style.setProperty('--tilt-y', `${rotateY.toFixed(2)}deg`);
+          card.style.setProperty('--pointer-x', `${(x * 100).toFixed(1)}%`);
+          card.style.setProperty('--pointer-y', `${(y * 100).toFixed(1)}%`);
+          card.classList.add('is-tilting');
+        });
+      });
+      card.addEventListener('pointerleave', () => {
+        cancelAnimationFrame(frame);
+        card.classList.remove('is-tilting');
+        card.style.setProperty('--tilt-x', '0deg');
+        card.style.setProperty('--tilt-y', '0deg');
+        card.style.setProperty('--pointer-x', '50%');
+        card.style.setProperty('--pointer-y', '50%');
+      });
+    });
+  }
+
   function initScrollSpy() {
     if (onAboutPage || !('IntersectionObserver' in window)) return;
     const links = Array.from(document.querySelectorAll('.desktop-sidebar__link[data-nav]'));
@@ -434,10 +445,10 @@
     sections.forEach(section => observer.observe(section));
   }
 
-  initHero();
   initFilters();
   initModal();
   initMobileMenu();
   initReveal();
+  initCardTilt();
   initScrollSpy();
 })();
