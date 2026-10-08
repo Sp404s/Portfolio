@@ -216,11 +216,13 @@
           <div class="project-grid">
             ${projects.map((project, index) => `
               <button class="project-card${project.layout === 'featured' ? ' is-featured' : ''}${project.layout === 'wide' ? ' is-wide' : ''} reveal-card" type="button" data-project="${project.id}" data-category="${project.category}" style="--cover-position:${project.coverPosition};--delay:${Math.min(index * 45, 260)}ms" aria-label="Открыть проект ${project.title}">
-                <img class="project-card__image" src="${project.cover}" alt="" loading="lazy" decoding="async">
-                <span class="project-card__content">
-                  <span class="project-card__index">${String(index + 1).padStart(2, '0')}</span>
-                  <h3>${project.title}</h3>
-                  <p>${project.categoryLabel}</p>
+                <span class="project-card__plane">
+                  <img class="project-card__image" src="${project.cover}" alt="" loading="lazy" decoding="async">
+                  <span class="project-card__content">
+                    <span class="project-card__index">${String(index + 1).padStart(2, '0')}</span>
+                    <h3>${project.title}</h3>
+                    <p>${project.categoryLabel}</p>
+                  </span>
                 </span>
               </button>`).join('')}
             <p class="portfolio-board__empty" data-empty hidden>В этой категории пока нет проектов.</p>
@@ -400,6 +402,53 @@
     cards.forEach(card => observer.observe(card));
   }
 
+  function initProjectBillboards() {
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!finePointer || reduceMotion) return;
+
+    const cards = Array.from(document.querySelectorAll('.project-card'));
+    if (!cards.length) return;
+
+    let pointerX = window.innerWidth / 2;
+    let pointerY = window.innerHeight / 2;
+    let frame = 0;
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const reset = () => {
+      cards.forEach(card => {
+        card.style.setProperty('--billboard-x', '0deg');
+        card.style.setProperty('--billboard-y', '0deg');
+      });
+    };
+    const update = () => {
+      frame = 0;
+      cards.forEach(card => {
+        if (card.hidden) return;
+        const rect = card.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+
+        const deltaX = (pointerX - (rect.left + rect.width / 2)) / Math.max(window.innerWidth, 1);
+        const deltaY = (pointerY - (rect.top + rect.height / 2)) / Math.max(window.innerHeight, 1);
+        const rotateY = clamp(deltaX * 16, -7, 7);
+        const rotateX = clamp(-deltaY * 12, -5, 5);
+
+        card.style.setProperty('--billboard-x', `${rotateX.toFixed(2)}deg`);
+        card.style.setProperty('--billboard-y', `${rotateY.toFixed(2)}deg`);
+      });
+    };
+    const scheduleUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    window.addEventListener('pointermove', event => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+      scheduleUpdate();
+    }, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    document.documentElement.addEventListener('mouseleave', reset);
+  }
+
   function initScrollSpy() {
     if (onAboutPage || !('IntersectionObserver' in window)) return;
     const links = Array.from(document.querySelectorAll('.desktop-sidebar__link[data-nav]'));
@@ -417,5 +466,6 @@
   initModal();
   initMobileMenu();
   initReveal();
+  initProjectBillboards();
   initScrollSpy();
 })();

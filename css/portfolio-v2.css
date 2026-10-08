@@ -393,21 +393,37 @@ img, video { display: block; max-width: 100%; }
 .project-card {
   position: relative;
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
   padding: 0;
   border: 0;
   border-radius: 2px;
-  background: var(--surface);
+  background: transparent;
   text-align: left;
   cursor: pointer;
   isolation: isolate;
+  perspective: 1100px;
+}
+
+.project-card__plane {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: inherit;
+  background: var(--surface);
+  pointer-events: none;
+  transform: rotateX(var(--billboard-x, 0deg)) rotateY(var(--billboard-y, 0deg));
+  transform-style: preserve-3d;
+  transform-origin: center;
+  transition: transform 140ms ease-out;
+  will-change: transform;
 }
 
 .project-card.is-featured { grid-row: span 2; }
 .project-card.is-wide { grid-column: span 2; }
 .project-card[hidden] { display: none; }
 
-.project-card::after {
+.project-card__plane::after {
   content: "";
   position: absolute;
   z-index: 1;
