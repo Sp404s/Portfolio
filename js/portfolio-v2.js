@@ -400,38 +400,6 @@
     cards.forEach(card => observer.observe(card));
   }
 
-  function initCardTilt() {
-    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (!finePointer || reduceMotion) return;
-
-    document.querySelectorAll('.project-card').forEach(card => {
-      let frame = 0;
-      card.addEventListener('pointermove', event => {
-        cancelAnimationFrame(frame);
-        frame = requestAnimationFrame(() => {
-          const rect = card.getBoundingClientRect();
-          const x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
-          const y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
-          const rotateX = (0.5 - y) * 6;
-          const rotateY = (x - 0.5) * 6;
-          card.style.setProperty('--tilt-x', `${rotateX.toFixed(2)}deg`);
-          card.style.setProperty('--tilt-y', `${rotateY.toFixed(2)}deg`);
-          card.style.setProperty('--pointer-x', `${(x * 100).toFixed(1)}%`);
-          card.style.setProperty('--pointer-y', `${(y * 100).toFixed(1)}%`);
-          card.classList.add('is-tilting');
-        });
-      });
-      card.addEventListener('pointerleave', () => {
-        cancelAnimationFrame(frame);
-        card.classList.remove('is-tilting');
-        card.style.setProperty('--tilt-x', '0deg');
-        card.style.setProperty('--tilt-y', '0deg');
-        card.style.setProperty('--pointer-x', '50%');
-        card.style.setProperty('--pointer-y', '50%');
-      });
-    });
-  }
-
   function initScrollSpy() {
     if (onAboutPage || !('IntersectionObserver' in window)) return;
     const links = Array.from(document.querySelectorAll('.desktop-sidebar__link[data-nav]'));
@@ -449,6 +417,5 @@
   initModal();
   initMobileMenu();
   initReveal();
-  initCardTilt();
   initScrollSpy();
 })();
