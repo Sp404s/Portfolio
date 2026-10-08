@@ -449,6 +449,49 @@
     document.documentElement.addEventListener('mouseleave', reset);
   }
 
+  function initSkillLevels() {
+    const cards = Array.from(document.querySelectorAll('[data-skill-level]'));
+    if (!cards.length) return;
+
+    const showLevel = card => {
+      if (card.classList.contains('is-skill-visible')) return;
+      const target = Math.min(100, Math.max(0, Number(card.dataset.skillLevel) || 0));
+      const value = card.querySelector('[data-skill-value]');
+      card.style.setProperty('--skill-level', `${target}%`);
+      card.classList.add('is-skill-visible');
+
+      if (!value) return;
+      if (reduceMotion) {
+        value.textContent = String(target);
+        return;
+      }
+
+      const start = performance.now();
+      const duration = 1100;
+      const tick = now => {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        value.textContent = String(Math.round(target * eased));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      cards.forEach(showLevel);
+      return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        showLevel(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .35 });
+    cards.forEach(card => observer.observe(card));
+  }
+
   function initScrollSpy() {
     if (onAboutPage || !('IntersectionObserver' in window)) return;
     const links = Array.from(document.querySelectorAll('.desktop-sidebar__link[data-nav]'));
@@ -467,5 +510,6 @@
   initMobileMenu();
   initReveal();
   initProjectBillboards();
+  initSkillLevels();
   initScrollSpy();
 })();
