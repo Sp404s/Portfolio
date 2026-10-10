@@ -7,14 +7,16 @@
       categoryLabel: '3D / Визуализация',
       year: '2026',
       role: 'Концепция · Моделирование · Свет',
-      cover: 'img/projects/Обои для телефона/маяк рендер 1.webp',
+      cover: 'img/projects/lighthouse/cover.webp',
       coverPosition: '50% 50%',
       layout: 'featured',
       description: 'Атмосферная серия обоев для телефона. В проекте исследуются масштаб, туман, направленный свет и спокойная кинематографическая композиция.',
       gallery: [
-        'img/projects/Обои для телефона/маяк рендер3 .webp',
-        'img/projects/Обои для телефона/маяк рендер5 .webp',
-        'img/projects/Обои для телефона/наработки по маяку.webp'
+        'img/projects/lighthouse/render-02.webp',
+        'img/projects/lighthouse/render-03.webp',
+        'img/projects/lighthouse/render-04.webp',
+        'img/projects/lighthouse/render-05.webp',
+        'img/projects/lighthouse/process.webp'
       ]
     },
     {
@@ -24,13 +26,19 @@
       categoryLabel: '3D / Интерьер',
       year: '2026',
       role: 'Исследование · Планировка · Визуализация',
-      cover: 'img/projects/Кафедра ЦАТ (ауд.455)/1.webp',
+      cover: 'img/projects/classroom-455/cover.webp',
       coverPosition: '50% 54%',
       description: 'Концепция обновления учебной аудитории кафедры ЦАТ: функциональное зонирование, мебель, освещение и дневные и ночные сценарии пространства.',
       gallery: [
-        'img/projects/Кафедра ЦАТ (ауд.455)/red1.webp',
-        'img/projects/Кафедра ЦАТ (ауд.455)/6.webp',
-        'img/projects/Кафедра ЦАТ (ауд.455)/5_ночь.webp'
+        { type: 'video', src: 'img/projects/classroom-455/promo-video.mp4', poster: 'img/projects/classroom-455/redesign.webp' },
+        'img/projects/classroom-455/redesign.webp',
+        'img/projects/classroom-455/day-02.webp',
+        'img/projects/classroom-455/day-06.webp',
+        'img/projects/classroom-455/night-01.webp',
+        'img/projects/classroom-455/night-05.webp',
+        'img/projects/classroom-455/blockout.webp',
+        'img/projects/classroom-455/furniture-plan.svg',
+        'img/projects/classroom-455/elevation.svg'
       ]
     },
     {
@@ -40,13 +48,19 @@
       categoryLabel: '3D / Предметная графика',
       year: '2026',
       role: 'Моделирование · Материалы · Рендер',
-      cover: 'img/projects/Фотоаппарат Fujifilm/cover-render.webp',
+      cover: 'img/projects/fujifilm-camera/cover.webp',
       coverPosition: '50% 50%',
       description: 'Детальная предметная модель камеры Fujifilm X-S10. Проект включает моделирование корпуса, настройку материалов и серию студийных рендеров.',
       gallery: [
-        'img/projects/Фотоаппарат Fujifilm/render-2.webp',
-        'img/projects/Фотоаппарат Fujifilm/render-4.webp',
-        'img/projects/Фотоаппарат Fujifilm/render-5.webp'
+        { type: 'video', src: 'img/projects/fujifilm-camera/animation.mp4', poster: 'img/projects/fujifilm-camera/cover.webp' },
+        'img/projects/fujifilm-camera/render-01.webp',
+        'img/projects/fujifilm-camera/render-02.webp',
+        'img/projects/fujifilm-camera/render-03.webp',
+        'img/projects/fujifilm-camera/render-04.webp',
+        'img/projects/fujifilm-camera/render-05.webp',
+        'img/projects/fujifilm-camera/modeling.webp',
+        'img/projects/fujifilm-camera/materials.webp',
+        'img/projects/fujifilm-camera/detailing.webp'
       ]
     },
     {
@@ -56,13 +70,17 @@
       categoryLabel: '3D / Анимация',
       year: '2026',
       role: 'Арт-дирекшн · 3D · Анимация',
-      cover: 'img/projects/Город монополия/из1.webp',
+      cover: 'img/projects/monopoly-city/cover.webp',
       coverPosition: '50% 50%',
       description: 'Стилизованный трёхмерный город, собранный на основе визуального языка настольной игры. Серия кадров объединена в короткий анимационный ролик.',
       gallery: [
-        'img/projects/Город монополия/из2.webp',
-        'img/projects/Город монополия/рен1.webp',
-        'img/projects/Город монополия/рен3.webp'
+        { type: 'video', src: 'img/projects/monopoly-city/animation.mp4', poster: 'img/projects/monopoly-city/render-01.webp' },
+        'img/projects/monopoly-city/process-02.webp',
+        'img/projects/monopoly-city/process-03.webp',
+        'img/projects/monopoly-city/process-04.webp',
+        'img/projects/monopoly-city/render-01.webp',
+        'img/projects/monopoly-city/render-02.webp',
+        'img/projects/monopoly-city/render-03.webp'
       ]
     },
     {
@@ -76,6 +94,8 @@
       coverPosition: '50% 52%',
       description: 'Предметный проект журнального стола в индустриальной эстетике. Основное внимание уделено пропорциям, конструкции и выразительности материалов.',
       gallery: [
+        'img/projects/table-loft/concept-1.jpg',
+        'img/projects/table-loft/modeling-2.webp',
         'img/projects/table-loft/render-2.webp',
         'img/projects/table-loft/render-3.webp',
         'img/projects/table-loft/texturing-3.webp'
@@ -88,10 +108,12 @@
       categoryLabel: '3D / Печать',
       year: '2026',
       role: 'Моделирование · Прототип · Печать',
-      cover: 'img/projects/Keycap подставка/Пнг подставка.webp',
+      cover: 'img/projects/keycap-stand/cover.webp',
       coverPosition: '50% 50%',
       description: 'Компактная подставка, построенная вокруг формы клавиши. Модель подготовлена для FDM-печати и проверена на физическом прототипе.',
-      gallery: ['img/projects/Keycap подставка/Пнг подставка.webp']
+      gallery: [
+        { type: 'video', src: 'img/projects/keycap-stand/demo.mp4', poster: 'img/projects/keycap-stand/cover.webp' }
+      ]
     },
     {
       id: 'camera-scifi',
@@ -100,14 +122,17 @@
       categoryLabel: '3D / Концепт',
       year: '2025',
       role: 'Дизайн · Hard Surface · Текстуры',
-      cover: 'img/projects/Камера sci-fi/ren1.webp',
+      cover: 'img/projects/sci-fi-camera/cover.webp',
       coverPosition: '50% 50%',
       layout: 'wide',
       description: 'Фантастическая камера с выразительным силуэтом и функциональной детализацией. Проект прошёл путь от референсов и драфта до high-poly и текстур.',
       gallery: [
-        'img/projects/Камера sci-fi/ren2.webp',
-        'img/projects/Камера sci-fi/текстурирование6.webp',
-        'img/projects/Камера sci-fi/low poly5.webp'
+        'img/projects/sci-fi-camera/render-02.webp',
+        'img/projects/sci-fi-camera/draft.webp',
+        'img/projects/sci-fi-camera/setting.webp',
+        'img/projects/sci-fi-camera/high-poly.webp',
+        'img/projects/sci-fi-camera/low-poly.webp',
+        'img/projects/sci-fi-camera/texturing.webp'
       ]
     },
     {
@@ -117,13 +142,17 @@
       categoryLabel: '3D / Industrial',
       year: '2025',
       role: 'Дизайн · Моделирование · Рендер',
-      cover: 'img/projects/Стол sci-fi/render-1.webp',
+      cover: 'img/projects/sci-fi-table/cover.webp',
       coverPosition: '50% 50%',
       description: 'Hard-surface объект с технологичным характером. Формообразование основано на сочетании крупных функциональных объёмов и точной деталировки.',
       gallery: [
-        'img/projects/Стол sci-fi/render-2.webp',
-        'img/projects/Стол sci-fi/texturing.webp',
-        'img/projects/Стол sci-fi/details.webp'
+        'img/projects/sci-fi-table/render-02.webp',
+        'img/projects/sci-fi-table/blocking.webp',
+        'img/projects/sci-fi-table/low-poly.webp',
+        'img/projects/sci-fi-table/texturing.webp',
+        'img/projects/sci-fi-table/details.webp',
+        'img/projects/sci-fi-table/references.webp',
+        'img/projects/sci-fi-table/setting.webp'
       ]
     }
   ];
@@ -180,8 +209,8 @@
       this.innerHTML = `
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero__media" aria-hidden="true">
-            <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="img/decor/загрузка1.webp">
-              <source src="img/decor/Заставка2.webm" type="video/webm">
+            <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="img/decor/hero-poster.webp">
+              <source src="img/decor/hero-goose.webm" type="video/webm">
             </video>
           </div>
           <div class="hero__topline"><span class="hero__portfolio-label">Портфолио / 2026</span><img class="hero__mobile-logo" src="img/icons/new__logo.svg" alt="ALEX_G" width="24" height="32"><span>Санкт-Петербург</span></div>
@@ -277,19 +306,55 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  function initSiteLoader() {
+    const loader = document.querySelector('[data-site-loader]');
+    if (!loader) return;
+    const startedAt = performance.now();
+    const minimumDuration = reduceMotion ? 120 : 1250;
+    const hide = () => {
+      const delay = Math.max(0, minimumDuration - (performance.now() - startedAt));
+      window.setTimeout(() => {
+        loader.classList.add('is-leaving');
+        document.body.classList.add('is-site-ready');
+        window.setTimeout(() => loader.remove(), reduceMotion ? 80 : 520);
+      }, delay);
+    };
+    if (document.readyState === 'complete') hide();
+    else window.addEventListener('load', hide, { once: true });
+  }
+
   function initFilters() {
     const filters = Array.from(document.querySelectorAll('[data-filter]'));
     const cards = Array.from(document.querySelectorAll('[data-project]'));
     const empty = document.querySelector('[data-empty]');
     if (!filters.length || !cards.length) return;
 
-    filters.forEach(filter => filter.addEventListener('click', () => {
+    const grid = document.querySelector('.project-grid');
+    let filtering = false;
+    let queuedFilter = null;
+
+    const applyFilter = async filter => {
       const value = filter.dataset.filter;
+      const current = filters.find(item => item.classList.contains('is-active'));
+      if (current === filter && !filtering) return;
+      if (filtering) {
+        queuedFilter = filter;
+        return;
+      }
+      filtering = true;
+      grid?.setAttribute('aria-busy', 'true');
       filters.forEach(item => {
         const active = item === filter;
         item.classList.toggle('is-active', active);
         item.setAttribute('aria-pressed', String(active));
       });
+
+      if (!reduceMotion && grid) {
+        grid.classList.remove('is-filtering-in');
+        grid.classList.add('is-filtering-out');
+        await new Promise(resolve => window.setTimeout(resolve, 480));
+      }
+
       let visibleCount = 0;
       cards.forEach(card => {
         const visible = value === 'all' || card.dataset.category === value;
@@ -297,7 +362,25 @@
         if (visible) visibleCount += 1;
       });
       if (empty) empty.hidden = visibleCount !== 0;
-    }));
+
+      if (!reduceMotion && grid) {
+        grid.classList.remove('is-filtering-out');
+        void grid.offsetWidth;
+        grid.classList.add('is-filtering-in');
+        await new Promise(resolve => window.setTimeout(resolve, 680));
+        grid.classList.remove('is-filtering-in');
+      }
+
+      grid?.removeAttribute('aria-busy');
+      filtering = false;
+      if (queuedFilter) {
+        const next = queuedFilter;
+        queuedFilter = null;
+        applyFilter(next);
+      }
+    };
+
+    filters.forEach(filter => filter.addEventListener('click', () => applyFilter(filter)));
   }
 
   function initModal() {
@@ -318,6 +401,17 @@
       trigger?.focus();
     };
 
+    const renderMedia = (media, index, project) => {
+      if (typeof media === 'string') {
+        return `<img src="${media}" alt="${project.title} — изображение ${index + 1}" loading="lazy" decoding="async">`;
+      }
+      if (media.type === 'video') {
+        const poster = media.poster ? ` poster="${media.poster}"` : '';
+        return `<video class="project-modal__video" controls playsinline preload="metadata"${poster} aria-label="${project.title} — видео ${index + 1}"><source src="${media.src}" type="video/mp4">Ваш браузер не поддерживает видео.</video>`;
+      }
+      return '';
+    };
+
     const open = project => {
       trigger = document.activeElement;
       content.innerHTML = `
@@ -335,7 +429,7 @@
             </dl>
           </div>
           <div class="project-modal__gallery">
-            ${project.gallery.map((image, index) => `<img src="${image}" alt="${project.title} — изображение ${index + 1}" loading="lazy" decoding="async">`).join('')}
+            ${project.gallery.map((media, index) => renderMedia(media, index, project)).join('')}
           </div>
         </div>`;
       modal.hidden = false;
@@ -505,6 +599,7 @@
     sections.forEach(section => observer.observe(section));
   }
 
+  initSiteLoader();
   initFilters();
   initModal();
   initMobileMenu();
