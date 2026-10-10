@@ -165,11 +165,12 @@
   };
 
   const onAboutPage = document.body.classList.contains('about-route');
+  const onHomePage = document.body.classList.contains('home-route');
   const navItems = [
-    { key: 'home', label: 'Главная', href: onAboutPage ? 'index.html#hero' : '#hero' },
-    { key: 'works', label: 'Работы', href: onAboutPage ? 'index.html#works' : '#works' },
+    { key: 'home', label: 'Главная', href: onHomePage ? '#hero' : 'index.html#hero' },
+    { key: 'works', label: 'Работы', href: onHomePage ? '#works' : 'index.html#works' },
     { key: 'about', label: 'Обо мне', href: 'about.html' },
-    { key: 'contacts', label: 'Контакты', href: '#contacts' }
+    { key: 'contacts', label: 'Контакты', href: onHomePage ? '#contacts' : 'index.html#contacts' }
   ];
 
   class PortfolioSidebar extends HTMLElement {
@@ -279,7 +280,7 @@
           </div>
           <div class="portfolio-footer__bottom">
             <span>ALEX_G · 3D / Graphic / Digital · © ${new Date().getFullYear()}</span>
-            <div class="portfolio-footer__legal"><a href="privacy.html">Конфиденциальность</a><a href="offer.html">Оферта</a><span>Санкт-Петербург</span></div>
+            <div class="portfolio-footer__legal"><a href="privacy.html">Конфиденциальность</a><a href="personal-data-consent.html">Обработка данных</a><a href="cookies.html">Cookies</a><a href="offer.html">Условия</a><span>Санкт-Петербург</span></div>
           </div>
         </footer>`;
     }

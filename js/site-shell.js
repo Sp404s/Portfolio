@@ -1,4 +1,18 @@
 (function () {
+  const legacyFile = window.location.pathname.split('/').pop() || 'index.html';
+  const legacyTarget = legacyFile === 'price-list.html'
+    ? 'index.html#contacts'
+    : legacyFile === 'blog.html'
+      ? 'index.html'
+      : (legacyFile === 'projects.html' || legacyFile.startsWith('project'))
+        ? 'index.html#works'
+        : null;
+
+  if (legacyTarget) {
+    window.location.replace(legacyTarget);
+    return;
+  }
+
   const pages = {
     home: 'index.html',
     news: 'blog.html',
